@@ -3,22 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recipe App</title>
 </head>
 
 <body>
-    {% recipe in recipes %}
-    {{recipe.Name}}
-    {{recipe.catergory_name}}
-    {{recipe.Image}}
-    {{recipe.Servings}}
-    {{recipe.Ingredients}}
-    {{recipe.Instructions}}
-    {{recipe.rating}}
-
-    {endfor}
+    {% for recipe in recipes %}
+    {{ recipe.catergorie_name }}<br>
+    {{ recipe.Names }}<br>
+    {{ recipe.Servings }}<br>
+    {% endfor %}
 </body>
 
 </html>
