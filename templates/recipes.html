@@ -9,7 +9,16 @@
 </head>
 
 <body>
+    {% recipe in recipes %}
+    {{recipe.Name}}
+    {{recipe.catergory_name}}
+    {{recipe.Image}}
+    {{recipe.Servings}}
+    {{recipe.Ingredients}}
+    {{recipe.Instructions}}
+    {{recipe.rating}}
 
+    {endfor}
 </body>
 
 </html>
