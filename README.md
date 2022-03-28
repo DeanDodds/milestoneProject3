@@ -101,6 +101,12 @@ The wireframes for the website were created on Drawio, there is a desktop, table
 
 - <a href="https://getbootstrap.com/">Bootstrap 5:</a>
   Used for responsiveness and styling of the website.
+- <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask: </a>
+  Used to build the application
+- <a href="https://www.mongodb.com/">Mongodb: </a>
+Used to store my database 
+- <a href="">Werkzeug: </a>
+  Flask dependency a utility libraries
 - <a href="https://fontawesome.com/">Font Awesome:</a>
   Used to import icons that used across every page of the website.
 - <a href="https://fonts.google.com/">Google Fonts:</a>
@@ -118,11 +124,28 @@ The wireframes for the website were created on Drawio, there is a desktop, table
 
 # 4. Deployment <a id="deployment"></a>
 
-### Github pages <a id=pages></a>
+# Github <a id=pages></a>
 
-### Making a local clone </a>
+## Making a local clone <A id="clone"></a>
 
-### Forking the GitHub Repository </a>
+You can clone a Github repository to your local computer by following these steps:
+
+1. On GitHub.com, navigate the repository page
+2. above the list of files, click on the Code dropdown menu
+3. select the download zip file 
+4. once the files have downloaded you can extract them form the zip file and run them on your local environment 
+
+You can see more information on making local clones [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop)
+
+## Forking the GitHub Repository <a id="fork"></a>
+
+Forking a Github repositary allows you to make a copy that you can work on without effecting the original repository. You can fork a repository by:
+
+1. On GitHub.com, navigate the repository page of the repository you would like to fork
+2. on the top right hand side of the page locate click fork button 
+3. the copy of this resository should now be in your own repositories
+
+------
 
 ## Bugs<id href="bugs">
 
