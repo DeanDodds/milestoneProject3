@@ -96,6 +96,7 @@ The wireframes for the website were created on Drawio, there is a desktop, table
 - <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics">HTML5</a>
 - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>
 - <a href="https://www.python.org/">Python</a>
+- <a href="https://www.javascript.com/">JavaScript</a>
 
 ## Frameworks, Libraries and Programs used <a id="frameworks"></a>
 
