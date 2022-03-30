@@ -32,7 +32,7 @@
                         <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
                         <li><a href="{{ url_for('login') }}">LOGIN</a></li>
                         <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
-                        <li><a href="{{ url_for('get_profile') }}">PROFILE</a></li>
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
                         <li><a href="#">LOG OUT</a></li>
                     </ul>
                 </div>
@@ -48,7 +48,7 @@
                 <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
                 <li><a href="{{ url_for('login') }}">LOGIN</a></li>
                 <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
-                <li><a href="{{ url_for('get_profile') }}">PROFILE</a></li>
+                <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
                 <li><a href="#">LOG OUT</a></li>
             </ul>
     </header>
