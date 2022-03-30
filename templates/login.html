@@ -1,5 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Login</h1>
-{% endblock %}
+
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card darken-1">
+            <div class="card-content">
+                <h1 class="center-align">Login</h1>
+                <form method="Post" action="{{ url_for('login') }}">
+                    <!-- username field -->
+                    <div class="row">
+                        <div class="input-field col s10 offset-m1">
+                            <i class="fa-solid fa-user prefix"></i>
+                            <input id="username" name="username" type="text" class="validate" minlength="5"
+                                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <!-- Password field -->
+                    <div class="row">
+                        <div class="input-field col s10 offset-m1">
+                            <i class="fa-solid fa-key prefix"></i>
+                            <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                                pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <!-- submit button -->
+                    <div class=" row center-align">
+                        <button class="btn waves-effect waves-light col s10 offset-m1" type="submit" name="action">Login
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

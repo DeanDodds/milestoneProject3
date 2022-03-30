@@ -30,8 +30,8 @@
                         <li><a href="{{ url_for('get_recipes') }}">RECIPES</a></li>
                         <li><a href="{{ url_for('get_about') }}">ABOUT US</a></li>
                         <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
-                        <li><a href="{{ url_for('get_login') }}">LOGIN</a></li>
-                        <li><a href="{{ url_for('get_signup') }}">SIGN UP</a></li>
+                        <li><a href="{{ url_for('login') }}">LOGIN</a></li>
+                        <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
                         <li><a href="{{ url_for('get_profile') }}">PROFILE</a></li>
                         <li><a href="#">LOG OUT</a></li>
                     </ul>
@@ -42,20 +42,35 @@
                 <li>
                     <h4 class="center-align logo">Recipe App</h4>
                 </li>
-                li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
                 <li><a href="{{ url_for('get_recipes') }}">RECIPES</a></li>
                 <li><a href="{{ url_for('get_about') }}">ABOUT US</a></li>
                 <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
-                <li><a href="{{ url_for('get_login') }}">LOGIN</a></li>
-                <li><a href="{{ url_for('get_signup') }}">SIGN UP</a></li>
+                <li><a href="{{ url_for('login') }}">LOGIN</a></li>
+                <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
                 <li><a href="{{ url_for('get_profile') }}">PROFILE</a></li>
                 <li><a href="#">LOG OUT</a></li>
             </ul>
-
     </header>
 
-    {% block content %}
-    {% endblock %}
+
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
