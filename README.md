@@ -99,7 +99,7 @@ The wireframes for the website were created on Drawio, there is a desktop, table
 
 ## Frameworks, Libraries and Programs used <a id="frameworks"></a>
 
-- <a href="https://getbootstrap.com/">Bootstrap 5:</a>
+- <a href="https://materializecss.com/">Meteralize:</a>
   Used for responsiveness and styling of the website.
 - <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask: </a>
   Used to build the application
