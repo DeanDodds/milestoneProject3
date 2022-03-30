@@ -21,18 +21,18 @@
 
             <nav>
                 <div class="nav-wrapper nav-extended dark-red">
-                    <a href="#!" class="brand-logo logo left">Recipe App</a>
+                    <a href="{{ url_for('index') }}" class="brand-logo logo left">Recipe App</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right">
                         <i class="fa-solid fa-bars"></i>
                     </a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">RECIPES</a></li>
-                        <li><a href="#">ABOUT US</a></li>
-                        <li><a href="#">CONTACT US</a></li>
-                        <li><a href="#">LOGIN</a></li>
-                        <li><a href="#">REGISTER</a></li>
-                        <li><a href="#">PROFILE</a></li>
+                        <li><a href="{{ url_for('index') }}">HOME</a></li>
+                        <li><a href="{{ url_for('get_recipes') }}">RECIPES</a></li>
+                        <li><a href="{{ url_for('get_about') }}">ABOUT US</a></li>
+                        <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
+                        <li><a href="{{ url_for('get_login') }}">LOGIN</a></li>
+                        <li><a href="{{ url_for('get_signup') }}">SIGN UP</a></li>
+                        <li><a href="{{ url_for('get_profile') }}">PROFILE</a></li>
                         <li><a href="#">LOG OUT</a></li>
                     </ul>
                 </div>
@@ -42,13 +42,13 @@
                 <li>
                     <h4 class="center-align logo">Recipe App</h4>
                 </li>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">RECIPES</a></li>
-                <li><a href="#">ABOUT US</a></li>
-                <li><a href="#">CONTACT US</a></li>
-                <li><a href="#">LOGIN</a></li>
-                <li><a href="#">REGISTER</a></li>
-                <li><a href="#">PROFILE</a></li>
+                li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('get_recipes') }}">RECIPES</a></li>
+                <li><a href="{{ url_for('get_about') }}">ABOUT US</a></li>
+                <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
+                <li><a href="{{ url_for('get_login') }}">LOGIN</a></li>
+                <li><a href="{{ url_for('get_signup') }}">SIGN UP</a></li>
+                <li><a href="{{ url_for('get_profile') }}">PROFILE</a></li>
                 <li><a href="#">LOG OUT</a></li>
             </ul>
 
