@@ -16,12 +16,48 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+# Displays home page
 @app.route("/")
+def index():
+    """ Displays home page """
+    return render_template("index.html")
+
+
+# displays recipe page
 @app.route("/get_recipes")
-def get_tasks():
+def get_recipes():
+    """Gets the recipes data from database and displays it on the page"""
     recipes = mongo.db.recipes.find()
     return render_template("recipes.html", recipes=recipes)
+
+
+@app.route("/get_about")
+def get_about():
+    """ Displays About page """
+    return render_template("about.html")
+
+
+@app.route("/get_contact")
+def get_contact():
+    """ Displays Contact page """
+    return render_template("contact.html")
+
+
+@app.route("/get_login")
+def get_login():
+    """ Displays login page """
+    return render_template("login.html")
+
+
+@app.route("/get_signup")
+def get_signup():
+    """ Displays sign up page """
+    return render_template("signup.html")
+
+@app.route("/get_profile")
+def get_profile():
+    """ Displays profile page """
+    return render_template("profile.html")
 
 
 if __name__ == "__main__":
