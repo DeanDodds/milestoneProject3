@@ -57,7 +57,7 @@
 
 ### Colour theme
 
-![Color palette 1 ]
+![Color palette 1](/assets/screenshots/colorpallete.jpeg)
 
 ## Imagary
 
