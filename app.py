@@ -104,18 +104,32 @@ def profile(username):
     # get the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-        
+
     if session["user"]:
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
 
+
 @app.route("/logout")
 def logout():
-    # remove user from session cookie
+    """ remove user from session cookie """
     session.pop("user")
     flash("You have been logged out")
     return redirect(url_for("login"))
+
+
+@app.route("/addrecipe")
+def addrecipe():
+    """ Display addrdecipe page """
+    return render_template("addrecipe.html")
+
+
+@app.route("/favourites")
+def favourites():
+    """ Display favourites page """
+    return render_template("favourites.html")
+
 
 
 if __name__ == "__main__":
