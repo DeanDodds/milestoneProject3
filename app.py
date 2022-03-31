@@ -17,6 +17,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 # Page Displays
 @app.route("/")
 def index():
@@ -55,10 +56,10 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
-                    return redirect(url_for("profile", username=session["user"]))
+             existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("profile", username=session["user"]))
 
             else:
                 # invalid password match
@@ -91,7 +92,7 @@ def signup():
         }
         mongo.db.users.insert_one(register)
 
-         # put the new user into 'session' cookie
+    # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Sign up successfull!")
         return redirect(url_for("profile", username=session["user"]))
@@ -121,15 +122,19 @@ def logout():
 
 @app.route("/addrecipe")
 def addrecipe():
+    """"get recipe catergoies and cusine from database and displays addrecipe page"""
+    cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
+    catergories = mongo.db.catergories.find().sort("catergory_name, 1")
+    
+
     """ Display addrdecipe page """
-    return render_template("addrecipe.html")
+    return render_template("addrecipe.html", cuisine=cuisine, catergories=catergories)
 
 
 @app.route("/favourites")
 def favourites():
     """ Display favourites page """
     return render_template("favourites.html")
-
 
 
 if __name__ == "__main__":

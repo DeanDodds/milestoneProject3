@@ -10,9 +10,9 @@
 <nav class="nav-extended center">
     <div class="nav-content col s-12">
         <ul class="tabs tabs-transparent">
-            <li class="tab"><a class="active" href="{{ url_for('profile', username=session['user']) }}">My Recipes</a>
+            <li class="tab"><a href="{{ url_for('profile', username=session['user']) }}">My Recipes</a>
             </li>
-            <li class="tab"><a href="{{ url_for('addrecipe') }}">Add Recipes</a></li>
+            <li class="tab"><a class="active" href="{{ url_for('addrecipe') }}">Add Recipes</a></li>
             <li class="tab"><a href="{{ url_for('favourites') }}">My Favourites</a></li>
         </ul>
     </div>
@@ -44,30 +44,32 @@
                         <!-- cuisine field -->
                         <div class="row">
                             <div class="input-field col s4 offset-m1">
-                                <select id="cusine_name">
-                                    <option value="" disabled selected>Choose cuisine type </option>
-                                    <option value="English">english</option>
-                                    <option value="Indian">Indian</option>
-                                    <option value="Italian">itailan</option>
+                                <select id="cusine_name" name="cusine_name">
+                                    <option value="" disabled selected>Choose cuisine type</option>
+                                    {% for type in cuisine %}
+                                    <option value="{{ type.cusine_name }}">{{ type.cusine_name }}</option>
+                                    {% endfor %}
                                 </select>
                                 <label for="cusine_name">Cusine Type</label>
                             </div>
                             <!-- catergory field -->
                             <div class="input-field col s4 offset-m2">
-                                <select id="catergory_name">
+                                <select id="catergory_name" name="catergory_name" class="validate">
                                     <option value="" disabled selected>Choose catergory</option>
-                                    <option value="Breakfast">Breakfast</option>
-                                    <option value="Dinner">Dinner</option>
-                                    <option value="Snack">Snack</option>
+                                    {% for catergory in catergories %}
+                                    <option value="{{ catergory.catergory_name
+                                        }}">{{ catergory.catergory_name
+                                        }}</option>
+                                    {% endfor %}
                                 </select>
                                 <label for="catergory_name">catergory</label>
                             </div>
                         </div>
                         <div class="col s10 offset-m1">
                             <ul class="align-center" id="ingredients-list">
-                                <li>
-                                    <h6>ingredients list</h6>
-                                </li>
+                                <h6>ingredients list</h6>
+
+
                             </ul>
                         </div>
                         <!-- Add ingredients Collapsible -->
