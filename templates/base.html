@@ -26,14 +26,18 @@
                         <i class="fa-solid fa-bars"></i>
                     </a>
                     <ul class="right hide-on-med-and-down">
+
                         <li><a href="{{ url_for('index') }}">HOME</a></li>
                         <li><a href="{{ url_for('get_recipes') }}">RECIPES</a></li>
                         <li><a href="{{ url_for('get_about') }}">ABOUT US</a></li>
                         <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
+                        {% if session.user %}
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
+                        <li><a href="{{ url_for('logout') }}">LOG OUT</a></li>
+                        {% else %}
                         <li><a href="{{ url_for('login') }}">LOGIN</a></li>
                         <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
-                        <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
-                        <li><a href="#">LOG OUT</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>
@@ -49,9 +53,13 @@
                 <li><a href="{{ url_for('login') }}">LOGIN</a></li>
                 <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
                 <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
-                <li><a href="#">LOG OUT</a></li>
+                <li><a href="{{ url_for('logout') }}">LOG OUT</a></li>
             </ul>
     </header>
+
+    <section>
+
+    </section>
 
 
     <section>
