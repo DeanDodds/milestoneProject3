@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <h1>{{ username }}</h1>
+    </div>
+</div>
+
+<nav class="nav-extended center">
+    <div class="nav-content col s-12">
+        <ul class="tabs tabs-transparent">
+            <li class="tab"><a class="active" href="{{ url_for('profile', username=session['user']) }}">My Recipes</a>
+            </li>
+            <li class="tab"><a href="{{ url_for('addrecipe') }}">Add Recipes</a></li>
+            <li class="tab"><a href="{{ url_for('favourites') }}">My Favourites</a></li>
+        </ul>
+    </div>
+
+    {% endblock %}
