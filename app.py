@@ -144,11 +144,16 @@ def addrecipe():
         
     cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
     catergories = mongo.db.catergories.find().sort("catergory_name, 1")
-    
-
-    """ Display addrdecipe page """
     return render_template("addrecipe.html", cuisine=cuisine, catergories=catergories)
 
+
+@app.route("/editrecipe/<recipe_id>", methods=["GET", "POST"])
+def editrecipe(recipe_id):
+
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    catergories = mongo.db.catergories.find().sort("catergory_name, 1")
+    cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
+    return render_template("editrecipe.html", cuisine=cuisine, catergories=catergories, recipe=recipe)
 
 @app.route("/favourites")
 def favourites():
