@@ -84,7 +84,7 @@ def signup():
 
         if existing_user:
             flash("Username already exists")
-            return redirect(url_for("signup"))
+            return redirect(url_for("signup.html"))
 
         register = {
             "username": request.form.get("username").lower(),
@@ -106,8 +106,11 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    #gets recipes from database
+    recipes = mongo.db.recipes.find()
+
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, recipes=recipes)
 
     return redirect(url_for("login"))
 
@@ -131,8 +134,10 @@ def addrecipe():
             "recipe_name": request.form.get("recipe_name"),
             "servings": request.form.get("servings"),
             "instructions": request.form.get("instructions"),
-            "img_url": request.form.get("img_url")
+            "img_url": request.form.get("img_url"),
+            "description": request.form.get("description")
         }
+
         mongo.db.recipes.insert_one(recipe)
         flash("Task Successfully Added")
         return redirect(url_for("profile", username=session["user"]))
