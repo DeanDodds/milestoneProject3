@@ -65,11 +65,18 @@
                                 <label for="catergory_name">catergory</label>
                             </div>
                         </div>
+                        <!-- Recipe description  field -->
+                        <div class=" row">
+                            <div class="input-field col s10 offset-m1">
+                                <input id="description" name="description" type="text" minlength="1" maxlength="60"
+                                    class="validate" required>
+                                <label for="description">Recipe Description</label>
+                            </div>
+                        </div>
+                        <!-- Recipe List -->
                         <div class="col s10 offset-m1">
                             <ul class="align-center" id="ingredients-list">
                                 <h6>ingredients list</h6>
-
-
                             </ul>
                         </div>
                         <!-- Add ingredients Collapsible -->
@@ -120,12 +127,9 @@
                         </div>
                         <!-- Add instructions -->
                         <div class="row">
-                            <div class="">
-                                <div class="input-field col s10 offset-m1">
-                                    <textarea id="instructions" name="instructions"
-                                        class="materialize-textarea"></textarea>
-                                    <label for="instructions">Instructions</label>
-                                </div>
+                            <div class="input-field col s10 offset-m1">
+                                <textarea id="instructions" name="instructions" class="materialize-textarea"></textarea>
+                                <label for="instructions">Instructions</label>
                             </div>
                         </div>
                         <!-- Add image -->
