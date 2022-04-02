@@ -13,6 +13,26 @@ $(document).ready(function () {
 // Collapsibles
 $(document).ready(function () {
     $('.collapsible').collapsible();
+
+});
+
+// floating button
+$(document).ready(function () {
+    $('.fixed-action-btn').floatingActionButton();
+    $('.fixed-action-btn').floatingActionButton('methodName');
+    $('.fixed-action-btn').floatingActionButton('methodName', paramName);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+        direction: 'left'
+    });
+});
+
+// toolbar
+$('.fixed-action-btn').floatingActionButton({
+    toolbarEnabled: true
 });
 
 // Get ingrendents lists 
