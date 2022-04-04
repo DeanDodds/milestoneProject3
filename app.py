@@ -106,12 +106,12 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-    #gets recipes from database
+    # gets recipes from database
     recipes = mongo.db.recipes.find()
 
     if session["user"]:
-        return render_template("profile.html", username=username, recipes=recipes)
-
+        return render_template(
+            "profile.html", username=username, recipes=recipes)
     return redirect(url_for("login"))
 
 
@@ -125,7 +125,8 @@ def logout():
 
 @app.route("/addrecipe", methods=["GET", "POST"])
 def addrecipe():
-    """"get recipe catergoies and cusine from database and displays addrecipe page"""
+    """"get recipe catergoies and cusine
+    from database and displays addrecipe page"""
     if request.method == "POST":
         recipe = {
             "author": session["user"],
@@ -141,19 +142,37 @@ def addrecipe():
         mongo.db.recipes.insert_one(recipe)
         flash("Task Successfully Added")
         return redirect(url_for("profile", username=session["user"]))
-        
+
     cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
     catergories = mongo.db.catergories.find().sort("catergory_name, 1")
-    return render_template("addrecipe.html", cuisine=cuisine, catergories=catergories)
+    return render_template(
+        "addrecipe.html", cuisine=cuisine, catergories=catergories)
 
 
 @app.route("/editrecipe/<recipe_id>", methods=["GET", "POST"])
 def editrecipe(recipe_id):
+    if request.method == "POST":
+        submit = {
+            "author": session["user"],
+            "catergory_name": request.form.get("catergory_name"),
+            "cusine_name": request.form.get("cusine_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "servings": request.form.get("servings"),
+            "instructions": request.form.get("instructions"),
+            "img_url": request.form.get("img_url"),
+            "description": request.form.get("description")
+        }
+        mongo.db.recipes.replace_one(
+                    {"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe Successfully Updated")
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     catergories = mongo.db.catergories.find().sort("catergory_name, 1")
     cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
-    return render_template("editrecipe.html", cuisine=cuisine, catergories=catergories, recipe=recipe)
+    return render_template(
+        "editrecipe.html", 
+        cuisine=cuisine, catergories=catergories, recipe=recipe)
+
 
 @app.route("/favourites")
 def favourites():
