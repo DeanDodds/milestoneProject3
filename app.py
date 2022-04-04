@@ -174,6 +174,13 @@ def editrecipe(recipe_id):
         cuisine=cuisine, catergories=catergories, recipe=recipe)
 
 
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+    flash("Task Successfully Deleted")
+    return redirect(url_for("get_recipes"))
+
+
 @app.route("/favourites")
 def favourites():
     """ Display favourites page """
