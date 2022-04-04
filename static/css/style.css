@@ -1,6 +1,4 @@
-.card-image{
-    
-}
+.card-image {}
 
 .dark-red {
     background-color: #A60303;
@@ -10,4 +8,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.checked {
+    color: orange;
 }
