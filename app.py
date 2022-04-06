@@ -88,7 +88,8 @@ def signup():
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "favourites": [],
         }
         mongo.db.users.insert_one(register)
 
@@ -136,7 +137,8 @@ def addrecipe():
             "servings": request.form.get("servings"),
             "instructions": request.form.get("instructions"),
             "img_url": request.form.get("img_url"),
-            "description": request.form.get("description")
+            "description": request.form.get("description"),
+            "rating": []
         }
 
         mongo.db.recipes.insert_one(recipe)
@@ -177,13 +179,37 @@ def editrecipe(recipe_id):
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-    flash("Task Successfully Deleted")
+    flash("Recipe Successfully Deleted")
     return redirect(url_for("get_recipes"))
 
 
-@app.route("/favourites")
+@app.route("/add_favourites/<recipe_id>")
+def add_favourites(recipe_id):
+
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    favourites = mongo.db.users.find_one(
+        {"username": session["user"]})["favourites"]
+    
+    print(favourites)
+    print(user_id)
+    print(username)
+
+    mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$addToSet": {"favourites": recipe_id}})
+    flash("Recipe saved to favourites!")
+
+    # gets recipes from database
+    recipes = mongo.db.recipes.find()
+
+    if session["user"]:
+        return render_template(
+            "profile.html", username=username, recipes=recipes, user_id=user_id, favourites=favourites, recipe_id=recipe_id)
+
+
+@app.route("/favourites/")
 def favourites():
-    """ Display favourites page """
     return render_template("favourites.html")
 
 
