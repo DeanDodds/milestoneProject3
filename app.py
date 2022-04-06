@@ -211,7 +211,7 @@ def add_favourites(recipe_id):
             "profile.html", username=username, recipes=recipes, user_id=user_id, favourites=favourites, recipe_id=recipe_id)
 
 
-@app.route("/favourites/recipe_id)")
+@app.route("/favourites/)")
 def favourites():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -222,6 +222,21 @@ def favourites():
     recipes = mongo.db.recipes.find()
     
     return render_template("favourites.html", user_id=user_id, username=username, favourites=favourites, recipes=recipes)
+
+
+@app.route("/remove_from_favourites/<recipe_id>")
+def remove_from_favourites(recipe_id):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    favourites = mongo.db.users.find_one(
+        {"username": session["user"]})["favourites"]
+    recipes = mongo.db.recipes.find()
+    flash("recipe removed from favourites")
+    mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$pull": {"favourites": ObjectId(recipe_id)}})
+    return render_template("favourites.html", user_id=user_id, username=username, favourites=favourites, recipes=recipes)
+
 
 
 if __name__ == "__main__":
