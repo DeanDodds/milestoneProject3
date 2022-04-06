@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section>
+    <div class="row">
+        <div class="card-panel teal">
+            <div class="col s12 l12">
+                <div>
+                    <div class="row">
+                        <img class="col s8 m6 l4 offset-l1" src="{{ recipe.img_url }}" alt="">
+                        <div class="col l4">
+                            <h2>{{ recipe.recipe_name }}</h2>
+                            <p>Created by: {{ recipe.author }}</p>
+                            <span>
+                                <p>Rating: {{ recipe.rating }}</p>
+                                {% if recipe.rating | int >= 1 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                                {% if recipe.rating | int >= 2 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                                {% if recipe.rating | int >= 3 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                                {% if recipe.rating | int >= 4 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                                {% if recipe.rating | int >= 5 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                            </span>
+                            <div>
+                                <p>{{ recipe.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6 12 center offset-m3">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>Lorem, ipsum dolor.</li>
+                    <li>Lorem, ipsum dolor.</li>
+                    <li>Lorem, ipsum dolor.</li>
+                    <li>Lorem, ipsum dolor.</li>
+                    <li>Lorem, ipsum dolor.</li>
+                </ul>
+            </div>
+            <div class="col l6 m12 center">
+                <h2>Method</h2>
+                {{ recipe.instructions }}
+            </div>
+            <div class="col l8 center offset-l2">
+                <h2>Rate this recipe</h2>
+
+                <ul class="col l7 rate-area">
+                    <input type="radio" id="5-star" name="rating" value="5" /><label for="5-star" title="Amazing">5
+                        stars</label>
+                    <input type="radio" id="4-star" name="rating" value="4" /><label for="4-star" title="Good">4
+                        stars</label>
+                    <input type="radio" id="3-star" name="rating" value="3" /><label for="3-star" title="Average">3
+                        stars</label>
+                    <input type="radio" id="2-star" name="rating" value="2" /><label for="2-star" title="Not Good">2
+                        stars</label>
+                    <input type="radio" id="1-star" name="rating" value="1" /><label for="1-star" title="Bad">1
+                        star</label>
+                </ul>
+
+
+                <!--                 
+                <ul class="rate-area">
+                    <li><input id="rating-0" name="rating" type="radio" value="1"> <label for="rating-0">1</label></li>
+                    <li><input id="rating-1" name="rating" type="radio" value="2"> <label for="rating-1">2</label></li>
+                    <li><input id="rating-2" name="rating" type="radio" value="3"> <label for="rating-2">3</label></li>
+                    <li><input id="rating-3" name="rating" type="radio" value="4"> <label for="rating-3">4</label></li>
+                    <li><input id="rating-4" name="rating" type="radio" value="5"> <label for="rating-4">5</label></li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
