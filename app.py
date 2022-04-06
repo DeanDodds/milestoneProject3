@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, )
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -190,14 +190,8 @@ def add_favourites(recipe_id):
         {"username": session["user"]})["username"]
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
-    favourites = mongo.db.users.find_one(
-        {"username": session["user"]})["favourites"]
     
-    print(favourites)
-    print(user_id)
-    print(username)
-
-    mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$addToSet": {"favourites": recipe_id}})
+    mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$addToSet": {"favourites": ObjectId(recipe_id)}})
     flash("Recipe saved to favourites!")
 
     # gets recipes from database
@@ -208,9 +202,21 @@ def add_favourites(recipe_id):
             "profile.html", username=username, recipes=recipes, user_id=user_id, favourites=favourites, recipe_id=recipe_id)
 
 
-@app.route("/favourites/")
+@app.route(/favourite(recipe_id))
 def favourites():
-    return render_template("favourites.html")
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    favourites = mongo.db.users.find_one(
+        {"username": session["user"]})["favourites"]
+    recipes = mongo.db.recipes.find()
+    
+    favourite_recipes = []
+    for favourite in favourites:
+        favourite_recipes.append(mongo.db.recipes.find({"_id": ObjectId(favourite)}))
+
+    return render_template("favourites.html", user_id=user_id, username=username, favourites=favourites, recipes=recipes, favourite_recipes=favourite_recipes)
 
 
 if __name__ == "__main__":
