@@ -7,49 +7,62 @@
     <div>
         <div class="row">
             {% for recipe in recipes %}
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img class="card-image" src="{{ recipe.img_url}}">
-
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title">{{ recipe.recipe_name }}</span>
-                        <p>{{ recipe.description }}</p>
-                        <span>
-                            <p>Rating: {{ recipe.rating }}</p>
-                            {% if recipe.rating | int >= 1 %}
-                            <span class="fa fa-star checked"></span>
-                            {% else %}
-                            <span class="fa fa-star"></span>
+                <div class="col s12 m6 l4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="card-image" src="{{ recipe.img_url}}">
+                            {% if session.user %}
+                                {% if recipe._id in favourites %}
+                                <p>in favourites</p>
+                                <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id) }}" class="btn halfway-fab right liked
+                                                    waves-effect waves-light"><i class="fa-solid fa-heart"></i></a>
+                                {% else %}
+                                <p>not in favourites</p>
+                                <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id) }}" class="btn halfway-fab right tooltipped
+                                                    waves-effect waves-light" data-position="bottom" data-tooltip="Save this recipe"><i class="fa-solid fa-heart"></i></a>
+                                {% endif %}
                             {% endif %}
-                            {% if recipe.rating | int >= 2 %}
-                            <span class="fa fa-star checked"></span>
-                            {% else %}
-                            <span class="fa fa-star"></span>
-                            {% endif %}
-                            {% if recipe.rating | int >= 3 %}
-                            <span class="fa fa-star checked"></span>
-                            {% else %}
-                            <span class="fa fa-star"></span>
-                            {% endif %}
-                            {% if recipe.rating | int >= 4 %}
-                            <span class="fa fa-star checked"></span>
-                            {% else %}
-                            <span class="fa fa-star"></span>
-                            {% endif %}
-                            {% if recipe.rating | int >= 5 %}
-                            <span class="fa fa-star checked"></span>
-                            {% else %}
-                            <span class="fa fa-star"></span>
-                            {% endif %}
-                        </span>
-                        <div>
-                            <a class="waves-effect waves-light btn">Button</a>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">{{ recipe.recipe_name }}</span>
+                            <p>{{ recipe.description }}</p>
+                            <span>
+                                <p>Rating: {{ recipe.rating }}</p>
+                                {% if recipe.rating | int >= 1 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                                {% if recipe.rating | int >= 2 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                                {% if recipe.rating | int >= 3 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                                {% if recipe.rating | int >= 4 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                                {% if recipe.rating | int >= 5 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star"></span>
+                                {% endif %}
+                            </span>
+                            <div>
+                                <p>created by: {{ recipe.author }}</p>
+                            </div>
+                            <div>
+                                <a class="waves-effect waves-light btn">Button</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>

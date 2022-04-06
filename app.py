@@ -30,7 +30,16 @@ def index():
 def get_recipes():
     """ Gets the recipes data from database and displays it on the pag e"""
     recipes = mongo.db.recipes.find()
-    return render_template("recipes.html", recipes=recipes)
+
+    if "user" in session:
+        favourites = mongo.db.users.find_one(
+        {"username": session["user"]})["favourites"]
+        user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+        return render_template("recipes.html", user_id=user_id, recipes=recipes, favourites=favourites)
+
+    
+    return render_template("recipes.html", recipes=recipes,)
 
 
 @app.route("/get_about")
@@ -202,7 +211,7 @@ def add_favourites(recipe_id):
             "profile.html", username=username, recipes=recipes, user_id=user_id, favourites=favourites, recipe_id=recipe_id)
 
 
-@app.route(/favourite(recipe_id))
+@app.route("/favourites/recipe_id)")
 def favourites():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -212,11 +221,7 @@ def favourites():
         {"username": session["user"]})["favourites"]
     recipes = mongo.db.recipes.find()
     
-    favourite_recipes = []
-    for favourite in favourites:
-        favourite_recipes.append(mongo.db.recipes.find({"_id": ObjectId(favourite)}))
-
-    return render_template("favourites.html", user_id=user_id, username=username, favourites=favourites, recipes=recipes, favourite_recipes=favourite_recipes)
+    return render_template("favourites.html", user_id=user_id, username=username, favourites=favourites, recipes=recipes)
 
 
 if __name__ == "__main__":
