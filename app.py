@@ -28,7 +28,7 @@ def index():
 # displays recipe page
 @app.route("/get_recipes")
 def get_recipes():
-    """ Gets the recipes data from database and displays it on the pag e"""
+    """ Gets the recipes data from database and displays it on the page"""
     recipes = mongo.db.recipes.find()
 
     if "user" in session:
@@ -236,6 +236,12 @@ def remove_from_favourites(recipe_id):
     flash("recipe removed from favourites")
     mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$pull": {"favourites": ObjectId(recipe_id)}})
     return render_template("favourites.html", user_id=user_id, username=username, favourites=favourites, recipes=recipes)
+
+
+@app.route("/recipe_page/<recipe_id>")
+def recipe_page(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipepage.html", recipe)
 
 
 
