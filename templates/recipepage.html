@@ -51,13 +51,7 @@
         <div class="row">
             <div class="col l6 12 center offset-m3">
                 <h2>Ingredients</h2>
-                <ul>
-                    <li>Lorem, ipsum dolor.</li>
-                    <li>Lorem, ipsum dolor.</li>
-                    <li>Lorem, ipsum dolor.</li>
-                    <li>Lorem, ipsum dolor.</li>
-                    <li>Lorem, ipsum dolor.</li>
-                </ul>
+
             </div>
             <div class="col l6 m12 center">
                 <h2>Method</h2>
@@ -65,29 +59,30 @@
             </div>
             <div class="col l8 center offset-l2">
                 <h2>Rate this recipe</h2>
-
-                <ul class="col l7 rate-area">
-                    <input type="radio" id="5-star" name="rating" value="5" /><label for="5-star" title="Amazing">5
-                        stars</label>
-                    <input type="radio" id="4-star" name="rating" value="4" /><label for="4-star" title="Good">4
-                        stars</label>
-                    <input type="radio" id="3-star" name="rating" value="3" /><label for="3-star" title="Average">3
-                        stars</label>
-                    <input type="radio" id="2-star" name="rating" value="2" /><label for="2-star" title="Not Good">2
-                        stars</label>
-                    <input type="radio" id="1-star" name="rating" value="1" /><label for="1-star" title="Bad">1
-                        star</label>
-                </ul>
-
-
-                <!--                 
-                <ul class="rate-area">
-                    <li><input id="rating-0" name="rating" type="radio" value="1"> <label for="rating-0">1</label></li>
-                    <li><input id="rating-1" name="rating" type="radio" value="2"> <label for="rating-1">2</label></li>
-                    <li><input id="rating-2" name="rating" type="radio" value="3"> <label for="rating-2">3</label></li>
-                    <li><input id="rating-3" name="rating" type="radio" value="4"> <label for="rating-3">4</label></li>
-                    <li><input id="rating-4" name="rating" type="radio" value="5"> <label for="rating-4">5</label></li>
-                </ul> -->
+                <div class="container">
+                    <div class="post">
+                        <div class="text">Thanks for this recipe</div>
+                        <div class="edit">EDIT</div>
+                    </div>
+                    <form method="POST" action="{{ url_for( 'add_recipe_rating', recipe_id=recipe._id) }}" id="form">
+                        <div class="star-widget">
+                            <input type="radio" name="star_ratings" id="rate-5" value="5">
+                            <label for="rate-5" class="fas fa-star"></label>
+                            <input type="radio" name="star_ratings" id="rate-4" value="4">
+                            <label for="rate-4" class="fas fa-star"></label>
+                            <input type="radio" name="star_ratings" id="rate-3" value="3">
+                            <label for="rate-3" class="fas fa-star"></label>
+                            <input type="radio" name="star_ratings" id="rate-2" value="2">
+                            <label for="rate-2" class="fas fa-star"></label>
+                            <input type="radio" name="star_ratings" id="rate-1" value="1">
+                            <label for="rate-1" class="fas fa-star"></label>
+                            <header></header>
+                            <div class="btn">
+                                <button type="submit">Rate</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

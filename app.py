@@ -28,17 +28,20 @@ def index():
 # displays recipe page
 @app.route("/get_recipes")
 def get_recipes():
-    """ Gets the recipes data from database and displays it on the page"""
+    """ Displays Main Recipe page """
+    # Gets recipes from the database
     recipes = mongo.db.recipes.find()
-
+    # Checks if user is logged
     if "user" in session:
+        # Gets the users favourites from the database 
         favourites = mongo.db.users.find_one(
-        {"username": session["user"]})["favourites"]
+            {"username": session["user"]})["favourites"]
+        # Gets the users the users id from the databas
         user_id = mongo.db.users.find_one(
-        {"username": session["user"]})["_id"]
-        return render_template("recipes.html", user_id=user_id, recipes=recipes, favourites=favourites)
-
-    
+            {"username": session["user"]})["_id"]
+        return render_template(
+            "recipes.html", user_id=user_id,
+            recipes=recipes, favourites=favourites)
     return render_template("recipes.html", recipes=recipes,)
 
 
@@ -87,23 +90,24 @@ def login():
 def signup():
     """ Displays sign up page and checks user inputs"""
     if request.method == "POST":
-        # checks if user already exists
+        # Checks if user already exists
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-
+        # Checks if the user name is already in the databse 
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("signup.html"))
-
+        # Store user information in to a variable
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "favourites": [],
         }
+        # inserts user info into the database
         mongo.db.users.insert_one(register)
-
-    # put the new user into 'session' cookie
+        # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
+        # confirmation message for the user 
         flash("Sign up successfull!")
         return redirect(url_for("profile", username=session["user"]))
     return render_template("signup.html")
@@ -147,7 +151,8 @@ def addrecipe():
             "instructions": request.form.get("instructions"),
             "img_url": request.form.get("img_url"),
             "description": request.form.get("description"),
-            "rating": []
+            "rating": [],
+            "star_ratings": []
         }
 
         mongo.db.recipes.insert_one(recipe)
@@ -185,9 +190,41 @@ def editrecipe(recipe_id):
         cuisine=cuisine, catergories=catergories, recipe=recipe)
 
 
+@app.route("/add_recipe_rating/<recipe_id>", methods=["GET", "POST"])
+def add_recipe_rating(recipe_id):
+    """ Add recipe star rating to the star ratings field 
+    and then works out he average. Then updates the rating feild"""
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    
+    if request.method == "POST":
+        # Gets the new rating from form
+        new_rating = request.form.get('star_ratings')  
+        # Inserts the new star rating into 
+        # the star ratings field as an interger  
+        mongo.db.recipes.update_one(
+            {"_id": ObjectId(recipe_id)}, 
+            {"$addToSet": {"star_ratings": int(new_rating)}})
+        # Gets the new array of ratings and find the average
+        ratings = mongo.db.recipes.find_one(
+            {"_id": ObjectId(recipe_id)})["star_ratings"]
+        # Find the average
+        sum_of_ratings = 0
+        for rating in ratings:
+            sum_of_ratings = sum_of_ratings + rating
+        average_rating = sum_of_ratings / len(ratings)
+        # Addnew rating to the database 
+        
+        # Display confirmation message to the user     
+        flash("thanks or the rating")
+
+    return render_template(
+        "recipepage.html", recipe=recipe, recipe_id=recipe_id)
+
+
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+    """Delete recipe from databse"""
+    mongo.db.recipes.delete_one()
     flash("Recipe Successfully Deleted")
     return redirect(url_for("get_recipes"))
 
@@ -199,8 +236,10 @@ def add_favourites(recipe_id):
         {"username": session["user"]})["username"]
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
-    
-    mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$addToSet": {"favourites": ObjectId(recipe_id)}})
+
+    mongo.db.users.update_one(
+        {"_id": ObjectId(user_id)}, 
+        {"$addToSet": {"favourites": ObjectId(recipe_id)}})
     flash("Recipe saved to favourites!")
 
     # gets recipes from database
@@ -208,7 +247,8 @@ def add_favourites(recipe_id):
 
     if session["user"]:
         return render_template(
-            "profile.html", username=username, recipes=recipes, user_id=user_id, favourites=favourites, recipe_id=recipe_id)
+            "profile.html", username=username, recipes=recipes,
+            user_id=user_id, favourites=favourites, recipe_id=recipe_id)
 
 
 @app.route("/favourites/)")
@@ -221,7 +261,9 @@ def favourites():
         {"username": session["user"]})["favourites"]
     recipes = mongo.db.recipes.find()
     
-    return render_template("favourites.html", user_id=user_id, username=username, favourites=favourites, recipes=recipes)
+    return render_template(
+        "favourites.html", user_id=user_id,
+        username=username,  favourites=favourites, recipes=recipes)
 
 
 @app.route("/remove_from_favourites/<recipe_id>")
@@ -234,15 +276,21 @@ def remove_from_favourites(recipe_id):
         {"username": session["user"]})["favourites"]
     recipes = mongo.db.recipes.find()
     flash("recipe removed from favourites")
-    mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$pull": {"favourites": ObjectId(recipe_id)}})
-    return render_template("favourites.html", user_id=user_id, username=username, favourites=favourites, recipes=recipes)
+
+    mongo.db.users.update_one(
+        {"_id": ObjectId(user_id)}, 
+        {"$pull": {"favourites": ObjectId(recipe_id)}})
+    return render_template(
+        "favourites.html", user_id=user_id,
+        username=username, favourites=favourites, recipes=recipes)
 
 
 @app.route("/recipe_page/<recipe_id>")
 def recipe_page(recipe_id):
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("recipepage.html", recipe)
-
+    recipe = mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})
+    return render_template(
+        "recipepage.html", recipe=recipe, recipe_id=recipe_id)
 
 
 if __name__ == "__main__":
