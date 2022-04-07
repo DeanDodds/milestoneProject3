@@ -72,12 +72,10 @@ def login():
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
-
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-
         else:
             # if the username doesn't exist
             flash("Incorrect Username and/or Password")
@@ -119,7 +117,6 @@ def profile(username):
     # get the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-
     # gets recipes from database
     recipes = mongo.db.recipes.find()
 
@@ -194,7 +191,6 @@ def editrecipe(recipe_id):
 def add_recipe_rating(recipe_id):
     """ Add recipe star rating to the star ratings field 
     and then works out he average. Then updates the rating feild"""
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     
     if request.method == "POST":
         # Gets the new rating from form
@@ -212,13 +208,13 @@ def add_recipe_rating(recipe_id):
         for rating in ratings:
             sum_of_ratings = sum_of_ratings + rating
         average_rating = sum_of_ratings / len(ratings)
+
         # Addnew rating to the database 
-        
+        mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": {"rating": float(average_rating)}})
         # Display confirmation message to the user     
         flash("thanks or the rating")
-
-    return render_template(
-        "recipepage.html", recipe=recipe, recipe_id=recipe_id)
+        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipepage.html", recipe=recipe, recipe_id=recipe_id)
 
 
 @app.route("/delete_recipe/<recipe_id>")
