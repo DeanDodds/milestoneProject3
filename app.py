@@ -147,7 +147,7 @@ def addrecipe():
             "cusine_name": request.form.get("cusine_name"),
             "recipe_name": request.form.get("recipe_name"),
             "servings": request.form.get("servings"),
-            "instructions": request.form.get("instructions"),
+            "instructions": request.form.get("instructions").splitlines(),
             "img_url": request.form.get("img_url"),
             "description": request.form.get("description"),
         }
