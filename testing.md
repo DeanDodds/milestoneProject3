@@ -22,7 +22,7 @@
 |17|login Page| Login with a valid username but incorrect password|"Incorrect Username and/or Password"|!!!|Pass|Worked as expected |
 |18|Recipe Page| Press view recipe Button| Opens Recipe page for the recipe clicked on|!!!|Pass|Worked as expected|
 |19|Recipe Page|Press the favourites button on a recipe that is not currently a favourite|favourites button should be check with a background color<br><br>recipe should be added to the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
-|19|Recipe Page|Press the favourites button on a recipe that is currently a favourite|favourites button should be uncheck and  background color removed<br><br>recipe should beremoved from the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
+|19|Recipe Page|Press the favourites button on a recipe that is currently a favourite|favourites button should be uncheck and  background color removed<br><br>recipe should be removed from the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
 
 
 # known bugs
