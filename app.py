@@ -119,10 +119,12 @@ def profile(username):
         {"username": session["user"]})["username"]
     # gets recipes from database
     recipes = mongo.db.recipes.find()
+    favourites = mongo.db.users.find_one(
+        {"username": session["user"]})["favourites"]
     # checks if user is in session
     if session["user"]:
         return render_template(
-            "profile.html", username=username, recipes=recipes)
+            "profile.html", username=username, recipes=recipes, favourites=favourites)
     return redirect(url_for("login"))
 
 
@@ -244,9 +246,26 @@ def delete_recipe(recipe_id):
     flash("Recipe Successfully Deleted")
     return redirect(url_for("get_recipes"))
 
+@app.route("/favourites/)")
+def favourites():
+    """"Displays the users saved recipes on the favourites page"""
+    # Gets the user form database
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    # Gets the user id form database
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    # Gets Favourites ffrom the database
+    favourites = mongo.db.users.find_one(
+        {"username": session["user"]})["favourites"]
+    # Gets the recipes from database
+    recipes = mongo.db.recipes.find()
+    return render_template(
+        "favourites.html", user_id=user_id,
+        username=username,  favourites=favourites, recipes=recipes)
 
-@app.route("/add_favourites/<recipe_id>")
-def add_favourites(recipe_id):
+@app.route("/add_favourites/<recipe_id>/<page>")
+def add_favourites(recipe_id, page):
     """ add favourites to favourites page"""
     # Gets the user form database
     username = mongo.db.users.find_one(
@@ -266,33 +285,23 @@ def add_favourites(recipe_id):
     favourites = mongo.db.users.find_one(
         {"username": session["user"]})["favourites"]
     # if user signed in
-    if session["user"]:
+    if page == "recipe_page":
         return render_template(
-            "recipes.html", username=username, recipes=recipes,
-            user_id=user_id, favourites=favourites, recipe_id=recipe_id)
-
-
-@app.route("/favourites/)")
-def favourites():
-    """"Displays the users saved recipes on the favourites page"""
-    # Gets the user form database
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    # Gets the user id form database
-    user_id = mongo.db.users.find_one(
-        {"username": session["user"]})["_id"]
-    # Gets Favourites ffrom the database
-    favourites = mongo.db.users.find_one(
-        {"username": session["user"]})["favourites"]
-    # Gets the recipes from database
-    recipes = mongo.db.recipes.find()
-    return render_template(
+        "recipes.html", user_id=user_id,
+        username=username, favourites=favourites, recipes=recipes)
+    elif page == "favourites_page":
+        return render_template(
         "favourites.html", user_id=user_id,
-        username=username,  favourites=favourites, recipes=recipes)
+        username=username, favourites=favourites, recipes=recipes)
+    else:
+        return render_template(
+            "profile.html", user_id=user_id,
+        username=username, favourites=favourites, recipes=recipes)
 
 
-@app.route("/remove_from_favourites/<recipe_id>")
-def remove_from_favourites(recipe_id):
+
+@app.route("/remove_from_favourites/<recipe_id>/<page>")
+def remove_from_favourites(recipe_id, page):
     """removes saved recipes from favourites page"""
     # Gets the user form database
     username = mongo.db.users.find_one(
@@ -310,8 +319,17 @@ def remove_from_favourites(recipe_id):
     # Gets recipes from the database
     recipes = mongo.db.recipes.find()
     flash("recipe removed from favourites")
-    return render_template(
+    if page == "recipe_page":
+        return render_template(
+        "recipes.html", user_id=user_id,
+        username=username, favourites=favourites, recipes=recipes)
+    elif page == "favourites_page":
+        return render_template(
         "favourites.html", user_id=user_id,
+        username=username, favourites=favourites, recipes=recipes)
+    else:
+        return render_template(
+            "profile.html", user_id=user_id,
         username=username, favourites=favourites, recipes=recipes)
 
 

@@ -26,7 +26,8 @@
             <div class="card">
                 <div class="card-image">
                     <img class="card-image" src="{{ recipe.img_url}}">
-                    <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id) }}" class="btn halfway-fab right liked
+                    <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='favourites_page') }}"
+                        class="btn halfway-fab right liked
                         waves-effect waves-light"><i class="fa-solid fa-heart"></i></a>
                     <i class="fa-solid fa-trash"></i></a>
                 </div>

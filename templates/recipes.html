@@ -13,10 +13,11 @@
                         <img class="card-image" src="{{ recipe.img_url}}">
                         {% if session.user %}
                         {% if recipe._id in favourites %}
-                        <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id) }}" class="btn halfway-fab right liked
+                        <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='recipe_page') }}"
+                            class="btn halfway-fab right liked
                                                     waves-effect waves-light"><i class="fa-solid fa-heart"></i></a>
                         {% else %}
-                        <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id) }}" class="btn halfway-fab right tooltipped
+                        <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id, page='recipe_page') }}" class="btn halfway-fab right tooltipped
                                                     waves-effect waves-light" data-position="bottom"
                             data-tooltip="Save this recipe"><i class="fa-solid fa-heart"></i></a>
                         {% endif %}
