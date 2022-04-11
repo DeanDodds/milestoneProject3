@@ -2,6 +2,7 @@ import os
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for, )
+import math
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -218,11 +219,12 @@ def add_recipe_rating(recipe_id):
         # Gets the new array of ratings and find the average
         ratings = mongo.db.recipes.find_one(
             {"_id": ObjectId(recipe_id)})["star_ratings"]
-        # Find the average
+        # get the average star rating of the ratings array
         sum_of_ratings = 0
         for rating in ratings:
             sum_of_ratings = sum_of_ratings + rating
         average_rating = sum_of_ratings / len(ratings)
+        average_rating = "{:.2f}".format(aver)
         # Addnew rating to the database
         mongo.db.recipes.update_one(
             {"_id": ObjectId(recipe_id)},
@@ -308,7 +310,6 @@ def remove_from_favourites(recipe_id):
     # Gets recipes from the database
     recipes = mongo.db.recipes.find()
     flash("recipe removed from favourites")
-
     return render_template(
         "favourites.html", user_id=user_id,
         username=username, favourites=favourites, recipes=recipes)
