@@ -61,7 +61,8 @@
                         <span>
                             <p>Rating: {{ recipe.rating }}</p>
                         </span>
-                        <a class="waves-effect waves-light btn">Button</a>
+                        <a a href="{{ url_for( 'recipe_page', recipe_id=recipe._id) }}"
+                            class="waves-effect waves-light btn">View Recipe</a>
                     </div>
                 </div>
             </div>
