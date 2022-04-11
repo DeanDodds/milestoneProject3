@@ -52,11 +52,23 @@
         <div class="row">
             <div class="col l6 12 center offset-m3">
                 <h2>Ingredients</h2>
+                <ol>
+                    {% for item in recipe.ingredients %}
+                    <li>{{ item }}
+                        <hr>
+                        {% endfor %}
+                </ol>
+
 
             </div>
             <div class="col l6 m12 center">
                 <h2>Method</h2>
-                {{ recipe.instructions }}
+                <ol>
+                    {% for item in recipe.instructions  %}
+                    <li>{{ item }}</li>
+                    <hr>
+                    {% endfor %}
+                </ol>
             </div>
             <div class="col l8 center offset-l2">
                 <h2>Rate this recipe</h2>

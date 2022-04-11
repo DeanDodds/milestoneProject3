@@ -73,59 +73,12 @@
                                 <label for="description">Recipe Description</label>
                             </div>
                         </div>
-                        <!-- Recipe List -->
-                        <div class="col s10 offset-m1">
-                            <ul class="align-center" id="ingredients-list">
-                                <h6>ingredients list</h6>
-                            </ul>
-                        </div>
-                        <input type="text" id="get-ingredients">
-
-                        <!-- Add ingredients Collapsible -->
-                        <div class="col s10 offset-m1">
-                            <ul class="collapsible">
-                                <li>
-                                    <div class="collapsible-header"><i class="fa-solid fa-circle-plus"></i>
-                                        Add ingredients</div>
-                                    <div class="collapsible-body">
-
-                                        <div class="row">
-                                            <div class="col  s4 offset-m1">
-                                                <!-- ingredient input -->
-                                                <input id="ingredients" name="ingredients" type="text" minlength="1"
-                                                    maxlength="50" class="validate">
-                                                <label for="ingredients">add ingredient</label>
-                                            </div>
-                                            <div class="col  s3">
-                                                <!-- amount input input -->
-                                                <input id="amount" name="amount" type="number" class="validate">
-                                                <label for="amount">add amount</label>
-                                            </div>
-                                            <div class="input-field col s3">
-                                                <select id="units">
-                                                    <option value="" disabled selected>Units
-                                                    </option>
-                                                    <option value="g">Grams</option>
-                                                    <option value="kg">Kilograms</option>
-                                                    <option value="ml">Millilitres</option>
-                                                    <option value="l">Litres</option>
-                                                </select>
-                                                <label for="units"> Units</label>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col  s10 offset-m1">
-                                                    <button class=" btn waves-effect waves-light col s12" type="button"
-                                                        id="add-item-button">add to list
-                                                        <i class="fa-solid fa-circle-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </li>
-                            </ul>
+                        <!-- Ingredients -->
+                        <div class="row">
+                            <div class="input-field col s10 offset-m1">
+                                <textarea id="ingredients" name="ingredients" class="materialize-textarea"></textarea>
+                                <label for="ingredients">ingredients</label>
+                            </div>
                         </div>
                         <!-- Add instructions -->
                         <div class="row">
@@ -143,8 +96,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <!-- submit button -->
                         <div class=" row center-align">
                             <button class="btn waves-effect waves-light col s10 offset-m1" type="submit">Submit
