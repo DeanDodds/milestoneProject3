@@ -80,7 +80,6 @@ def login():
             # if the username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
-
     return render_template("login.html")
 
 
@@ -93,7 +92,7 @@ def signup():
             {"username": request.form.get("username").lower()})
         # Checks if the user name is already in the databse
         if existing_user:
-            flash("Username already exists")
+            flash("Username already exists. Please choose another username")
             return redirect(url_for("signup.html"))
         # Store user information in to a variable
         register = {
@@ -139,6 +138,7 @@ def logout():
 def addrecipe():
     """"get recipe catergoies and cusine
     from database and displays addrecipe page"""
+    
     if request.method == "POST":
         # Get the data from the add recipe form
         recipe = {
@@ -150,8 +150,9 @@ def addrecipe():
             "instructions": request.form.get("instructions").splitlines(),
             "img_url": request.form.get("img_url"),
             "description": request.form.get("description"),
+            "rating": (),
+            "star_ratings": []
         }
-
         # Inserts data into the recipe database
         mongo.db.recipes.insert_one(recipe)
         flash("Task Successfully Added")
@@ -168,17 +169,26 @@ def addrecipe():
 def editrecipe(recipe_id):
     """ Displays edit recipe form """
     if request.method == "POST":
-        # Get the data feom the add recipe form
+        # Gets the current star ratings from the database 
+        star_ratings = mongo.db.recipes.find_one(
+            {"_id": ObjectId(recipe_id)})["star_ratings"]
+        # Gets the current star ratings from the database 
+        rating = mongo.db.recipes.find_one(
+            {"_id": ObjectId(recipe_id)})["rating"]
+        # Get the data from the edit recipe form
         submit = {
             "author": session["user"],
             "catergory_name": request.form.get("catergory_name"),
             "cusine_name": request.form.get("cusine_name"),
             "recipe_name": request.form.get("recipe_name"),
             "servings": request.form.get("servings"),
-            "instructions": request.form.get("instructions"),
+            "instructions": request.form.get("instructions").splitlines(),
             "img_url": request.form.get("img_url"),
-            "description": request.form.get("description")
+            "description": request.form.get("description"),
+            "rating": rating,
+            "star_ratings": star_ratings
         }
+
         mongo.db.recipes.replace_one(
                     {"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
@@ -204,7 +214,7 @@ def add_recipe_rating(recipe_id):
         # the star ratings field as an interger
         mongo.db.recipes.update_one(
             {"_id": ObjectId(recipe_id)},
-            {"$addToSet": {"star_ratings": int(new_rating)}})
+            {"$push": {"star_ratings": int(new_rating)}})
         # Gets the new array of ratings and find the average
         ratings = mongo.db.recipes.find_one(
             {"_id": ObjectId(recipe_id)})["star_ratings"]
@@ -213,7 +223,6 @@ def add_recipe_rating(recipe_id):
         for rating in ratings:
             sum_of_ratings = sum_of_ratings + rating
         average_rating = sum_of_ratings / len(ratings)
-
         # Addnew rating to the database
         mongo.db.recipes.update_one(
             {"_id": ObjectId(recipe_id)},
@@ -251,10 +260,13 @@ def add_favourites(recipe_id):
     flash("Recipe saved to favourites!")
     # gets recipes from database
     recipes = mongo.db.recipes.find()
+
+    favourites = mongo.db.users.find_one(
+        {"username": session["user"]})["favourites"]
     # if user signed in
     if session["user"]:
         return render_template(
-            "profile.html", username=username, recipes=recipes,
+            "recipes.html", username=username, recipes=recipes,
             user_id=user_id, favourites=favourites, recipe_id=recipe_id)
 
 
