@@ -61,15 +61,17 @@ def get_contact():
 def login():
     """ Displays login page """
     if request.method == "POST":
-        # check if username exists in db
+        # Check if username exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            # ensure hashed password matches user input
+            # Ensure hashed password matches user input
             if check_password_hash(
              existing_user["password"], request.form.get("password")):
+                # Gets username from form
                 session["user"] = request.form.get("username").lower()
+                # Display confirmation to the user
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
             else:
@@ -136,6 +138,7 @@ def logout():
     """ remove user from session cookie """
     # Removes session user
     session.pop("user")
+    # Comfirmation message to user
     flash("You have been logged out")
     return redirect(url_for("login"))
 
@@ -170,7 +173,7 @@ def addrecipe():
         catergories = mongo.db.catergories.find().sort("catergory_name, 1")
         return render_template(
             "addrecipe.html", cuisine=cuisine, catergories=catergories)
-
+    # Displays a message to user
     flash('Please log in to add a recipe')
     return redirect(url_for("login"))
 
@@ -240,6 +243,7 @@ def add_recipe_rating(recipe_id):
             for rating in ratings:
                 sum_of_ratings = sum_of_ratings + rating
             average_rating = sum_of_ratings / len(ratings)
+            # round off  average user rating to 2 decimal places
             average_rating = "{:.2f}".format(average_rating)
             # Addnew rating to the database
             mongo.db.recipes.update_one(
@@ -259,10 +263,24 @@ def add_recipe_rating(recipe_id):
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     """Delete recipe from database"""
-    # Deletes the document from the database
-    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted")
-    return redirect(url_for("get_recipes"))
+    # Check if user in session 
+    if 'user' in session:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        author = mongo.db.recipes.find_one(
+                {"_id": ObjectId(recipe_id)})["author"]
+        if author == username:
+            # Deletes the document from the database
+            mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+            flash("Recipe Successfully Deleted")
+            return redirect(url_for("get_recipes"))
+        else:
+            flash("You can only delete recipes you have created")
+            return redirect(url_for("get_recipes"))
+    
+    flash('Please log in to rate a recipe')
+    return redirect(url_for("login"))
+
 
 
 @app.route("/favourites/)")
