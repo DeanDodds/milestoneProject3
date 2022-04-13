@@ -30,7 +30,7 @@ def index():
 def get_recipes():
     """ Displays Main Recipe page """
     # Gets recipes from the database
-    recipes = mongo.db.recipes.find()
+    recipes = list(mongo.db.recipes.find())
     # Checks if user is logged
     if "user" in session:
         # Gets the users favourites from the database
@@ -42,7 +42,7 @@ def get_recipes():
         return render_template(
             "recipes.html", user_id=user_id,
             recipes=recipes, favourites=favourites)
-    return render_template("recipes.html", recipes=recipes,)
+    return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/get_about")
@@ -407,6 +407,18 @@ def recipe_page(recipe_id):
         {"_id": ObjectId(recipe_id)})
     return render_template(
         "recipepage.html", recipe=recipe, recipe_id=recipe_id)
+
+
+@app.route("/search/<page>", methods=["GET", "POST"])
+def search(page):
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    if page == "recipe_page":
+        return render_template("recipes.html", recipes=recipes)
+    elif page == "favourites":
+        return render_template("favourites.html", recipes=recipes)
+    else:
+        return render_template("profile.html", recipes=recipes)
 
 
 if __name__ == "__main__":
