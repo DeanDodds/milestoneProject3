@@ -313,7 +313,7 @@ def favourites():
         favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
         # Gets the recipes from database
-        recipes = mongo.db.recipes.find()
+        recipes = list(mongo.db.recipes.find())
         return render_template(
             "favourites.html", user_id=user_id,
             username=username,  favourites=favourites, recipes=recipes)
@@ -413,12 +413,27 @@ def recipe_page(recipe_id):
 def search(page):
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    # Gets the users favourites from the database
+    favourites = mongo.db.users.find_one(
+            {"username": session["user"]})["favourites"]
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+    # Gets the users the users id from the databas
+    user_id = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+    print(page)
     if page == "recipe_page":
-        return render_template("recipes.html", recipes=recipes)
-    elif page == "favourites":
-        return render_template("favourites.html", recipes=recipes)
+        return render_template(
+                "recipes.html", user_id=user_id,
+                username=username, favourites=favourites, recipes=recipes)
+    elif page == "favourites_page":
+            return render_template(
+                "favourites.html", user_id=user_id,
+                username=username, favourites=favourites, recipes=recipes)
     else:
-        return render_template("profile.html", recipes=recipes)
+            return render_template(
+                "profile.html", user_id=user_id,
+                username=username, favourites=favourites, recipes=recipes)
 
 
 if __name__ == "__main__":
