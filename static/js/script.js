@@ -35,6 +35,12 @@ $('.fixed-action-btn').floatingActionButton({
     toolbarEnabled: true
 });
 
+//modals
+
+$(document).ready(function () {
+    $('.modal').modal();
+});
+
 // star rating imput code from - https://www.codingnepalweb.com/star-rating-html-css-javascript/
 const btn = document.querySelector("button");
 const post = document.querySelector(".post");
