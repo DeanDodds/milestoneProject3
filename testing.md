@@ -23,8 +23,21 @@
 |18|Recipe Page| Press view recipe Button| Opens Recipe page for the recipe clicked on|!!!|Pass|Worked as expected|
 |19|Recipe Page|Press the favourites button on a recipe that is not currently a favourite|favourites button should be check with a background color<br><br>recipe should be added to the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
 |19|Recipe Page|Press the favourites button on a recipe that is currently a favourite|favourites button should be uncheck and  background color removed<br><br>recipe should be removed from the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
+|20|Recipe Page|search for a keyword that should return one result|The search returns one recipe card|!!!|Pass|Works as expected|
+|21|Recipe Page|search for a keyword that will return no results|Display "no reslts found"|!!!|Pass|Works as expected|
+|22|Recipe page|search for a keyword that should return multible results|Display multiple recipe cards|!!!|Pass| Works as expectd|
+|23|My recipes Page|search for a keyword that should return one result|The search returns one recipe card|!!!|Pass|Works as expected|
+|24|My recipes Page|search for a keyword that will return no results|Display "no reslts found"|!!!|Pass|Works as expected|
+|25|My recipes page|search for a keyword that should return multible results|Display multiple recipe cards|!!!|Pass| Works as expectd|
+|26|My recipes Page|Press the favourites button on a recipe that is not currently a favourite|favourites button should be check with a background color<br><br>recipe should be added to the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
+|27|My recipes Page|Click the favourites button on a recipe that is currently a favourite|favourites button should be uncheck and  background color|!!!!!!|Passes| works as expected|
+|28|My recipes Page|Click the delete recipe button and click ok button |modal should pop uo and ask for confirmation. Once ok is pressed recipe is deleted from the database and my recipe page reloads without the recipe|!!!|Pass|Works as expected|
+|29|My Recipes Page|Click the edit recipe button|Edit recipe page loads and populated with the recipe data|!!!|!|!|
+|30|
+
 
 
 # known bugs
 
 - cusine in catergories not displaying properly
+- edit form ingrendents and instructions does not split arrays
