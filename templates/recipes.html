@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<!-- search bar --> 
 <div class="row card-panel grey lighten-5">
     <form action="{{ url_for('search', page='recipe_page') }}" method="post" class="col s12">
         <div class="row valign-wrapper center-align">
@@ -19,7 +20,9 @@
         </div>
     </form>
 </div>
+<!-- ./searchbar -->
 
+<!-- recipe cards -->
 <section>
     <div>
         <div class="row">
@@ -90,5 +93,6 @@
         </div>
     </div>
 </section>
+<!-- ./recipe cards -->
 
 {% endblock %}

@@ -1,12 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- banner -->
 <div class="row">
     <div class="col s12 m8 offset-m2">
         <h1>{{ username }}</h1>
     </div>
 </div>
+<!-- ./banner -->
 
+<!-- search bar -->
+<div class="row card-panel grey lighten-5">
+    <form action="{{ url_for('search', page='profile_page') }}" method="post" class="col s12">
+        <div class="row valign-wrapper center-align">
+            <div class="input-field col s12 m6">
+                <i class="fas fa-search prefix"></i>
+                <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                <label for="query">Search Tasks</label>
+            </div>
+            <div class="col s12 m4">
+                <a href="{{ url_for('profile', username=session['user']) }}" class="btn">Reset</a>
+                <button type="submit" class="btn text-shadow">
+                    <i class="fas fa-search left"></i> Search
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- ./search bar -->
+
+<!-- ./banner -->
+
+<!-- profile tabsbar -->
 <nav class="nav-extended center">
     <div class="nav-content col s-12">
         <ul class="tabs tabs-transparent">
@@ -17,7 +42,9 @@
         </ul>
     </div>
 </nav>
+<!-- ./profile tabsbar -->
 
+<!-- recipe cards -->
 <section>
     <div>
         <div class="row">
@@ -99,4 +126,6 @@
         </div>
     </div>
 </section>
+<!-- ./recipe cards -->
+
 {% endblock %}
