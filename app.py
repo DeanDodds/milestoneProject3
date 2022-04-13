@@ -121,7 +121,7 @@ def profile(username):
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
         # gets recipes from database
-        recipes = mongo.db.recipes.find()
+        recipes = list(mongo.db.recipes.find())
         # gets user favourites from the database
         favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
@@ -165,7 +165,7 @@ def addrecipe():
             }
             # Inserts data into the recipe database
             mongo.db.recipes.insert_one(recipe)
-            flash("Task Successfully Added")
+            flash("Recipe Successfully Added")
             return redirect(url_for("profile", username=session["user"]))
         # Gets the cuisine names from database
         cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
@@ -181,8 +181,8 @@ def addrecipe():
 @app.route("/editrecipe/<recipe_id>", methods=["GET", "POST"])
 def editrecipe(recipe_id):
     """ Displays edit recipe form """
-    # Gets recipes from in the database
-    recipes = mongo.db.recipes.find_one()
+     # Gets recipe from in the database to edit 
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     # Gets the catergouries from the database
     catergories = mongo.db.catergories.find().sort("catergory_name, 1")
     # Gets the cuisine names from the database
@@ -190,52 +190,57 @@ def editrecipe(recipe_id):
     # Gets Favourites ffrom the database
     favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
-    # Gets username from database
+    #gets username from database
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-    #Gets the recipe author name 
+    #gets name from database
     author = mongo.db.recipes.find_one(
             {"_id": ObjectId(recipe_id)})["author"]
-    # Checks to see if user is logged in
-    if 'user' in session:
+    if request.method == "POST":
+        print("posting")
+         # Gets the current star ratings from the database
+        star_ratings = mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})["star_ratings"]
+        # Gets the current star ratings from the database
+        rating = mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})["rating"]
+        submit = {
+            "author": session["user"],
+            "catergory_name": request.form.get("catergory_name"),
+            "cusine_name": request.form.get("cusine_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "servings": request.form.get("servings"),
+            "instructions": request.form.get("instructions").splitlines(),
+            "img_url": request.form.get("img_url"),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients").splitlines(),
+            "rating": rating,
+            "star_ratings": star_ratings
+        }
+    
         if author == username:
-            if request.method == "POST":
-                # Gets the current star ratings from the database
-                star_ratings = mongo.db.recipes.find_one(
-                    {"_id": ObjectId(recipe_id)})["star_ratings"]
-                # Gets the current star ratings from the database
-                rating = mongo.db.recipes.find_one(
-                    {"_id": ObjectId(recipe_id)})["rating"]
-                # Get the data from the edit recipe form
-                submit = {
-                    "author": session["user"],
-                    "catergory_name": request.form.get("catergory_name"),
-                    "cusine_name": request.form.get("cusine_name"),
-                    "recipe_name": request.form.get("recipe_name"),
-                    "servings": request.form.get("servings"),
-                    "instructions": request.form.get("instructions").splitlines(),
-                    "img_url": request.form.get("img_url"),
-                    "description": request.form.get("description"),
-                    "ingredients": request.form.get("ingredients").splitlines(),
-                    "rating": rating,
-                    "star_ratings": star_ratings
-                }
-                # Edits recipe in database 
-                mongo.db.recipes.replace_one(
-                            {"_id": ObjectId(recipe_id)}, submit)
-                # Displays Confoirmation message
-                flash("Recipe Successfully Updated")
-                return render_template( "editrecipe.html",
-                            cuisine=cuisine, catergories=catergories, recipe=recipe)
-        else:
-            flash("You can only edit you own recipes you have created")
+            mongo.db.recipes.replace_one(
+                    {"_id": ObjectId(recipe_id)}, submit)
+            # Gets recipes from the database
+            recipes = list(mongo.db.recipes.find())
+            # Displays Confoirmation message
+            flash("recipe sucessfully updated")
             return render_template(
             "profile.html", username=username,
-            recipes=recipes, favourites=favourites)  
+            recipes=recipes, favourites=favourites)
+    if 'user' in session:
+        # Get the data from the edit recipe form
+        return render_template( "editrecipe.html",
+                                cuisine=cuisine, catergories=catergories, recipe=recipe)
     # If users not logged im they get redirected to log in
     flash('Please log in to edit recipe')
     return redirect(url_for("login"))
 
+
+        
+    # If users not logged im they get redirected to log in
+    flash('Please log in to edit recipe')
+    return redirect(url_for("login"))
 
 @app.route("/add_recipe_rating/<recipe_id>", methods=["GET", "POST"])
 def add_recipe_rating(recipe_id):
@@ -284,7 +289,8 @@ def delete_recipe(recipe_id):
             {"username": session["user"]})["username"]
         author = mongo.db.recipes.find_one(
                 {"_id": ObjectId(recipe_id)})["author"]
-        if author == username:
+        print(username, author, session["user"])
+        if username == author:
             # Deletes the document from the database
             mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
             flash("Recipe Successfully Deleted")
@@ -292,7 +298,6 @@ def delete_recipe(recipe_id):
         else:
             flash("You can only delete recipes you have created")
             return redirect(url_for("get_recipes"))
-    
     flash('Please log in to rate a recipe')
     return redirect(url_for("login"))
 
@@ -340,7 +345,7 @@ def add_favourites(recipe_id, page):
         # User comfirmation message
         flash("Recipe saved to favourites!")
         # gets recipes from database
-        recipes = mongo.db.recipes.find()
+        recipes = list(mongo.db.recipes.find())
 
         favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
@@ -381,7 +386,7 @@ def remove_from_favourites(recipe_id, page):
         favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
         # Gets recipes from the database
-        recipes = mongo.db.recipes.find()
+        recipes = list(mongo.db.recipes.find())
         flash("recipe removed from favourites")
         if page == "recipe_page":
             return render_template(
