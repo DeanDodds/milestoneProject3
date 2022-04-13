@@ -181,42 +181,57 @@ def addrecipe():
 @app.route("/editrecipe/<recipe_id>", methods=["GET", "POST"])
 def editrecipe(recipe_id):
     """ Displays edit recipe form """
+    # Gets recipes from in the database
+    recipes = mongo.db.recipes.find_one()
+    # Gets the catergouries from the database
+    catergories = mongo.db.catergories.find().sort("catergory_name, 1")
+    # Gets the cuisine names from the database
+    cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
+    # Gets Favourites ffrom the database
+    favourites = mongo.db.users.find_one(
+            {"username": session["user"]})["favourites"]
+    # Gets username from database
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+    #Gets the recipe author name 
+    author = mongo.db.recipes.find_one(
+            {"_id": ObjectId(recipe_id)})["author"]
     # Checks to see if user is logged in
     if 'user' in session:
-        if request.method == "POST":
-            # Gets the current star ratings from the database
-            star_ratings = mongo.db.recipes.find_one(
-                {"_id": ObjectId(recipe_id)})["star_ratings"]
-            # Gets the current star ratings from the database
-            rating = mongo.db.recipes.find_one(
-                {"_id": ObjectId(recipe_id)})["rating"]
-            # Get the data from the edit recipe form
-            submit = {
-                "author": session["user"],
-                "catergory_name": request.form.get("catergory_name"),
-                "cusine_name": request.form.get("cusine_name"),
-                "recipe_name": request.form.get("recipe_name"),
-                "servings": request.form.get("servings"),
-                "instructions": request.form.get("instructions").splitlines(),
-                "img_url": request.form.get("img_url"),
-                "description": request.form.get("description"),
-                "ingredients": request.form.get("ingredients").splitlines(),
-                "rating": rating,
-                "star_ratings": star_ratings
-            }
-
-            mongo.db.recipes.replace_one(
-                        {"_id": ObjectId(recipe_id)}, submit)
-            flash("Recipe Successfully Updated")
-        # Find the recipe in the database
-        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-        # Gets the catergouries from the database
-        catergories = mongo.db.catergories.find().sort("catergory_name, 1")
-        # Gets the cuisine names from the database
-        cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
-        return render_template(
-            "editrecipe.html",
-            cuisine=cuisine, catergories=catergories, recipe=recipe)
+        if author == username:
+            if request.method == "POST":
+                # Gets the current star ratings from the database
+                star_ratings = mongo.db.recipes.find_one(
+                    {"_id": ObjectId(recipe_id)})["star_ratings"]
+                # Gets the current star ratings from the database
+                rating = mongo.db.recipes.find_one(
+                    {"_id": ObjectId(recipe_id)})["rating"]
+                # Get the data from the edit recipe form
+                submit = {
+                    "author": session["user"],
+                    "catergory_name": request.form.get("catergory_name"),
+                    "cusine_name": request.form.get("cusine_name"),
+                    "recipe_name": request.form.get("recipe_name"),
+                    "servings": request.form.get("servings"),
+                    "instructions": request.form.get("instructions").splitlines(),
+                    "img_url": request.form.get("img_url"),
+                    "description": request.form.get("description"),
+                    "ingredients": request.form.get("ingredients").splitlines(),
+                    "rating": rating,
+                    "star_ratings": star_ratings
+                }
+                # Edits recipe in database 
+                mongo.db.recipes.replace_one(
+                            {"_id": ObjectId(recipe_id)}, submit)
+                # Displays Confoirmation message
+                flash("Recipe Successfully Updated")
+                return render_template( "editrecipe.html",
+                            cuisine=cuisine, catergories=catergories, recipe=recipe)
+        else:
+            flash("You can only edit you own recipes you have created")
+            return render_template(
+            "profile.html", username=username,
+            recipes=recipes, favourites=favourites)  
     # If users not logged im they get redirected to log in
     flash('Please log in to edit recipe')
     return redirect(url_for("login"))
