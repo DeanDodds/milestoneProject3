@@ -1,5 +1,3 @@
-.card-image {}
-
 .dark-red {
     background-color: #A60303;
 }
@@ -16,6 +14,65 @@
 
 .liked {
     color: #A60303;
+}
+
+/* hero images */
+
+.hero-image {
+    background-image: url("/static/images/hero.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+/* Page introduction messages  */
+.introduction-message-container {
+    margin: 50px auto;
+    width: 100%;
+}
+
+.introduction,
+.heading {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* About Page */
+
+.team-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#meet-the-team-container {
+    width: 100%;
+    margin: 50px auto;
+}
+
+.team-image-container {
+    height: 30em;
+    width: 50%;
+    display: flex;
+}
+
+.team-image {
+    width: 100%;
+    height: 80%;
+}
+
+.team-info-container {
+    width: 50%;
+}
+
+.team-info {
+    width: 80%;
+    margin: 10px auto;
+    text-align: center;
 }
 
 /* recipe page rating form */
