@@ -181,7 +181,7 @@ def addrecipe():
 @app.route("/editrecipe/<recipe_id>", methods=["GET", "POST"])
 def editrecipe(recipe_id):
     """ Displays edit recipe form """
-     # Gets recipe from in the database to edit 
+    # Gets recipe from in the database to edit 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     # Gets the catergouries from the database
     catergories = mongo.db.catergories.find().sort("catergory_name, 1")
@@ -190,20 +190,19 @@ def editrecipe(recipe_id):
     # Gets Favourites ffrom the database
     favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
-    #gets username from database
+    # Gets username from database
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-    #gets name from database
+    # Gets name from database
     author = mongo.db.recipes.find_one(
             {"_id": ObjectId(recipe_id)})["author"]
     if request.method == "POST":
-        print("posting")
-         # Gets the current star ratings from the database
+        # Gets the current star ratings from the database
         star_ratings = mongo.db.recipes.find_one(
-        {"_id": ObjectId(recipe_id)})["star_ratings"]
+            {"_id": ObjectId(recipe_id)})["star_ratings"]
         # Gets the current star ratings from the database
         rating = mongo.db.recipes.find_one(
-        {"_id": ObjectId(recipe_id)})["rating"]
+            {"_id": ObjectId(recipe_id)})["rating"]
         submit = {
             "author": session["user"],
             "catergory_name": request.form.get("catergory_name"),
@@ -226,29 +225,31 @@ def editrecipe(recipe_id):
             # Displays Confoirmation message
             flash("recipe sucessfully updated")
             return render_template(
-            "profile.html", username=username,
-            recipes=recipes, favourites=favourites)
+                "profile.html", username=username,
+                recipes=recipes, favourites=favourites)
     if 'user' in session:
         # Get the data from the edit recipe form
-        return render_template( "editrecipe.html",
+        return render_template("editrecipe.html",
                                 cuisine=cuisine, catergories=catergories, recipe=recipe)
     # If users not logged im they get redirected to log in
     flash('Please log in to edit recipe')
     return redirect(url_for("login"))
 
-
-        
     # If users not logged im they get redirected to log in
     flash('Please log in to edit recipe')
     return redirect(url_for("login"))
+
 
 @app.route("/add_recipe_rating/<recipe_id>", methods=["GET", "POST"])
 def add_recipe_rating(recipe_id):
     """ Add recipe star rating to the star ratings field
     and then works out he average. Then updates the rating feild"""
     # checks if the user is logged in
+    print("rating")
     if "user" in session:
+        print("in session")
         if request.method == "POST":
+            print('post')
             # Gets the new rating from form
             new_rating = request.form.get('star_ratings')
             # Inserts the new star rating into the star ratings array
@@ -439,6 +440,28 @@ def search(page):
             return render_template(
                 "profile.html", user_id=user_id,
                 username=username, favourites=favourites, recipes=recipes)
+
+
+@app.route("/subscribe/", methods=["GET", "POST"])
+def subscribe():
+    print("get form")
+    if request.method == "POST":
+        # Check if email is already in the database
+        mailing_list = mongo.db.subscribers.find_one(
+            {"email": request.form.get("subscribers").lower()})
+
+        if mailing_list:
+            flash("You are already on our mailing list!")
+            return redirect(url_for("index"))
+
+        # Add new email to db
+        subscribe = {
+            "email": request.form.get("subscribers").lower()
+        }
+        mongo.db.subscribers.insert_one(subscribe)
+
+        flash("You have successfully subscribed!")
+    return ('', 204)
 
 
 if __name__ == "__main__":
