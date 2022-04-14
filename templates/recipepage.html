@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<!-- recipe card-->
 <section>
     <div class="row">
         <div class="card-panel teal">
@@ -10,8 +10,10 @@
                     <div class="row">
                         <img class="col s8 m6 l4 offset-l1" src="{{ recipe.img_url }}" alt="">
                         <div class="col l4">
+                            <!-- recipe name-->
                             <h2>{{ recipe.recipe_name }}</h2>
                             <p>Created by: {{ recipe.author }}</p>
+                            <!-- star rating -->
                             <span>
                                 <p>Rating: {{ recipe.rating }}</p>
                                 {% if recipe.rating | int >= 1 %}
@@ -49,6 +51,9 @@
                 </div>
             </div>
         </div>
+        <!-- ./card -->
+
+        <!-- ingredients list  -->
         <div class="row">
             <div class="col l6 12 center offset-m3">
                 <h2>Ingredients</h2>
@@ -58,9 +63,10 @@
                         <hr>
                         {% endfor %}
                 </ol>
-
-
             </div>
+            <!-- ./ingredients list  -->
+
+            <!--  method section -->
             <div class="col l6 m12 center">
                 <h2>Method</h2>
                 <ol>
@@ -70,34 +76,40 @@
                     {% endfor %}
                 </ol>
             </div>
-            <div class="col l8 center offset-l2">
-                <h2>Rate this recipe</h2>
-                <div class="container">
-                    <div class="post">
-                        <div class="text">Thanks for this recipe</div>
-                        <div class="edit">EDIT</div>
-                    </div>
-                    <form method="POST" action="{{ url_for( 'add_recipe_rating', recipe_id=recipe._id) }}" id="form">
-                        <div class="star-widget">
-                            <input type="radio" name="star_ratings" id="rate-5" value="5">
-                            <label for="rate-5" class="fas fa-star"></label>
-                            <input type="radio" name="star_ratings" id="rate-4" value="4">
-                            <label for="rate-4" class="fas fa-star"></label>
-                            <input type="radio" name="star_ratings" id="rate-3" value="3">
-                            <label for="rate-3" class="fas fa-star"></label>
-                            <input type="radio" name="star_ratings" id="rate-2" value="2">
-                            <label for="rate-2" class="fas fa-star"></label>
-                            <input type="radio" name="star_ratings" id="rate-1" value="1">
-                            <label for="rate-1" class="fas fa-star"></label>
-                            <header></header>
-                            <div class="btn">
-                                <button type="submit">Rate</button>
-                            </div>
+            <!--  ./method section-->
+
+            <!-- rating form -->
+            <div class=" row">
+                <div class="col l8 center offset-l2">
+                    <h2>Rate this recipe</h2>
+                    <div class="container">
+                        <div class="post">
+                            <div class="text">Thanks for this recipe</div>
+                            <div class="edit">EDIT</div>
                         </div>
-                    </form>
+                        <form method="POST" action="{{ url_for( 'add_recipe_rating', recipe_id=recipe._id) }}"
+                            id="form">
+                            <div class="star-widget">
+                                <input type="radio" name="star_ratings" id="rate-5" value="5">
+                                <label for="rate-5" class="fas fa-star"></label>
+                                <input type="radio" name="star_ratings" id="rate-4" value="4">
+                                <label for="rate-4" class="fas fa-star"></label>
+                                <input type="radio" name="star_ratings" id="rate-3" value="3">
+                                <label for="rate-3" class="fas fa-star"></label>
+                                <input type="radio" name="star_ratings" id="rate-2" value="2">
+                                <label for="rate-2" class="fas fa-star"></label>
+                                <input type="radio" name="star_ratings" id="rate-1" value="1">
+                                <label for="rate-1" class="fas fa-star"></label>
+                                <header></header>
+                                <div class="btn">
+                                    <button type="submit">Rate</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <!-- ./rating form -->
         </div>
-    </div>
 </section>
 {% endblock %}
