@@ -18,7 +18,6 @@
     <header>
         <nav>
             <!-- Top navbar  -->
-
             <nav id="navbar">
                 <div class="nav-wrapper nav-extended dark-red">
                     <a href="{{ url_for('index') }}" class="brand-logo logo left">Recipe App</a>
@@ -32,9 +31,10 @@
                         <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
                         {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
-                        <li><a href="{{ url_for('logout') }}">LOG OUT</a></li>
+                        <li><a href="#logout" class="modal-trigger">LOG OUT</a></li>
                         {% else %}
-                        <li><a href="{{ url_for('login') }}">LOGIN</a></li>
+                        <li><a href="{{ url_for('login') }}">LOGIN</a>
+                        </li>
                         <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
                         {% endif %}
                     </ul>
@@ -51,7 +51,7 @@
                     <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
                     {% if session.user %}
                     <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
-                    <li><a href="{{ url_for('logout') }}">LOG OUT</a></li>
+                    <li><a href="#logout" class="modal-trigger">LOG OUT</a></li>
                     {% else %}
                     <li><a href="{{ url_for('login') }}">LOGIN</a></li>
                     <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
@@ -59,7 +59,6 @@
                 </ul>
             </nav>
     </header>
-
 
     <section>
         <!-- flash messages -->
@@ -135,6 +134,17 @@
             </div>
     </footer>
     <!-- ./Footer -->
+
+    <!-- modals -->
+    <div id="logout" class="modal">
+        <div class="modal-content">
+            <h4>Are sure you want to logut</h4>
+        </div>
+        <div class="modal-footer">
+            <a href="{{ url_for('logout') }}" class="modal-close waves-effect waves-green btn-flat">Log Out</a>
+            <a href="!#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
