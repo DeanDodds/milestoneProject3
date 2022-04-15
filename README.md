@@ -159,6 +159,7 @@ Forking a Github repositary allows you to make a copy that you can work on witho
 # 6. Credits <a id="credits"></a>
 
 ## Images <a id="images"></a>
+- Photo by Adonyi Gábor: https://www.pexels.com/photo/assorted-vegetables-on-brown-wooden-table-1414651/
 
 ## Code <a id="code"></a>
 
