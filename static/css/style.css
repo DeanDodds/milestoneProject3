@@ -16,8 +16,42 @@
     color: #A60303;
 }
 
-/* hero images */
+/* recipe cards */
+.card-header {
+    height: 400px;
+    position: relative;
+}
 
+.card-image {
+    height: 100%;
+    width: 100%;
+}
+
+.card-content {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.card-bottom {
+    width: 100%;
+    align-self: flex-end;
+}
+
+.recipe-edit-buttons {
+    position: absolute;
+    right: 0%;
+    bottom: -10px;
+}
+
+@media only screen and (max-width: 650px) {
+    .card-content {
+        height: auto;
+    }
+}
+
+/* hero images */
 .hero-image {
     display: flex;
     align-items: flex-end;
@@ -44,7 +78,6 @@
 }
 
 /* search bars */
-
 @media only screen and (max-width: 600px) {
     .search-bar-form {
         display: flex;

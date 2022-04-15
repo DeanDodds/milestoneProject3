@@ -64,23 +64,26 @@
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <img class="card-image" src="{{ recipe.img_url }}">
-                        {% if recipe._id in favourites %}
-                        <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='profile_page') }}"
-                            class="btn halfway-fab right liked waves-effect waves-light"><i
-                                class="fa-solid fa-heart"></i></a>
-                        {% else %}
-                        <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id, page='profile_page') }}"
-                            class="btn halfway-fab right tooltipped waves-effect waves-light red" data-position="bottom"
-                            data-tooltip="Save this recipe"><i class="fa-solid fa-heart"></i></a>
-                        {% endif %}
-                        <a href="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}"
-                            class="btn halfway-fab right waves-effect waves-light red"><i
-                                class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="modal1" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                            data-target="modal1">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
+                        <img class="card-header" src="{{ recipe.img_url }}">
+                        <div class="recipe-edit-buttons">
+                            {% if recipe._id in favourites %}
+                            <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='profile_page') }}"
+                                class="btn halfway-fab right liked waves-effect waves-light"><i
+                                    class="fa-solid fa-heart"></i></a>
+                            {% else %}
+                            <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id, page='profile_page') }}"
+                                class="btn halfway-fab right tooltipped waves-effect waves-light red"
+                                data-position="bottom" data-tooltip="Save this recipe"><i
+                                    class="fa-solid fa-heart"></i></a>
+                            {% endif %}
+                            <a href="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}"
+                                class="btn halfway-fab right waves-effect waves-light red"><i
+                                    class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="modal1" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                                data-target="modal1">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </div>
                         <!-- Modals -->
                         <div id="modal1" class="modal">
                             <div class="modal-content">
