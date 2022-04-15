@@ -1,34 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- ./banner -->
-<div class="row">
-    <div class="col s12 m8 offset-m2">
-        <h1>{{ username }}</h1>
-    </div>
-</div>
-
-<!-- search bar -->
-<div class="row card-panel grey lighten-5">
-    <form action="{{ url_for('search', page='favourites_page') }}" method="post" class="col s12">
-        <div class="row valign-wrapper center-align">
-            <div class="input-field col s12 m6">
-                <i class="fas fa-search prefix"></i>
-                <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                <label for="query">Search Tasks</label>
-            </div>
-            <div class="col s12 m4">
-                <a href="{{ url_for('profile', username=session['user']) }}" class="btn">Reset</a>
-                <button type="submit" class="btn text-shadow">
-                    <i class="fas fa-search left"></i> Search
-                </button>
+<!-- hero image -->
+<section>
+    <div class="hero-image">
+        <!-- search bar -->
+        <div class="row search-bar">
+            <div class="col s12 m12 l12 white">
+                <form action="{{ url_for('search', page='recipe_page') }}" method="post" class="col s12">
+                    <div id='search' class="valign-wrapper center-align .search-bar-form">
+                        <div class="input-field col s12 m6 l6l">
+                            <i class="fas fa-search prefix"></i>
+                            <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                            <label for="query">Search Tasks</label>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <a href="{{ url_for('get_recipes') }}" class="btn">Reset</a>
+                            <button type="submit" class="btn text-shadow">
+                                <i class="fas fa-search left"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
-</div>
-<!-- ./search bar -->
-
-<!-- ./banner -->
+        <!-- ./searchbar -->
+    </div>
+</section>
+<!-- hero -->
 
 
 <!-- profile tabss -->
@@ -48,64 +47,64 @@
 <section>
     <div class="row">
         {% if recipes|length > 0 %}
-            {% for recipe in recipes %}
-                {% if recipe._id in favourites %}
-                        <div class="col s12 m6 l4">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img class="card-image" src="{{ recipe.img_url}}">
-                                    <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='favourites_page') }}"
-                                        class="btn halfway-fab right liked
+        {% for recipe in recipes %}
+        {% if recipe._id in favourites %}
+        <div class="col s12 m6 l4">
+            <div class="card">
+                <div class="card-image">
+                    <img class="card-image" src="{{ recipe.img_url}}">
+                    <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='favourites_page') }}"
+                        class="btn halfway-fab right liked
                                                 waves-effect waves-light"><i class="fa-solid fa-heart"></i></a>
-                                    <i class="fa-solid fa-trash"></i></a>
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title">{{ recipe.recipe_name }}</span>
-                                    <p>{{ recipe.description }}</p>
-                                    <span>
-                                        <p>Rating: {{ recipe.rating }}</p>
-                                        {% if recipe.rating | int >= 1 %}
-                                        <span class="fa fa-star checked"></span>
-                                        {% else %}
-                                        <span class="fa fa-star"></span>
-                                        {% endif %}
-                                        {% if recipe.rating | int >= 2 %}
-                                        <span class="fa fa-star checked"></span>
-                                        {% else %}
-                                        <span class="fa fa-star"></span>
-                                        {% endif %}
-                                        {% if recipe.rating | int >= 3 %}
-                                        <span class="fa fa-star checked"></span>
-                                        {% else %}
-                                        <span class="fa fa-star"></span>
-                                        {% endif %}
-                                        {% if recipe.rating | int >= 4 %}
-                                        <span class="fa fa-star checked"></span>
-                                        {% else %}
-                                        <span class="fa fa-star"></span>
-                                        {% endif %}
-                                        {% if recipe.rating | int >= 5 %}
-                                        <span class="fa fa-star checked"></span>
-                                        {% else %}
-                                        <span class="fa fa-star"></span>
-                                        {% endif %}
-                                        ({{ recipe.star_ratings|length }})
-                                    </span>
-                                    <div>
-                                        <p>created by: {{ recipe.author }}</p>
-                                    </div>
-                                    <div>
-                                        <a a href="{{ url_for( 'recipe_page', recipe_id=recipe._id) }}"
-                                            class="waves-effect waves-light btn">View Recipe</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                {% endif %}
-            {% endfor %}
+                    <i class="fa-solid fa-trash"></i></a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">{{ recipe.recipe_name }}</span>
+                    <p>{{ recipe.description }}</p>
+                    <span>
+                        <p>Rating: {{ recipe.rating }}</p>
+                        {% if recipe.rating | int >= 1 %}
+                        <span class="fa fa-star checked"></span>
+                        {% else %}
+                        <span class="fa fa-star"></span>
+                        {% endif %}
+                        {% if recipe.rating | int >= 2 %}
+                        <span class="fa fa-star checked"></span>
+                        {% else %}
+                        <span class="fa fa-star"></span>
+                        {% endif %}
+                        {% if recipe.rating | int >= 3 %}
+                        <span class="fa fa-star checked"></span>
+                        {% else %}
+                        <span class="fa fa-star"></span>
+                        {% endif %}
+                        {% if recipe.rating | int >= 4 %}
+                        <span class="fa fa-star checked"></span>
+                        {% else %}
+                        <span class="fa fa-star"></span>
+                        {% endif %}
+                        {% if recipe.rating | int >= 5 %}
+                        <span class="fa fa-star checked"></span>
+                        {% else %}
+                        <span class="fa fa-star"></span>
+                        {% endif %}
+                        ({{ recipe.star_ratings|length }})
+                    </span>
+                    <div>
+                        <p>created by: {{ recipe.author }}</p>
+                    </div>
+                    <div>
+                        <a a href="{{ url_for( 'recipe_page', recipe_id=recipe._id) }}"
+                            class="waves-effect waves-light btn">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+        {% endfor %}
         {% else %}
-            <h2>No results found</h2>   
+        <h2>No results found</h2>
         {% endif%}
     </div>
 </section>
