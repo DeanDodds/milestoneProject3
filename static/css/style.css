@@ -54,6 +54,7 @@
     .search-bar {
         margin-bottom: 0px;
         padding-bottom: 0px;
+        width: 100%;
 
     }
 }
@@ -260,10 +261,12 @@ form .btn button {
 .social-links {
     padding-bottom: 15px;
     display: flex;
+    justify-content: center;
 }
 
 .social-links li {
     padding: 5px;
+    text-align: center;
 }
 
 .social-links li a i {
@@ -288,4 +291,18 @@ form .btn button {
 
 .social-links i:hover {
     color: teal;
+}
+
+#footer-form-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .social-links {
+        justify-content: center;
+    }
+
+
 }
