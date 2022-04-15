@@ -16,6 +16,13 @@
     color: #A60303;
 }
 
+/* Flashes */
+.flashes,
+.flashes h4 {
+    margin: 0px;
+    padding: 0px
+}
+
 /* recipe cards */
 .card-header {
     height: 400px;
@@ -45,9 +52,21 @@
     bottom: -10px;
 }
 
+.liked {
+    color: #A60303;
+}
+
+.add-recipe-card {
+    height: 700px;
+}
+
 @media only screen and (max-width: 650px) {
     .card-content {
         height: auto;
+    }
+
+    .add-recipe-card {
+        height: 250px;
     }
 }
 
