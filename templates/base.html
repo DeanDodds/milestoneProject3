@@ -19,7 +19,7 @@
         <nav>
             <!-- Top navbar  -->
 
-            <nav>
+            <nav id="navbar">
                 <div class="nav-wrapper nav-extended dark-red">
                     <a href="{{ url_for('index') }}" class="brand-logo logo left">Recipe App</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right">
@@ -39,25 +39,25 @@
                         {% endif %}
                     </ul>
                 </div>
+
+                <!-- Side nav -->
+                <ul class="sidenav dark-red" id="mobile-demo">
+                    <li>
+                        <h4 class="center-align logo">Recipe App</h4>
+                    </li>
+                    <li><a href="{{ url_for('index') }}">HOME</a></li>
+                    <li><a href="{{ url_for('get_recipes') }}">RECIPES</a></li>
+                    <li><a href="{{ url_for('get_about') }}">ABOUT US</a></li>
+                    <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
+                    {% if session.user %}
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
+                    <li><a href="{{ url_for('logout') }}">LOG OUT</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}">LOGIN</a></li>
+                    <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
+                    {% endif %}
+                </ul>
             </nav>
-
-            <ul class="sidenav dark-red" id="mobile-demo">
-                <li>
-                    <h4 class="center-align logo">Recipe App</h4>
-                </li>
-                <li><a href="{{ url_for('index') }}">HOME</a></li>
-                <li><a href="{{ url_for('get_recipes') }}">RECIPES</a></li>
-                <li><a href="{{ url_for('get_about') }}">ABOUT US</a></li>
-                <li><a href="{{ url_for('get_contact') }}">CONTACT US</a></li>
-                {% if session.user %}
-                <li><a href="{{ url_for('profile', username=session['user']) }}">PROFILE</a></li>
-                <li><a href="{{ url_for('logout') }}">LOG OUT</a></li>
-                {% else %}
-                <li><a href="{{ url_for('login') }}">LOGIN</a></li>
-                <li><a href="{{ url_for('signup') }}">SIGN UP</a></li>
-                {% endif %}
-            </ul>
-
     </header>
 
 
