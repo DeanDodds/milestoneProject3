@@ -28,7 +28,7 @@
                     <form method="POST" action="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}">
                         <!-- Recipe name  field -->
                         <div class=" row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <input id="recipe_name" value="{{ recipe.recipe_name }}" name="recipe_name" type="text"
                                     minlength="1" class="validate" required>
                                 <label for="recipe_name">Recipe Name</label>
@@ -36,15 +36,15 @@
                         </div>
                         <!-- Number of servings field -->
                         <div class="row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <input id="servings" value="{{ recipe.servings }}" name="servings" type="number" min="1"
                                     class="validate" required>
                                 <label for="servings">Number of servings</label>
                             </div>
                         </div>
                         <!-- cuisine field -->
-                        <div class="row">
-                            <div class="input-field col s4 offset-m1">
+                        <div class="row catergories-form">
+                            <div class="input-field col s10 m4 offset-m1 offset-s1">
                                 <select id="cusine_name" name="cusine_name">
                                     <option value="" disabled>Choose cuisine type</option>
                                     {% for name in cuisine %}
@@ -58,7 +58,7 @@
                                 <label for="cusine_name">Cusine Type</label>
                             </div>
                             <!-- catergory field -->
-                            <div class="input-field col s4 offset-m2">
+                            <div class="input-field col s10 m4 offset-s1 offset-m2">
                                 <select id="catergory_name" name="catergory_name" class="validate">
                                     <option value="" disabled>Choose catergory</option>
                                     {% for catergory in catergories %}
@@ -78,7 +78,7 @@
                         </div>
                         <!-- Recipe description  field -->
                         <div class=" row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <input id="description" value="{{ recipe.description }}" name="description" type="text"
                                     minlength="1" maxlength="60" class="validate" required>
                                 <label for="description">Recipe Description</label>
@@ -86,7 +86,7 @@
                         </div>
                         <!-- Ingredients -->
                         <div class="row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <textarea id="ingredients" name="ingredients" class="materialize-textarea" required>
                                     {% for item in recipe.ingredients %}
                                     {{- item -}}
@@ -97,7 +97,7 @@
                         </div>
                         <!-- Add instructions -->
                         <div class="row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <textarea id="instructions" name="instructions" class="materialize-textarea validate"
                                     required>
                                     {% for item in recipe.instructions %}
@@ -110,7 +110,7 @@
                         <!-- Add image -->
                         <div class="row">
                             <div class="">
-                                <div class="input-field col s10 offset-m1">
+                                <div class="input-field col s10 offset-s1">
                                     <input value="{{ recipe.img_url }}" id="img_url" name="img_url"
                                         class="materialize-textarea" type="url" required></input>
                                     <label for="img_url">Image url</label>
@@ -121,7 +121,7 @@
 
                         <!-- submit button -->
                         <div class=" row center-align">
-                            <button class="btn waves-effect waves-light col s10 offset-m1" type="submit">Edit Recipe
+                            <button class="btn waves-effect waves-light col s10 offset-s1" type="submit">Edit Recipe
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                         </div>
