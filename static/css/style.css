@@ -19,6 +19,8 @@
 /* hero images */
 
 .hero-image {
+    display: flex;
+    align-items: flex-end;
     background-image: url("/static/images/hero.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -39,6 +41,21 @@
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+}
+
+/* search bars */
+
+@media only screen and (max-width: 600px) {
+    .search-bar-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search-bar {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+
+    }
 }
 
 /* About Page */

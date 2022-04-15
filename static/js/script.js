@@ -40,18 +40,17 @@ $(document).ready(function () {
     $('.modal').modal();
 });
 
+// navbar responsiveness - removes valign-wrapper so css can change flex direction
+function removeValignWrapperClass(screensize) {
+    const searchBar = document.getElementById('search')
+    if (screensize.matches) { // If media query matches
+        console.log(searchBar)
+        searchBar.classList.remove('valign-wrapper')
+    } else {
+        searchBar.classList.add('valign-wrapper')
+    }
+}
 
-// star rating imput code from - https://www.codingnepalweb.com/star-rating-html-css-javascript/
-// const btn = document.querySelector("button");
-// const post = document.querySelector(".post");
-// const widget = document.querySelector(".star-widget");
-// const editBtn = document.querySelector(".edit");
-// btn.onclick = () => {
-//     widget.style.display = "none";
-//     post.style.display = "block";
-//     editBtn.onclick = () => {
-//         widget.style.display = "block";
-//         post.style.display = "none";
-//     }
-//     return false;
-// }
+let screensize = window.matchMedia("(max-width: 600px)")
+removeValignWrapperClass(screensize) // Call listener function at run time
+screensize.addListener(removeValignWrapperClass) // Attach listener function on state changes
