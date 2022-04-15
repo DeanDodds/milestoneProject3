@@ -28,7 +28,7 @@
                     <form method="POST" action="{{ url_for('addrecipe') }}">
                         <!-- Recipe name  field -->
                         <div class=" row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <input id="recipe_name" name="recipe_name" type="text" minlength="1" class="validate"
                                     required>
                                 <label for="recipe_name">Recipe Name</label>
@@ -36,14 +36,14 @@
                         </div>
                         <!-- Number of servings field -->
                         <div class="row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <input id="servings" name="servings" type="number" min="1" class="validate" required>
                                 <label for="servings">Number of servings</label>
                             </div>
                         </div>
                         <!-- cuisine field -->
-                        <div class="row">
-                            <div class="input-field col s4 offset-m1">
+                        <div class="row catergories-form">
+                            <div class="input-field col s10 m4 offset-s1 offset-m1">
                                 <select id="cusine_name" name="cusine_name">
                                     <option value="" disabled selected>Choose cuisine type</option>
                                     {% for type in cuisine %}
@@ -53,7 +53,7 @@
                                 <label for="cusine_name">Cusine Type</label>
                             </div>
                             <!-- catergory field -->
-                            <div class="input-field col s4 offset-m2">
+                            <div class="input-field col s10 m4 offset-s1 offset-s1 offset-m2">
                                 <select id="catergory_name" name="catergory_name" class="validate">
                                     <option value="" disabled selected>Choose catergory</option>
                                     {% for catergory in catergories %}
@@ -67,7 +67,7 @@
                         </div>
                         <!-- Recipe description  field -->
                         <div class="row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <input id="description" name="description" type="text" minlength="1" class="validate"
                                     required>
                                 <label for="description">Recipe Description</label>
@@ -75,14 +75,14 @@
                         </div>
                         <!-- Ingredients -->
                         <div class="row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <textarea id="ingredients" name="ingredients" class="materialize-textarea"></textarea>
                                 <label for="ingredients">ingredients</label>
                             </div>
                         </div>
                         <!-- Add instructions -->
                         <div class="row">
-                            <div class="input-field col s10 offset-m1">
+                            <div class="input-field col s10 offset-s1">
                                 <textarea id="instructions" name="instructions" class="materialize-textarea"></textarea>
                                 <label for="instructions">Instructions</label>
                             </div>
@@ -90,7 +90,7 @@
                         <!-- Add image -->
                         <div class="row">
                             <div class="">
-                                <div class="input-field col s10 offset-m1">
+                                <div class="input-field col s10 offset-s1">
                                     <input id="img_url" name="img_url" class="materialize-textarea" type="url"></input>
                                     <label for="img_url">Image url</label>
                                 </div>
@@ -98,7 +98,7 @@
                         </div>
                         <!-- submit button -->
                         <div class=" row center-align">
-                            <button class="btn waves-effect waves-light col s10 offset-m1" type="submit">Submit
+                            <button class="btn waves-effect waves-light col s10 offset-s1" type="submit">Submit
                                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
                             </button>
                         </div>

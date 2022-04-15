@@ -124,6 +124,14 @@
     padding-bottom: 20px;
 }
 
+
+@media only screen and (max-width: 600px) {
+    .catergories-form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 /* About Page */
 
 .team-card {
