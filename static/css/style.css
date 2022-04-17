@@ -16,10 +16,6 @@
     color: #A60303;
 }
 
-section {
-    margin: 10px 0;
-}
-
 /* Flashes */
 .flashes,
 .flashes h4 {
@@ -382,5 +378,8 @@ form .btn button {
         justify-content: center;
     }
 
+}
 
+.off {
+    display: none;
 }

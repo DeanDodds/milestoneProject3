@@ -132,7 +132,13 @@ def profile(username):
     flash('Please log in to view profile')
     return redirect(url_for("login"))
 
+@app.route("/control")
+def control():
+    recipes = list(mongo.db.recipes.find())
+    users = mongo.db.users.find()
 
+    return render_template("control.html", recipes=recipes, users=users)
+    
 @app.route("/logout")
 def logout():
     """ remove user from session cookie """

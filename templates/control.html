@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section id="control">
+    <div class="row">
+        <div>
+            <button class="btn" onclick="viewUsers()">Users</button>
+            <button class="btn" onclick="viewUsers()">Admin</button>
+            <button class="btn" onclick="viewAdminUserss()">Recipes</button>
+        </div>
+    </div>
+    `
+    <!-- Users table-->
+    <div id="users" class="row">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Users</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username}}</td>
+                        <td> <a href="modal1" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                                data-target="modal1">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            <a href="#" class="btn halfway-fab right waves-effect waves-light red"><i
+                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Admin User table-->
+    <div id="admin-users" class="row">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Admin Users</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    {% %}
+                    <tr>
+                        <td>{{ user.username}}</td>
+                        <td> <a href="modal1" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                                data-target="modal1">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            <a href="#" class="btn halfway-fab right waves-effect waves-light red"><i
+                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Recipes-->
+    <div id="recipes" class="row off">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Recipes</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for recipe in recipes %}
+                    <tr>
+                        <td>{{ recipe.recipe_name }}</td>
+                        <td>{{ recipe.cusine_name }}</td>
+                        <td>{{ recipe.catergory_name }}</td>
+                        <td>{{ recipe.rating }} </td>
+                        <td> <a href="modal1" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                                data-target="modal1">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            <a href="#" class="btn halfway-fab right waves-effect waves-light red"><i
+                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock%}

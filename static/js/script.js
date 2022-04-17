@@ -16,20 +16,6 @@ $(document).ready(function () {
 
 });
 
-// floating button
-$(document).ready(function () {
-    $('.fixed-action-btn').floatingActionButton();
-    $('.fixed-action-btn').floatingActionButton('methodName');
-    $('.fixed-action-btn').floatingActionButton('methodName', paramName);
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {
-        direction: 'left'
-    });
-});
-
 // toolbar
 $('.fixed-action-btn').floatingActionButton({
     toolbarEnabled: true
@@ -39,6 +25,24 @@ $('.fixed-action-btn').floatingActionButton({
 $(document).ready(function () {
     $('.modal').modal();
 });
+
+// admin buttons 
+
+function viewRecipes() {
+    document.getElementById('recipes').classList.remove('off')
+    document.getElementById('users').classList.add('off')
+}
+
+
+function viewUsers() {
+    document.getElementById('recipes').classList.add('off')
+    document.getElementById('users').classList.remove('off')
+}
+
+function iewAdminUserss() {
+    document.getElementById('admin-users').classList.add('off')
+    document.getElementById('admin-users').classList.remove('off')
+}
 
 // navbar responsiveness - removes valign-wrapper so css can change flex direction
 function removeValignWrapperClass(screensize) {
