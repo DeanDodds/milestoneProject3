@@ -140,6 +140,7 @@ def profile(username):
     flash('Please log in to view profile')
     return redirect(url_for("login"))
 
+
 @app.route("/control")
 def control():
     username = mongo.db.users.find_one(
@@ -150,6 +151,7 @@ def control():
 
     return render_template("control.html", recipes=recipes, users=users)
     
+
 @app.route("/logout")
 def logout():
     """ remove user from session cookie """
@@ -222,6 +224,7 @@ def editrecipe(recipe_id):
         # Gets the current star ratings from the database
         rating = mongo.db.recipes.find_one(
             {"_id": ObjectId(recipe_id)})["rating"]
+        # Get the data from form and saves it as a variable
         submit = {
             "author": session["user"],
             "catergory_name": request.form.get("catergory_name"),
@@ -247,7 +250,6 @@ def editrecipe(recipe_id):
                 "profile.html", username=username,
                 recipes=recipes, favourites=favourites)
     if 'user' in session:
-        # Get the data from the edit recipe form
         return render_template("editrecipe.html",
                                 cuisine=cuisine, catergories=catergories, recipe=recipe)
     # If users not logged im they get redirected to log in
@@ -305,7 +307,6 @@ def delete_recipe(recipe_id):
     """Delete recipe from database"""
     # Check if user in session 
     if 'user' in session:
-        print(recipe_id)
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
         author = mongo.db.recipes.find_one(
@@ -464,9 +465,24 @@ def search(page):
                 username=username, favourites=favourites, recipes=recipes)
 
 
-@app route("/delete_user/<user_id>"):
-def delete_user():
-    print("deleting user")
+@app.route("/delete_user/<user_id>")
+def delete_user(user_id):
+    print(user_id)
+    if "user" in session:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
+        if username == user_id or check_admin == "on":
+            recipes = list(mongo.db.recipes.find())
+            # Deletes the document from the database
+            mongo.db.users.delete_one({"_id": ObjectId(user_id)})
+            users = list(mongo.db.users.find())
+            flash("user Successfully Deleted")
+            return render_template("control.html", recipes=recipes, users=users)
+    flash('Please log in to edit your account')
+    return redirect(url_for("login"))
+    
 
 @app.route("/subscribe/", methods=["GET", "POST"])
 def subscribe():
@@ -474,20 +490,22 @@ def subscribe():
     if request.method == "POST":
         # Check if email is already in the database
         mailing_list = mongo.db.subscribers.find_one(
-            {"email": request.form.get("subscribers").lower()})
+            {"email": request.form.get("subscribers")})
 
         if mailing_list:
             flash("You are already on our mailing list!")
-            return redirect(url_for("index"))
+            return ('', 204)
 
         # Add new email to db
-        subscribe = {
+        else:
+            subscribe = {
             "email": request.form.get("subscribers").lower()
-        }
-        mongo.db.subscribers.insert_one(subscribe)
+            }
 
-        flash("You have successfully subscribed!")
-    return ('', 204)
+            mongo.db.subscribers.insert_one(subscribe)
+
+            flash("You have successfully subscribed!")
+            return ('', 204)
 
 
 if __name__ == "__main__":
