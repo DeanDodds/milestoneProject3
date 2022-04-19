@@ -242,7 +242,7 @@ def editrecipe(recipe_id):
         if author == username or check_admin == "on":
             mongo.db.recipes.replace_one(
                     {"_id": ObjectId(recipe_id)}, submit)
-            # Gets recipes from the database
+            # Gets updated recipes from the database
             recipes = list(mongo.db.recipes.find())
             # Displays Confoirmation message
             flash("recipe sucessfully updated")
@@ -314,7 +314,6 @@ def delete_recipe(recipe_id):
         check_admin = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
         if username == author or check_admin == "on":
-            print(recipe)
             # Deletes the document from the database
             mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
             flash("Recipe Successfully Deleted")
@@ -467,7 +466,6 @@ def search(page):
 
 @app.route("/delete_user/<user_id>")
 def delete_user(user_id):
-    print(user_id)
     if "user" in session:
         username = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
@@ -483,6 +481,32 @@ def delete_user(user_id):
     flash('Please log in to edit your account')
     return redirect(url_for("login"))
     
+    
+@app.route("/edit_user/<user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
+    if "user" in session:
+        if request.method == "POST":
+            flash("edit")
+            user = request.form.get("username")
+            admin = request.form.get("admin")
+            username = mongo.db.users.find_one(
+                {"username": session["user"]})["_id"]
+            check_admin = mongo.db.users.find_one(
+                {"username": session["user"]})["admin"]
+            if username == user_id or check_admin == "on":
+                mongo.db.users.update_one(
+                    {"_id": ObjectId(user_id)},
+                {"$set": {"username": user}})
+                mongo.db.users.update_one(
+                {"_id": ObjectId(user_id)},
+                {"$set": {"admin": admin}})
+
+                recipes = list(mongo.db.recipes.find())
+                users = list(mongo.db.users.find())
+                flash("User Successfully Updated")
+                return render_template("control.html", recipes=recipes, users=users)
+    flash('Please log in to edit your account')
+    return redirect(url_for("login"))
 
 @app.route("/subscribe/", methods=["GET", "POST"])
 def subscribe():
