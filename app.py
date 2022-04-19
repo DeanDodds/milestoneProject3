@@ -101,6 +101,7 @@ def signup():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "favourites": [],
+            "admin": "off"
         }
         # inserts user info into the database
         mongo.db.users.insert_one(register)
@@ -120,22 +121,32 @@ def profile(username):
         # get the session user's username from db
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
         # gets recipes from database
         recipes = list(mongo.db.recipes.find())
         # gets user favourites from the database
         favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
-        return render_template(
-            "profile.html", username=username,
-            recipes=recipes, favourites=favourites)
+        if check_admin:
+            return render_template(
+                "profile.html", username=username,
+                recipes=recipes, favourites=favourites, admin=check_admin)
+        else:
+            return render_template(
+                "profile.html", username=username,
+                recipes=recipes, favourites=favourites)
     # Message for the user
     flash('Please log in to view profile')
     return redirect(url_for("login"))
 
 @app.route("/control")
 def control():
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+    print(username)
     recipes = list(mongo.db.recipes.find())
-    users = mongo.db.users.find()
+    users = list(mongo.db.users.find())
 
     return render_template("control.html", recipes=recipes, users=users)
     
@@ -199,6 +210,8 @@ def editrecipe(recipe_id):
     # Gets username from database
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
+    check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
     # Gets name from database
     author = mongo.db.recipes.find_one(
             {"_id": ObjectId(recipe_id)})["author"]
@@ -223,7 +236,7 @@ def editrecipe(recipe_id):
             "star_ratings": star_ratings
         }
     
-        if author == username:
+        if author == username or check_admin == "on":
             mongo.db.recipes.replace_one(
                     {"_id": ObjectId(recipe_id)}, submit)
             # Gets recipes from the database
@@ -292,12 +305,15 @@ def delete_recipe(recipe_id):
     """Delete recipe from database"""
     # Check if user in session 
     if 'user' in session:
+        print(recipe_id)
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
         author = mongo.db.recipes.find_one(
                 {"_id": ObjectId(recipe_id)})["author"]
-        print(username, author, session["user"])
-        if username == author:
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
+        if username == author or check_admin == "on":
+            print(recipe)
             # Deletes the document from the database
             mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
             flash("Recipe Successfully Deleted")
@@ -447,6 +463,10 @@ def search(page):
                 "profile.html", user_id=user_id,
                 username=username, favourites=favourites, recipes=recipes)
 
+
+@app route("/delete_user/<user_id>"):
+def delete_user():
+    print("deleting user")
 
 @app.route("/subscribe/", methods=["GET", "POST"])
 def subscribe():

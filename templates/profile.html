@@ -30,6 +30,7 @@
 </section>
 <!-- hero -->
 
+<h1>{{ session.user }}</h1>
 
 <!-- profile tabsbar -->
 <nav class="nav-extended center">
@@ -39,7 +40,9 @@
             </li>
             <li class="tab"><a href="{{ url_for('addrecipe') }}">Add Recipes</a></li>
             <li class="tab"><a href="{{ url_for('favourites') }}">My Favourites</a></li>
+            {% if adminpyth == "on" %}
             <li class="tab"><a href="{{ url_for('control') }}">Control Panel</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>

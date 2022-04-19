@@ -31,18 +31,24 @@ $(document).ready(function () {
 function viewRecipes() {
     document.getElementById('recipes').classList.remove('off')
     document.getElementById('users').classList.add('off')
+    document.getElementById('admin-users').classList.add('off')
+
 }
 
 
 function viewUsers() {
     document.getElementById('recipes').classList.add('off')
     document.getElementById('users').classList.remove('off')
+    document.getElementById('admin-users').classList.add('off')
 }
 
-function iewAdminUserss() {
-    document.getElementById('admin-users').classList.add('off')
+function viewAdminUsers() {
     document.getElementById('admin-users').classList.remove('off')
+    document.getElementById('recipes').classList.add('off')
+    document.getElementById('users').classList.add('off')
+
 }
+
 
 // navbar responsiveness - removes valign-wrapper so css can change flex direction
 function removeValignWrapperClass(screensize) {
