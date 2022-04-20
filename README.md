@@ -253,6 +253,7 @@ and then select your region and create app.
 ## Images <a id="images"></a>
 - Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
 - Photo by Adonyi Gábor: https://www.pexels.com/photo/assorted-vegetables-on-brown-wooden-table-1414651/
+- Photo by Pixabay: https://www.pexels.com/photo/man-smiling-behind-wall-220453/
 
 ## Code <a id="code"></a>
 
