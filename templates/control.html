@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- navagition tabs -->
+<nav class="nav-extended center">
+    <div class="nav-content col s-12">
+        <ul class="tabs tabs-transparent">
+            <li class="tab"><a class="active" href="{{ url_for('profile', username=session['user']) }}">My Recipes</a>
+            </li>
+            <li class="tab"><a href="{{ url_for('addrecipe') }}">Add Recipes</a></li>
+            <li class="tab"><a href="{{ url_for('favourites') }}">My Favourites</a></li>
+            {% if admin == "on" %}
+            <li class="tab"><a href="{{ url_for('control') }}">Control Panel</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
 
 <section id="control">
     <div class="row">
@@ -28,65 +42,67 @@
                                 data-target="delete-user-modal-{{ user.username}}">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
-                            <a href="#" data-target="edit_user_modal-{{ user.username }}" class="btn modal-trigger halfway-fab right waves-effect waves-light red"><i
+                            <a href="#" data-target="edit_user_modal-{{ user.username }}"
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red"><i
                                     class="fa-solid fa-pen-to-square"></i></a></td>
                     </tr>
-                       <!--delete user modal-->
+                    <!--delete user modal-->
                     <div id="delete-user-modal-{{ user.username }}" class="modal">
-                            <div class="modal-content">
-                                <h4>Are you sure you want to delete {{ user.username }}?</h4>
-                                <p>If you delete this user will be deleted permenitly. Are you sure you want to
-                                    continue</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="{{ url_for( 'delete_user', user_id=user._id) }}"
-                                    class="modal-close waves-effect waves-green btn-flat">OK</a>
-                                <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                            </div>
+                        <div class="modal-content">
+                            <h4>Are you sure you want to delete {{ user.username }}?</h4>
+                            <p>If you delete this user will be deleted permenitly. Are you sure you want to
+                                continue</p>
                         </div>
-                    <!-- ./delete recipe modal--> 
+                        <div class="modal-footer">
+                            <a href="{{ url_for( 'delete_user', user_id=user._id) }}"
+                                class="modal-close waves-effect waves-green btn-flat">OK</a>
+                            <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        </div>
+                    </div>
+                    <!-- ./delete recipe modal-->
                     <!-- edit user modal -->
-                        <div id="edit_user_modal-{{ user.username }}" class="modal">
-                            <div class="modal-content">
-                                <h4>Edit {{ user.username }}?</h4>
+                    <div id="edit_user_modal-{{ user.username }}" class="modal">
+                        <div class="modal-content">
+                            <h4>Edit {{ user.username }}?</h4>
 
-                                <form method="POST" action="{{ url_for( 'edit_user', user_id=user._id) }}">
-                                    <div class="row">
-                                        <!-- username field -->
-                                        <div class="input-field col s10 offset-s1">
-                                            <input id="username" value="{{ user.username }}" name="username" type="text"
-                                                minlength="1" class="validate" required>
-                                            <label for="username">User Name</label>
-                                        </div>
-                                        <!-- ./username field -->
+                            <form method="POST" action="{{ url_for( 'edit_user', user_id=user._id) }}">
+                                <div class="row">
+                                    <!-- username field -->
+                                    <div class="input-field col s10 offset-s1">
+                                        <input id="username" value="{{ user.username }}" name="username" type="text"
+                                            minlength="1" class="validate" required>
+                                        <label for="username">User Name</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s10 offset-s1">
-                                          <!-- Admin switch -->
-                                            <div class="switch">
-                                                <label for="admin">
+                                    <!-- ./username field -->
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s10 offset-s1">
+                                        <!-- Admin switch -->
+                                        <div class="switch">
+                                            <label for="admin">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                    <input type="checkbox" id="admin" name=admin checked onclick="toggleSwitch()">
+                                                <input type="checkbox" id="admin" name=admin checked
+                                                    onclick="toggleSwitch()">
                                                 {% else %}
-                                                    <input type="checkbox" id="admin" name=admin>
+                                                <input type="checkbox" id="admin" name=admin>
                                                 {% endif %}
                                                 <span class="lever"></span>
                                                 On
-                                                </label>
-                                            </div>
-                                        <!-- ./Admin switch -->
+                                            </label>
                                         </div>
+                                        <!-- ./Admin switch -->
                                     </div>
-                                    <button type= submit class="btn">Submit</button>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                            </div>
+                                </div>
+                                <button type=submit class="btn">Submit</button>
+                            </form>
                         </div>
+                        <div class="modal-footer">
+                            <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        </div>
+                    </div>
                     <!-- ./edit user modal -->
- 
+
                     {% endfor %}
                 </tbody>
             </table>
@@ -104,71 +120,73 @@
                 </thead>
                 <tbody>
                     {% for user in users %}
-                        {% if user.admin == "on" %}
-                        <tr>
+                    {% if user.admin == "on" %}
+                    <tr>
                         <td>{{ user.username}}</td>
-                            <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                    data-target="delete-user-modal-{{ user.username }}-2">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                                <a href="#" data-target="edit_user_modal-{{ user.username }}-2" class="btn modal-trigger halfway-fab right waves-effect waves-light red"><i
+                        <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                                data-target="delete-user-modal-{{ user.username }}-2">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            <a href="#" data-target="edit_user_modal-{{ user.username }}-2"
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red"><i
                                     class="fa-solid fa-pen-to-square"></i></a></td>
-                            </tr>
-                        {% endif %}
-                          <!--delete user modal-->
+                    </tr>
+                    {% endif %}
+                    <!--delete user modal-->
                     <div id="delete-user-modal-{{ user.username }}-2" class="modal">
-                            <div class="modal-content">
-                                <h4>Are you sure you want to delete {{ user.username }}?</h4>
-                                <p>If you delete this user will be deleted permenitly. Are you sure you want to
-                                    continue</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="{{ url_for( 'delete_user', user_id=user._id) }}"
-                                    class="modal-close waves-effect waves-green btn-flat">OK</a>
-                                <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                            </div>
+                        <div class="modal-content">
+                            <h4>Are you sure you want to delete {{ user.username }}?</h4>
+                            <p>If you delete this user will be deleted permenitly. Are you sure you want to
+                                continue</p>
                         </div>
-                    <!-- ./delete recipe modal--> 
+                        <div class="modal-footer">
+                            <a href="{{ url_for( 'delete_user', user_id=user._id) }}"
+                                class="modal-close waves-effect waves-green btn-flat">OK</a>
+                            <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        </div>
+                    </div>
+                    <!-- ./delete recipe modal-->
                     <!-- edit user modal -->
-                        <div id="edit_user_modal-{{ user.username }}-2" class="modal">
-                            <div class="modal-content">
-                                <h4>Edit {{ user.username }}?</h4>
+                    <div id="edit_user_modal-{{ user.username }}-2" class="modal">
+                        <div class="modal-content">
+                            <h4>Edit {{ user.username }}?</h4>
 
-                                <form method="POST" action="{{ url_for( 'edit_user', user_id=user._id) }}">
-                                    <div class="row">
-                                        <!-- username field -->
-                                        <div class="input-field col s10 offset-s1">
-                                            <input id="username" value="{{ user.username }}" name="username" type="text"
-                                                minlength="1" class="validate" required>
-                                            <label for="username">User Name</label>
-                                        </div>
-                                        <!-- ./username field -->
+                            <form method="POST" action="{{ url_for( 'edit_user', user_id=user._id) }}">
+                                <div class="row">
+                                    <!-- username field -->
+                                    <div class="input-field col s10 offset-s1">
+                                        <input id="username" value="{{ user.username }}" name="username" type="text"
+                                            minlength="1" class="validate" required>
+                                        <label for="username">User Name</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s10 offset-s1">
-                                          <!-- Admin switch -->
-                                            <div class="switch">
-                                                <label for="admin">
+                                    <!-- ./username field -->
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s10 offset-s1">
+                                        <!-- Admin switch -->
+                                        <div class="switch">
+                                            <label for="admin">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                    <input type="checkbox" id="admin" name=admin checked onclick="toggleSwitch()">
+                                                <input type="checkbox" id="admin" name=admin checked
+                                                    onclick="toggleSwitch()">
                                                 {% else %}
-                                                    <input type="checkbox" id="admin" name=admin>
+                                                <input type="checkbox" id="admin" name=admin>
                                                 {% endif %}
                                                 <span class="lever"></span>
                                                 On
-                                                </label>
-                                            </div>
-                                        <!-- ./Admin switch -->
+                                            </label>
                                         </div>
+                                        <!-- ./Admin switch -->
                                     </div>
-                                    <button type= submit class="btn">Submit</button>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                            </div>
+                                </div>
+                                <button type=submit class="btn">Submit</button>
+                            </form>
                         </div>
+                        <div class="modal-footer">
+                            <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        </div>
+                    </div>
                     <!-- ./edit user modal -->
                     {% endfor %}
                 </tbody>
@@ -186,11 +204,11 @@
                         <td>Recipes</td>
                     </tr>
                     <tr>
-                    <td>Name</td>
-                    <td>Cusine Type</td>
-                    <td>Catergory name</td>
-                    <td>Rating </td>
-                    <td>Edit</td>
+                        <td>Name</td>
+                        <td>Cusine Type</td>
+                        <td>Catergory name</td>
+                        <td>Rating </td>
+                        <td>Edit</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -204,27 +222,28 @@
                                 data-target="delete-recipe-modal-{{ recipe.recipe_name }}">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
-                            <a href="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}" class="btn halfway-fab right waves-effect waves-light red"><i
+                            <a href="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}"
+                                class="btn halfway-fab right waves-effect waves-light red"><i
                                     class="fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
                     </tr>
                     <!--delete recipe modal-->
                     <div id="delete-recipe-modal-{{ recipe.recipe_name }}" class="modal">
-                            <div class="modal-content">
-                                <h4>Are you sure you want to delete {{ recipe.recipe_name }}?</h4>
-                                <p>If you delete this recipe it will be deleted permenitly. Are you sure you want to
-                                    continue</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="{{ url_for( 'delete_recipe', recipe_id=recipe._id) }}"
-                                    class="modal-close waves-effect waves-green btn-flat">OK</a>
-                                <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                            </div>
+                        <div class="modal-content">
+                            <h4>Are you sure you want to delete {{ recipe.recipe_name }}?</h4>
+                            <p>If you delete this recipe it will be deleted permenitly. Are you sure you want to
+                                continue</p>
                         </div>
-                    <!-- ./delete recipe modal-->  
+                        <div class="modal-footer">
+                            <a href="{{ url_for( 'delete_recipe', recipe_id=recipe._id) }}"
+                                class="modal-close waves-effect waves-green btn-flat">OK</a>
+                            <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        </div>
+                    </div>
+                    <!-- ./delete recipe modal-->
                     {% endfor %}
-                    
+
                 </tbody>
             </table>
         </div>

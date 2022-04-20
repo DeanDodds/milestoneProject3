@@ -143,7 +143,7 @@ input {
 }
 
 .liked {
-    color: #A60303;
+    color: #D90416;
 }
 
 .add-recipe-card {
@@ -215,6 +215,9 @@ input {
     padding-bottom: 20px;
 }
 
+#subscribers {
+    background-color: #fafafa;
+}
 
 @media only screen and (max-width: 600px) {
     .catergories-form {
@@ -277,6 +280,13 @@ input {
         margin: 0px;
     }
 }
+
+/* Profile page  */
+
+.nav-content {
+    background-color: #D90416;
+}
+
 
 /* recipe page rating form */
 .container {
