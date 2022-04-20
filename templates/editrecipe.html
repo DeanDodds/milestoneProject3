@@ -89,7 +89,7 @@
                             <div class="input-field col s10 offset-s1">
                                 <textarea id="ingredients" name="ingredients" class="materialize-textarea" required>
                                     {% for item in recipe.ingredients %}
-                                    {{- item -}}
+                                    {{-item-}}
                                     {% endfor %}
                                 </textarea>
                                 <label for="ingredients">ingredients</label>
@@ -101,7 +101,7 @@
                                 <textarea id="instructions" name="instructions" class="materialize-textarea validate"
                                     required>
                                     {% for item in recipe.instructions %}
-                                    {{- item -}}
+                                    {{-item-}}
                                     {% endfor %}
                                 </textarea>
                                 <label for="instructions">Instructions</label>

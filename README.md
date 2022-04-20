@@ -17,7 +17,6 @@ other.
    - [Langagues Used](#langagues)
    - [Frameworks, Libraries and Programs used](#frameworks)
 4. [Deployment](#deployment)
-   - [Github pages](#pages)
    - [Making a local clone](#clone)
    - [Forking the GitHub Repository](#fork)
 5. [Credis](#credits)
@@ -120,7 +119,7 @@ All pages have a collapsible navigation bar, this makes it fully responsive on a
 All pages have a responsive footer that contains links to social media and sign up for newletter form.
 - on larger screens 
 ![screenshot of laptop footer ](/assets/screenshots/footer.png)
--on smaller screens 
+- on smaller screens 
 ![screenshot of mobile footer ](/assets/screenshots/footermobile.png)
 
 ### Home page 
@@ -185,7 +184,8 @@ Used to store my database
 - <a href="https://app.diagrams.net/">Drawio.net:</a>
   Used to create all wireframes.
 - <a href="http://https://randomkeygen.com/">Randomkeygen:</a>
-  Used to generate secure passwords
+  Used to generate secure passwords.
+- <a href="https://dashboard.heroku.com/apps">HEROKU:</a> Used to deploy the python app.
 
 ---
 
@@ -212,15 +212,38 @@ Forking a Github repositary allows you to make a copy that you can work on witho
 2. on the top right hand side of the page locate click fork button 
 3. the copy of this resository should now be in your own repositories
 
+## Setting up a mongodb database 
+
+To create a mongodb database 
+1. first you need to go to the <a href="http://mongodb.com">mongodb.com</a> and create an account.
+2. Then you must create a cluster and give it a name - this is the cluster of service the data will run on. 
+3. Next you need to select a could provider
+4. Then select a region 
+5. Select the network access 
+6. Now you can create you database on the new cluster. To begain you selet create your own data from the menu and give the database a name.
+7. Create your collections
+8. lastly press the insert document button and add the fields and values into that     
+
+
+## Deploying a python HEROKU app
+
+Before you can set up a HEROKU app you must set up a 
+application.
+- requirements.txt file this tells HEROKU what dependencies are needed 
+- a Procfile file - this pecifies the commands that are executed by the app on startup
+in you github repository.
+
+1. To begain with HEROKU you must  firt create an account. 
+2. Once logged in create new app. when seleting the app name this app keep in mind that it must be unique.
+and then select your region and create app.
+3. Then select the deploy tab and scoll to the deployment method section. you can connect you app by either the HEROKU CLI or through Github. I selected GitHuB so i can use the automatic deployment feature 
+4. Then go to the settings tab and set up you Congfi Vars. These variables will be the same as the ones in you env.py file 
+5. You can then go back to the deploy tab and select automatic deployment 
+6. you site is now live    
+
+
+
 ------
-
-## Bugs<id href="bugs">
-
-### bugs found and fixed
-
-### known bugs
-
----
 
 # 6. Credits <a id="credits"></a>
 

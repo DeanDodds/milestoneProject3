@@ -40,4 +40,4 @@
 # known bugs
 
 - cusine in catergories not displaying properly
-- edit form ingrendents and instructions does not split arrays
+- edit form ingrendents and instructions does not display correctly
