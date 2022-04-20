@@ -1,7 +1,10 @@
 # The Recipe App
-The recipe app is a web application designed for users to view, share and rate recipes. 
-<a href="">
+Recipe app is a website dedicated to sharing delicious food. Everyone is welcome from beginner cooks to profeesional chef. Our aim is to build a community of foodies were we can share our recipe ideas with each
+other. 
 
+<a href="https://dean-milestone-project-3.herokuapp.com/">Go to live website.....</a>
+
+![live website preview](https://dean-milestone-project-3.herokuapp.com/)
 # Table of contents
 
 1. [User Experience (UX)](#user-experience)
@@ -64,6 +67,21 @@ The recipe app is a web application designed for users to view, share and rate r
 ![Color palette 1](/assets/screenshots/colorpallete.jpeg)
 
 ## Imagary
+
+- 1 X favicon
+
+### Home page 
+
+- 1 x hero image 
+
+### recipe page 
+1 x hero image 
+1 x default image incase user does not link a image to there recipe
+
+### About page
+1 x hero image 
+4 x profile images for team members 
+
 
 ## Wireframes <a id="wireframes"></a>
 
