@@ -224,6 +224,9 @@ To create a mongodb database
 7. Create your collections
 8. lastly press the insert document button and add the fields and values into that     
 
+## Environment variables and app set up
+
+In order to connect you to the database and set up your python app you mus set up a env.py file. This is a  file containing key value pairs of all the environment variables required to configure you application 
 
 ## Deploying a python HEROKU app
 
