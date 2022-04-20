@@ -1,3 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;0,900;1,500&family=Open+Sans:wght@400;800&family=Pacifico&display=swap');
+
+/* fonts */
+.logo {
+    font-family: "Pacifico", sans-serif;
+    font-size: 0.8em;
+    margin-left: 10px;
+    color: #fafafa;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Bitter", sans-serif;
+}
+
+h1 {
+    font-size: 4em;
+    font-weight: 800;
+    padding: 10px;
+}
+
+h2 {
+    font-size: 3em;
+    font-weight: 700;
+    padding: 8px;
+}
+
+h3 {
+    font-size: 2em;
+    font-weight: 400;
+    padding: 8px;
+}
+
+h4 {
+    font-size: 1.8em;
+    font-weight: 400;
+    padding: 8px;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+button,
+p,
+li {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.6em;
+}
+
+.flashes,
+.flashes h4 {
+    margin: 0px;
+    padding: 0px
+}
+
+nav li a {
+    font-size: 0.8em;
+    font-weight: 600;
+    text-shadow: 1px 1px #111;
+    color: #fafafa;
+}
+
+
+.sidenav li a {
+    font-size: 0.8em;
+    font-weight: 600;
+    text-shadow: 2px 2px #111;
+    color: #fafafa;
+    line-height: 1.6;
+}
+
+#sidenav-logo {
+    font-size: 1.6em;
+}
+
+/* colours */
+
 .dark-red {
     background-color: #A60303;
 }
@@ -16,11 +97,20 @@
     color: #A60303;
 }
 
-/* Flashes */
-.flashes,
-.flashes h4 {
-    margin: 0px;
-    padding: 0px
+.btn {
+    background-color: #467302;
+}
+
+.btn:hover {
+    background-color: #72A603;
+}
+
+input {
+    background-color: #fafafa;
+}
+
+.input-field>label {
+    color: #F2B705;
 }
 
 /* recipe cards */
@@ -92,7 +182,7 @@
 .introduction,
 .heading {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 10px auto;
     text-align: center;
 }
 
@@ -133,8 +223,11 @@
     }
 }
 
-/* About Page */
+/* Index page */
 
+
+
+/* About Page */
 .team-card {
     display: flex;
     justify-content: space-between;
@@ -364,7 +457,7 @@ form .btn button {
 }
 
 .social-links i:hover {
-    color: teal;
+    color: #D90416;
 }
 
 #footer-form-container {

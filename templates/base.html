@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 
     <title>recipe app</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/foodfavicon.ico' )}}">
 </head>
 
 <body>
@@ -43,7 +44,7 @@
                 <!-- Side nav -->
                 <ul class="sidenav dark-red" id="mobile-demo">
                     <li>
-                        <h4 class="center-align logo">Recipe App</h4>
+                        <h4 id="sidenav-logo" class="center-align logo">Recipe App</h4>
                     </li>
                     <li><a href="{{ url_for('index') }}">HOME</a></li>
                     <li><a href="{{ url_for('get_recipes') }}">RECIPES</a></li>
@@ -83,7 +84,7 @@
         <div class="footer-container">
             <div class="row">
                 <div class="col l6 s12 center center-align">
-                    <h5 class="white-text">Sign up to our newsletter</h5>
+                    <h3 class="white-text">Sign up to our newsletter</h3>
                     <div class="row">
                         <form method="POST" action="{{ url_for('subscribe') }}">
                             <div class="input-field col s8 offset-s2">
@@ -96,7 +97,7 @@
                     </div>
                 </div>
                 <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text center-align">Follow Us</h5>
+                    <h3 class="white-text center-align">Follow Us</h3>
                     <!-- social media links-->
                     <div class="center-align">
                         <ul class="social-links">
@@ -127,9 +128,9 @@
             </div>
             <div class="footer-copyright">
                 <div class="footer-copyright-container">
-                    <p> Copyright &copy; <script>
+                    <h5> Copyright &copy; <script>
                             document.write(new Date().getFullYear())
-                        </script> Recipe App</p>
+                        </script> Recipe App</h5>
                 </div>
             </div>
     </footer>
