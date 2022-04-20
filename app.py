@@ -204,10 +204,10 @@ def editrecipe(recipe_id):
     # Gets recipe from in the database to edit
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     # Gets the catergouries from the database
-    catergories = mongo.db.catergories.find().sort("catergory_name, 1")
+    catergories = list(mongo.db.catergories.find().sort("catergory_name, 1"))
     # Gets the cuisine names from the database
-    cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
-    # Gets Favourites ffrom the database
+    cuisine = list(mongo.db.cuisine.find().sort("cuisine_name, 1"))
+    # Gets Favourites ffrom  the database
     favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
     # Gets username from database

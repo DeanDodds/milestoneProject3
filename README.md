@@ -111,32 +111,40 @@ The wireframes for the website were created on Drawio, there is a desktop, table
 ### Navigation Bar 
 All pages have a collapsible navigation bar, this makes it fully responsive on all devices.
 - on larger screens 
+
 ![screenshot of laptop navbar ](/assets/screenshots/navbar.png)
 - on smaller screens 
+
 ![screenshot of mobile navbar ](/assets/screenshots/navbarmobile.png)
 
 ### Footer
 All pages have a responsive footer that contains links to social media and sign up for newletter form.
 - on larger screens 
+
 ![screenshot of laptop footer ](/assets/screenshots/footer.png)
 - on smaller screens 
+
 ![screenshot of mobile footer ](/assets/screenshots/footermobile.png)
 
 ### Home page 
 Home page will outline the purpose of the website to the user 
+
 ![screenshot of Home Page ](/assets/screenshots/Homepage.png)
 ---
 
 ### About page 
 Will inform the user about the company and the team behind the website. Each team member will have there own card with a photo and a short bio.
-![screenshot of About Page ]()
+
+![screenshot of About Page ](/assets/screenshots/about.png)
 
 ### Recipe page 
   The recipe page will show all recipes in the database. if the user is logged in they will be able to like the recipes and save them to thier favourites.
+
 ![screenshot of Recipe Page ](/assets/screenshots/profile.png)
 
 ### Profile page 
 If a user is logged in they will be able to see the profile page. This page will allow users to view the recipes they have created, delete recipes they have created or create new ones.
+
 ![screenshot of profile Page ](/assets/screenshots/profile.png)
 
 ### Administration page
@@ -144,14 +152,17 @@ A admin page that allows admin
 
 ### Contact us page 
 Contact form allowing users to easily get in touch with any questions
+
  ![screenshot of Contact Page ](/assets/screenshots/contact.png)
 
  ### Add recipe page
  Form allowing users to add their own recipes 
+
  ![screenshot of add recipe form ](/assets/screenshots/addrecipe.png)
 
  ### Edit recipe page
  Form allowing users to edit their own recipes.
+ 
  ![screenshot of edit recipe Page ](/assets/screenshots/edit.png)
 
 # 3. Technologies Used <a id="technologies"></a>
