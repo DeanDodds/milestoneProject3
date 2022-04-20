@@ -1,3 +1,7 @@
+# The Recipe App
+The recipe app is a web application designed for users to view, share and rate recipes. 
+<a href="">
+
 # Table of contents
 
 1. [User Experience (UX)](#user-experience)
@@ -159,6 +163,7 @@ Forking a Github repositary allows you to make a copy that you can work on witho
 # 6. Credits <a id="credits"></a>
 
 ## Images <a id="images"></a>
+- Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
 - Photo by Adonyi Gábor: https://www.pexels.com/photo/assorted-vegetables-on-brown-wooden-table-1414651/
 
 ## Code <a id="code"></a>
