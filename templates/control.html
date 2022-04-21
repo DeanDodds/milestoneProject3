@@ -40,12 +40,12 @@
                     <tr>
                         <td>{{ user.username}}</td>
                         <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                data-target="delete-user-modal-{{ user.username}}">
+                                data-target="delete-user-modal-{{ user.username}}" aria-labelledby="delete user">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                             <a href="#" data-target="edit_user_modal-{{ user.username }}"
                                 class="btn modal-trigger halfway-fab right waves-effect waves-light red"><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                                    class="fa-solid fa-pen-to-square" aria-labelledby="edit user"></i></a></td>
                     </tr>
                     <!--delete user modal-->
                     <div id="delete-user-modal-{{ user.username }}" class="modal">
@@ -70,9 +70,9 @@
                                 <div class="row">
                                     <!-- username field -->
                                     <div class="input-field col s10 offset-s1">
-                                        <input id="username" value="{{ user.username }}" name="username" type="text"
+                                        <input id="username-{{ user.username }}" value="{{ user.username }}" name="username" type="text"
                                             minlength="1" class="validate" required>
-                                        <label for="username">User Name</label>
+                                        <label for="username-{{ user.username }}">User Name</label>
                                     </div>
                                     <!-- ./username field -->
                                 </div>
@@ -80,13 +80,12 @@
                                     <div class="input-field col s10 offset-s1">
                                         <!-- Admin switch -->
                                         <div class="switch">
-                                            <label for="admin">
+                                            <label for="admin-{{ user.username }}">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                <input type="checkbox" id="admin" name=admin checked
-                                                    onclick="toggleSwitch()">
+                                                <input type="checkbox" id="admin-{{ user.username }}" name=admin checked>
                                                 {% else %}
-                                                <input type="checkbox" id="admin" name=admin>
+                                                <input type="checkbox" id="admin-{{ user.username }}" name=admin>
                                                 {% endif %}
                                                 <span class="lever"></span>
                                                 On
@@ -125,11 +124,11 @@
                     <tr>
                         <td>{{ user.username}}</td>
                         <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                data-target="delete-user-modal-{{ user.username }}-2">
+                                data-target="delete-user-modal-{{ user.username }}-2" aria-labelledby="delete admin user">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                             <a href="#" data-target="edit_user_modal-{{ user.username }}-2"
-                                class="btn modal-trigger halfway-fab right waves-effect waves-light red"><i
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red" aria-labelledby="edit admin user><i
                                     class="fa-solid fa-pen-to-square"></i></a></td>
                     </tr>
                     {% endif %}
@@ -156,7 +155,7 @@
                                 <div class="row">
                                     <!-- username field -->
                                     <div class="input-field col s10 offset-s1">
-                                        <input id="username" value="{{ user.username }}" name="username" type="text"
+                                        <input id="username-1" value="{{ user.username }}" name="username" type="text"
                                             minlength="1" class="validate" required>
                                         <label for="username">User Name</label>
                                     </div>
@@ -166,14 +165,14 @@
                                     <div class="input-field col s10 offset-s1">
                                         <!-- Admin switch -->
                                         <div class="switch">
-                                            <label for="admin">
+                                            <label for="admin-{{ user.username }}1-">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                    <input type="checkbox" id="admin" name=admin checked
-                                                        onclick="toggleSwitch()">
+                                                    <input type="checkbox" id="admin-{ user.username }}-1" name=admin checked
+                                                        >
                                                 {% else %}
-                                                    <input type="checkbox" id="admin" name=admin>
-                                                {% endif %}
+                                                    <input type="checkbox" id="admin-{ user.username }}-1" name=admin>
+                                                    {% endif %}
                                                 <span class="lever"></span>
                                                 On
                                             </label>
@@ -220,11 +219,11 @@
                         <td class="display-none">{{ recipe.catergory_name }}</td>
                         <td class="display-none">{{ recipe.rating }} </td>
                         <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                data-target="delete-recipe-modal-{{ recipe.recipe_name }}">
+                                data-target="delete-recipe-modal-{{ recipe.recipe_name }}" aria-labelledby="delete user">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                             <a href="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}"
-                                class="btn halfway-fab right waves-effect waves-light red"><i
+                                class="btn halfway-fab right waves-effect waves-light red" aria-labelledby="edit recipe"><i
                                     class="fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
@@ -251,4 +250,4 @@
     </div>
 </section>
 <!-- ./admin tables -->
-{% endblock%}
+{% endblock %}

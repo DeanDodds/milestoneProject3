@@ -129,9 +129,9 @@
             </div>
             <div class="footer-copyright">
                 <div class="footer-copyright-container">
-                    <h5> Copyright &copy; <script>
+                    <span> Copyright &copy; <script>
                             document.write(new Date().getFullYear())
-                        </script> Recipe App</h5>
+                        </script> Recipe App</span>
                 </div>
             </div>
     </footer>
@@ -140,7 +140,7 @@
     <!-- modals -->
     <div id="logout" class="modal">
         <div class="modal-content">
-            <h4>Are sure you want to logut</h4>
+            <p>Are sure you want to logut</p>
         </div>
         <div class="modal-footer">
             <a href="{{ url_for('logout') }}" class="modal-close waves-effect waves-green btn-flat">Log Out</a>

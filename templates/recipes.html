@@ -38,7 +38,7 @@
         <div class="col s12 m6 l4">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-image" src="{{ recipe.img_url}}">
+                    <img class="card-image" src="{{ recipe.img_url}}" alt="photo of {{ recipe.recipe_name }}">
                     {% if session.user %}
                     {% if recipe._id in favourites %}
                     <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='recipe_page') }}" class="btn halfway-fab right liked
