@@ -196,7 +196,7 @@ Contact form allowing users to easily get in touch with any questions
   Used to build the application
 - <a href="https://www.mongodb.com/">Mongodb: </a>
 Used to store my database 
-- <a href="">Werkzeug: </a>
+- <a href="https://werkzeug.palletsprojects.com/en/2.1.x/">Werkzeug: </a>
   Flask dependency a utility libraries
 - <a href="https://fontawesome.com/">Font Awesome:</a>
   Used to import icons that used across every page of the website.
@@ -211,7 +211,10 @@ Used to store my database
 - <a href="http://https://randomkeygen.com/">Randomkeygen:</a>
   Used to generate secure passwords.
 - <a href="https://dashboard.heroku.com/apps">HEROKU:</a> Used to deploy the python app.
+- <a href="https://www.photopea.com/">Photopea</a> Used to edit photos. 
+- <a href="https://tinypng.com/">TinyPNG</a> Used to compress images. 
 
+<!-- ## Feature Features  -->
 ---
 
 # 4. Deployment <a id="deployment"></a>
@@ -251,9 +254,23 @@ To create a mongodb database
 
 ## Environment variables and app set up
 
-In order to connect you to the database and set up your python app you mus set up a env.py file. This is a  file containing key value pairs of all the environment variables required to configure you application 
+In order to connect you to the database and set up your python app you must set up a env.py file. This is a  file containing key value pairs of all the environment variables required to configure you application. This is then linked into you app.py file. 
 
-## Deploying a python HEROKU app
+| ![example env.py file](/assets/screenshots/examplleenv.png) |
+|:--:|
+| <b>example env.py file</b>|
+
+## Deployment to a local server 
+
+In order to text your website locally you can deploy it on a local server for testing purposes. Todo the run your application on the local server you must run you app.py file in your terminal by using 
+```
+python3 app.py
+```
+this will deploy the app on a local port 8080. You can stop the app running by pressing control and c on mac or ctrl and c on windows. Close all ports by typing 
+```
+pkill -9 python3 
+```
+## Deploying a your live python HEROKU app
 
 Before you can set up a HEROKU app you must set up a 
 application.
@@ -261,16 +278,13 @@ application.
 - a Procfile file - this pecifies the commands that are executed by the app on startup
 in you github repository.
 
-1. To begain with HEROKU you must  firt create an account. 
+1. To begain with HEROKU you must firt create an account. on the <a href="https://id.heroku.com/login">HEROKU website</a>
 2. Once logged in create new app. when seleting the app name this app keep in mind that it must be unique.
 and then select your region and create app.
 3. Then select the deploy tab and scoll to the deployment method section. you can connect you app by either the HEROKU CLI or through Github. I selected GitHuB so i can use the automatic deployment feature 
 4. Then go to the settings tab and set up you Congfi Vars. These variables will be the same as the ones in you env.py file 
 5. You can then go back to the deploy tab and select automatic deployment 
 6. you site is now live    
-
-
-
 ------
 
 # 6. Credits <a id="credits"></a>
