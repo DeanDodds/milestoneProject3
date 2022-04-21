@@ -5,33 +5,34 @@
 <nav class="nav-extended center">
     <div class="nav-content col s-12">
         <ul class="tabs tabs-transparent">
-            <li class="tab"><a class="active" href="{{ url_for('profile', username=session['user']) }}">My Recipes</a>
+            <li class="tab"><a href="{{ url_for('profile', username=session['user']) }}">My Recipes</a>
             </li>
             <li class="tab"><a href="{{ url_for('addrecipe') }}">Add Recipes</a></li>
             <li class="tab"><a href="{{ url_for('favourites') }}">My Favourites</a></li>
             {% if admin == "on" %}
-            <li class="tab"><a href="{{ url_for('control') }}">Control Panel</a></li>
+            <li class="tab"><a class="active" href="{{ url_for('control') }}">Control Panel</a></li>
             {% endif %}
         </ul>
     </div>
 </nav>
 
+<!-- admin tables -->
 <section id="control">
-    <div class="row">
-        <div>
-            <button class="btn" onclick="viewUsers()">Users</button>
-            <button class="btn" onclick="viewAdminUsers()()">Admin</button>
-            <button class="btn" onclick="viewRecipes()">Recipes</button>
+    <div class="row admin">
+        <div class="col s12 m8 offset-m4" id="admin-btn">
+            <button class="btn admin-btn" onclick="viewUsers()">Users</button>
+            <button class="btn admin-btn" onclick="viewAdminUsers()()">Admin</button>
+            <button class="btn admin-btn" onclick="viewRecipes()">Recipes</button>
         </div>
     </div>
-    `
+
     <!-- Users table-->
     <div id="users" class="row">
-        <div>
+        <div class="col s12 m8 offset-m2">
             <table>
                 <thead>
                     <tr>
-                        <td>Users</td>
+                        <th colspan="2">Users</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,11 +112,11 @@
 
     <!-- Admin User table-->
     <div id="admin-users" class="row off">
-        <div>
+        <div class="col s12 m8 offset-m2">
             <table>
                 <thead>
                     <tr>
-                        <td>Admin Users</td>
+                        <th colspan="2">Admin Users</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -168,10 +169,10 @@
                                             <label for="admin">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                <input type="checkbox" id="admin" name=admin checked
-                                                    onclick="toggleSwitch()">
+                                                    <input type="checkbox" id="admin" name=admin checked
+                                                        onclick="toggleSwitch()">
                                                 {% else %}
-                                                <input type="checkbox" id="admin" name=admin>
+                                                    <input type="checkbox" id="admin" name=admin>
                                                 {% endif %}
                                                 <span class="lever"></span>
                                                 On
@@ -197,17 +198,17 @@
 
     <!-- Recipes-->
     <div id="recipes" class="row off">
-        <div>
+        <div class="col s12 m8 offset-m2">
             <table>
                 <thead>
                     <tr>
-                        <td>Recipes</td>
+                        <th colspan="4">Recipes</th>
                     </tr>
                     <tr>
                         <td>Name</td>
                         <td>Cusine Type</td>
-                        <td>Catergory name</td>
-                        <td>Rating </td>
+                        <td class="display-none">Catergory name</td>
+                        <td class="display-none">Rating </td>
                         <td>Edit</td>
                     </tr>
                 </thead>
@@ -216,8 +217,8 @@
                     <tr>
                         <td>{{ recipe.recipe_name }}</td>
                         <td>{{ recipe.cusine_name }}</td>
-                        <td>{{ recipe.catergory_name }}</td>
-                        <td>{{ recipe.rating }} </td>
+                        <td class="display-none">{{ recipe.catergory_name }}</td>
+                        <td class="display-none">{{ recipe.rating }} </td>
                         <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
                                 data-target="delete-recipe-modal-{{ recipe.recipe_name }}">
                                 <i class="fa-solid fa-trash"></i>
@@ -249,4 +250,5 @@
         </div>
     </div>
 </section>
+<!-- ./admin tables -->
 {% endblock%}

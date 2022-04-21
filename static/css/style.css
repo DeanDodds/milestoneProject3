@@ -12,7 +12,8 @@
 h1,
 h2,
 h3,
-h4 {
+h4,
+th {
     font-family: "Bitter", sans-serif;
 }
 
@@ -22,7 +23,8 @@ h1 {
     padding: 10px;
 }
 
-h2 {
+h2,
+th {
     font-size: 3em;
     font-weight: 700;
     padding: 8px;
@@ -46,7 +48,8 @@ h5 {
 
 button,
 p,
-li {
+li,
+td {
     font-family: "Open Sans", sans-serif;
     font-size: 1.6em;
 }
@@ -64,7 +67,7 @@ nav li a {
     color: #fafafa;
 }
 
-/* side */
+/* side nav*/
 
 .sidenav li a {
     font-size: 0.8em;
@@ -91,7 +94,7 @@ nav li a {
 }
 
 .checked {
-    color: gold;
+    color: #F2B705;
 }
 
 .liked {
@@ -198,8 +201,8 @@ input {
         margin-bottom: 0px;
         padding-bottom: 0px;
         width: 100%;
-
     }
+
 }
 
 /* Forms */
@@ -288,6 +291,42 @@ input {
     background-color: #D90416;
 }
 
+/* admin page */
+
+#admin-btn {
+    padding: 2%;
+}
+
+.admin-btn {
+    margin: 2px;
+}
+
+th {
+    text-align: center;
+}
+
+table {
+    margin: 0 auto 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #F2B705;
+    color: #467302;
+}
+
+@media only screen and (max-width: 400px) {
+    #admin-btn {
+        padding: 3%;
+    }
+
+    .display-none {
+        display: none;
+    }
+
+}
+
+/* each recipe page */
 
 /* recipe page rating form */
 .container {
