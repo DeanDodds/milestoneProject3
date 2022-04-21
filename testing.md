@@ -5,6 +5,8 @@
    - [css validator](#css)
    - [python Pep8 complience](#pep8) 
    - [javaScript jshint complience](#javscript) 
+2. [Lighthouse reports](#lighthouse)
+3. 
 
 # 1. Validation <a id="validation"></a>
 
@@ -81,6 +83,186 @@ I used the jShint validator to to ensure there was no syntax errors in my JavaSc
 ![script.js validated](/assets/screenshots/jshint.png) |
 |:--:|
 | <b>script.js validated  - Passed  - unsed variables are onclick functions function</b>|
+
+# 2. Lighthouse Testing <a id="lighthouse"></a>
+
+All my pages have went through google devtools lighthouse analysis which are scored on: 
+* Performance 
+* Accesibility 
+* Best Practices 
+* Search Engine Optimization (SEO)
+
+![home page lighthouse scores](/assets/screenshots/homeseo.png) |
+|:--:|
+| <b>home page lighthouse scores - All fine  - no issues</b>|
+
+![About us page lighthouse scores](/assets/screenshots/aboutlight.png) |
+|:--:|
+| <b>About us page lighthouse scores - All fine  - no issues</b>|
+
+![Recipes page lighthouse scores](/assets/screenshots/recipelight.png) |
+|:--:|
+| <b>Recipes page lighthouse scores - All fine  - no issues</b>|
+
+![Contact us page lighthouse scores](/assets/screenshots/contactlight.png) |
+|:--:|
+| <b>Contact us page lighthouse scores - All fine  - no issues</b>|
+
+![Profile page lighthouse scores](/assets/screenshots/profilelight.png) |
+|:--:|
+| <b>Profile page lighthouse scores - All fine  - no issues</b>|
+
+![Favourites page lighthouse scores](/assets/screenshots/favouriteslight.png) |
+|:--:|
+| <b>Favourites pag lighthouse scores - All fine  - no issues</b>|
+
+![Sign up page lighthouse scores](/assets/screenshots/signuplight.png) |
+|:--:|
+| <b>Sign up page lighthouse scores - All fine  - no issues</b>|
+
+![Login page lighthouse scores](/assets/screenshots/loginlight.png) |
+|:--:|
+| <b>Login page lighthouse scores - All fine  - no issues</b>|
+
+![individual recipe pages lighthouse scores](/assets/screenshots/eachrecipelight.png) |
+|:--:|
+| <b>individual recipe pages - Accesibility and best practices to be improved - Accesibility could be improved   - Aria labels to be added and labels to be added to links </b>|
+
+![Add recipe page lighthouse scores](/assets/screenshots/addrecipelight.png) |
+|:--:|
+| <b>Add recipe page lighthouse scores - Accesibility could be improved   - Aria labels to be added and labels to be added to links </b>|
+
+![Admin page lighthouse scores](/assets/screenshots/adminpagelight.png) |
+|:--:|
+| <b>Admin page lighthouse scores - Accesibility could be improved   - Aria labels to be added and labels to be added to links through tooltips </b>|
+
+# 3.  Testing User Stories 
+
+### First Time Visitor Goals
+1. As a first time visitor, I want to easily understand the purpose of the website.
+ * When entering the site users can clearly see the navigation bar and the purpose of the site is very clear
+
+ ![home page screenshot](/assets/screenshots/Homepage.png) |
+|:--:|
+| <b>Outline of the home page and a clear navigation bar at the top of the page</b>|
+
+2.  As a first time visitor, i want to eaily navigate through the website to find the information i want.
+   * The website has a navigation bar at the top of every page allowing
+    the user to easily navigate through the pages 
+
+![navbar screenshot](/assets/screenshots/navbar.png) |
+|:--:|
+| <b>clear navigation bar at the top of each page </b>|
+
+3. As a first time visitor, I want to be able to view the website on all my devices.
+ * Website is fully responsive. 
+
+![home page mobile](/assets/screenshots/iphone.png) |
+|:--:|
+| <b>mobile version for small screens</b>|
+
+![home page tablet](/assets/screenshots/tablet.png) |
+|:--:|
+| <b>Tablet version for medium screens</b>|
+
+4. As a first time visitor, I want to view recipes without logging in.
+ * Log in page can easily be navigated to using the navigation bar.
+ * Users can view the recipes easily wihout making an account. 
+ 
+![recipe page](/assets/screenshots/logoutedrecipecard.png) |
+|:--:|
+| <b>Users can search and view all recipes without logging in</b>|
+
+5. As a first time visitor, I want to beable to create and account easily if i want to. 
+ * Sign in page can easily be navigated to using the navigation bar.
+ * Sign up to an accounts is very easy and sign posted in the navigation bar and login page.
+
+![Sign in page](/assets/screenshots/signup.png) |
+|:--:|
+| <b>Users can sign up using the sign up page </b>|
+ 
+### Returning Visitor Goals
+1. As a returning visitor, I want to beable to easily log in to my account.
+ * Login page is clearly sign posted in the navigation bar 
+
+![login page](/assets/screenshots/login.png) |
+|:--:|
+| <b>Users login using the login page</b>|
+
+2. As a returning visitor, I want to beable to add my own recipes to the website.
+ * Once logged in users can add recipes to the website on the add recipe page.
+
+![add recipe page](/assets/screenshots/addrecipe.png) |
+|:--:|
+| <b>Users lcan add a recipe to the website if they have an accout </b>|
+
+3. As a returning visitor, I want to beable to save recipes to my account.
+ * users are easily able to save there favourite recipes to their account as all recipes have a like button.
+ * The recipes are then saved to the users favourites page.
+
+ ![favourites button](/assets/screenshots/editbuttons.png) |
+|:--:|
+|<b>Buttons on each recipe card for deleting, editing and adding recipes to favourites</b>|
+
+4. As a returning visitor, I want to beable to rate recipes.
+ * All recipes can be rated from 1-5 on their indivadual recipe pages. users can also see how many time the recipe has been rated.
+
+![rating form](/assets/screenshots/ratingform.png) |
+|:--:|
+|<b>Star rating form</b>|
+
+5. As a returning visitor, I want to beable to sign up to the newsletter and find out the latest information 
+ * There is a newsletter sign up form in the footer of every page.
+
+![newsletter sign up form](/assets/screenshots/footermobile.png) |
+|:--:|
+|<b>Sign up to newsletter clearly sign posted in the footer</b>| 
+
+6. As a returning visitor, i want to beable to find social media links to different platforms.
+ *  There is social media links in the footer of every page. 
+
+![social media links](/assets/screenshots/footer.png)|
+|:--:|
+|<b>social media links clearly sign posted in the footer</b>| 
+
+
+
+### Website Creator Goals
+1. As the website creator, I want to beable to advertise cooking products.
+ * This goal was not hit however is a feature to revist in the future. 
+2. As the website creator, I want to beable to edit and delete all recipes.
+ * Admin page allows all recipes to be edited by an admin users.
+
+ ![admin page](/assets/screenshots/adminpage.png) |
+|:--:|
+|<b>admin users can delete users and recipes from the control panel admin page</b>|  
+
+3. As a website creator, I want to create a website that works on all platforms.
+ * website is fully responsive.
+
+![home page mobile](/assets/screenshots/iphone.png) |
+|:--:|
+| <b>mobile version for small screens</b>|
+
+![home page tablet](/assets/screenshots/tablet.png) |
+|:--:|
+| <b>Tablet version for medium screens</b>|
+
+4. As a website creator, I want to create a good user experience by having a clear navigation system.
+ * website navigation is clear 
+
+![navbar screenshot](/assets/screenshots/navbar.png) |
+|:--:|
+|<b>clear navigation bar at the top of each page </b>|
+
+5. As a website creator, I want my website load times to be low. I do not want users leaving the site before it has time to load.
+ * all pages have an above 90 light house score see [Lighthouse reports](#lighthouse)
+  
+6. As a website creator, I want my website to be as accesible as possible in order to be inclusive to all potenial users.
+ * Most pages have a above 90 accesibility score. See [Lighthouse reports](#lighthouse)
+
+
+
 
 # Test Plan 
                                                        
