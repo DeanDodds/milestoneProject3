@@ -128,7 +128,7 @@ def profile(username):
         # gets user favourites from the database
         favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
-        if check_admin:
+        if check_admin == "on":
             return render_template(
                 "profile.html", username=username,
                 recipes=recipes, favourites=favourites, admin=check_admin)
@@ -143,14 +143,27 @@ def profile(username):
 
 @app.route("/control")
 def control():
-    """ Dispalys control panel for admin users """
-    username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
-    print(username)
-    recipes = list(mongo.db.recipes.find())
-    users = list(mongo.db.users.find())
+    if 'user' in session:
+        """ Dispalys control panel for admin users """
+        username = mongo.db.users.find_one(
+                {"username": session["user"]})["username"]
+        check_admin = mongo.db.users.find_one(
+                {"username": session["user"]})["admin"]
+        recipes = list(mongo.db.recipes.find())
+        users = list(mongo.db.users.find())
+        if check_admin == "on":
+            return render_template("control.html", 
+                                   recipes=recipes, 
+                                   users=users, admin=check_admin)
+        else:
+            favourites = mongo.db.users.find_one(
+            {"username": session["user"]})["favourites"]
+            flash('Please log on to an admin account to view this page')
+            return redirect(url_for("profile",username=username,
+                recipes=recipes, favourites=favourites))
 
-    return render_template("control.html", recipes=recipes, users=users)
+    flash('You must be logged in to view this page')
+    return redirect(url_for("login"))
 
 
 @app.route("/logout")
