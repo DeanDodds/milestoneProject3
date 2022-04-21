@@ -12,6 +12,48 @@ I used the W3C Markup and CSS Validator Service to ensure there was no syntax er
 
 # Html <a id="html"></a> 
 
+| ![index page validation](/assets/screenshots/homeval.png) |
+|:--:|
+| <b>index page validation - Passed  - No errors or warnings</b>|
+
+ ![Recipes page validation](/assets/screenshots/recipeval.png) |
+|:--:|
+| <b>Recipe page validation - Passed  - No errors or warnings</b>|
+
+ ![About us  page validation](/assets/screenshots/aboutval.png) |
+|:--:|
+| <b>About us validation - Passed  - No errors or warnings</b>|
+
+ ![Contact us  page validation](/assets/screenshots/contactval.png) |
+|:--:|
+| <b>Contact us validation - Passed  - No errors or warnings</b>|
+
+ ![Profile page validation](/assets/screenshots/profileval.png) |
+|:--:|
+| <b>Profile page validation - Passed  - No errors or warnings</b>|
+
+ ![Add recipe validation](/assets/screenshots/addrecipeval.png) |
+|:--:|
+| <b>Add recipe validation - Passed  - No errors or warnings</b>|
+
+ ![Favourites validation](/assets/screenshots/favouritesval.png) |
+|:--:|
+| <b>Favourites validation - Passed  - No errors or warnings</b>|
+
+ ![Admin Page validation](/assets/screenshots/controlpanelval.png) |
+|:--:|
+| <b>Admin page validation - Passed  - No errors or warnings</b>|
+
+ ![login validation](/assets/screenshots/loginval.png) |
+|:--:|
+| <b>Login page validation - Passed  - No errors or warnings</b>|
+
+![Sign up validation](/assets/screenshots/signupval.png) |
+|:--:|
+| <b>Sign up validation - Passed  - No errors or warnings</b>|
+
+
+
 
 
 
