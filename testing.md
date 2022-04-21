@@ -50,12 +50,37 @@ I used the W3C Markup and CSS Validator Service to ensure there was no syntax er
 
 ![Sign up validation](/assets/screenshots/signupval.png) |
 |:--:|
-| <b>Sign up validation - Passed  - No errors or warnings</b>|
+| <b>Sign up page validation - Passed  - No errors or warnings</b>|
 
+![a individual recipe validation](/assets/screenshots/eachrecipeval.png) |
+|:--:|
+| <b>individual recipe page validation - Passed  - No errors or warnings</b>|
 
+## CSS <a id="css"></a>
 
+![CSS validation](/assets/screenshots/cssval.png) |
+|:--:|
+| <b>CSS validation  - Passed  - All errors and warnings from the meterialised css files</b>|
 
+## Python Pep8 complience <a id="pep8"></a>
 
+I used the Pep8 validator to to ensure there was no syntax errors in my python code
+
+![env.py file validated](/assets/screenshots/envval.png) |
+|:--:|
+| <b>env.py file validated  - Passed  - 1 error however the line cannot be split to fix this error</b>|
+
+![app.py file validated](/assets/screenshots/appval.png) |
+|:--:|
+| <b>app.py file validated  - Passed  - No errors or warnings</b>|
+
+## JavaScript jshint complience <a id="javascript"></a>
+
+I used the jShint validator to to ensure there was no syntax errors in my JavaScript code
+
+![script.js validated](/assets/screenshots/jshint.png) |
+|:--:|
+| <b>script.js validated  - Passed  - unsed variables are onclick functions function</b>|
 
 # Test Plan 
                                                        
