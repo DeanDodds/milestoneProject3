@@ -70,8 +70,8 @@
                                 <div class="row">
                                     <!-- username field -->
                                     <div class="input-field col s10 offset-s1">
-                                        <input id="username-{{ user.username }}" value="{{ user.username }}" name="username" type="text"
-                                            minlength="1" class="validate" required>
+                                        <input id="username-{{ user.username }}" value="{{ user.username }}"
+                                            name="username" type="text" minlength="1" class="validate" required>
                                         <label for="username-{{ user.username }}">User Name</label>
                                     </div>
                                     <!-- ./username field -->
@@ -83,7 +83,8 @@
                                             <label for="admin-{{ user.username }}">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                <input type="checkbox" id="admin-{{ user.username }}" name=admin checked>
+                                                <input type="checkbox" id="admin-{{ user.username }}" name=admin
+                                                    checked>
                                                 {% else %}
                                                 <input type="checkbox" id="admin-{{ user.username }}" name=admin>
                                                 {% endif %}
@@ -124,12 +125,14 @@
                     <tr>
                         <td>{{ user.username}}</td>
                         <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                data-target="delete-user-modal-{{ user.username }}-2" aria-labelledby="delete admin user">
+                                data-target="delete-user-modal-{{ user.username }}-2"
+                                aria-labelledby="delete admin user">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                             <a href="#" data-target="edit_user_modal-{{ user.username }}-2"
-                                class="btn modal-trigger halfway-fab right waves-effect waves-light red" aria-labelledby="edit admin user><i
-                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                                aria-labelledby="edit admin user><i
+                                    class=" fa-solid fa-pen-to-square"></i></a></td>
                     </tr>
                     {% endif %}
                     <!--delete user modal-->
@@ -168,11 +171,11 @@
                                             <label for="admin-{{ user.username }}1-">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                    <input type="checkbox" id="admin-{ user.username }}-1" name=admin checked
-                                                        >
+                                                <input type="checkbox" id="admin-{ user.username }}-1" name=admin
+                                                    checked>
                                                 {% else %}
-                                                    <input type="checkbox" id="admin-{ user.username }}-1" name=admin>
-                                                    {% endif %}
+                                                <input type="checkbox" id="admin-{ user.username }}-1" name=admin>
+                                                {% endif %}
                                                 <span class="lever"></span>
                                                 On
                                             </label>
@@ -219,17 +222,17 @@
                         <td class="display-none">{{ recipe.catergory_name }}</td>
                         <td class="display-none">{{ recipe.rating }} </td>
                         <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                data-target="delete-recipe-modal-{{ recipe.recipe_name }}" aria-labelledby="delete user">
+                                data-target="delete-recipe-modal-{{ recipe._id }}" aria-labelledby="delete user">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                             <a href="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}"
-                                class="btn halfway-fab right waves-effect waves-light red" aria-labelledby="edit recipe"><i
-                                    class="fa-solid fa-pen-to-square"></i>
+                                class="btn halfway-fab right waves-effect waves-light red"
+                                aria-labelledby="edit recipe"><i class="fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
                     </tr>
                     <!--delete recipe modal-->
-                    <div id="delete-recipe-modal-{{ recipe.recipe_name }}" class="modal">
+                    <div id="delete-recipe-modal-{{ recipe._id }}" class="modal">
                         <div class="modal-content">
                             <h4>Are you sure you want to delete {{ recipe.recipe_name }}?</h4>
                             <p>If you delete this recipe it will be deleted permenitly. Are you sure you want to
