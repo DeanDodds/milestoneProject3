@@ -83,12 +83,12 @@
                                     class="fa-solid fa-pen-to-square"></i></a>
                             <a href="delete-recipe-modal"
                                 class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                data-target="delete-recipe-modal">
+                                data-target="delete-{{ recipe.recipe_name }}recipe-modal">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </div>
                         <!-- delete recipe modal -->
-                        <div id="delete-recipe-modal" class="modal">
+                        <div id="delete-{{ recipe.recipe_name }}-recipe-modal" class="modal">
                             <div class="modal-content">
                                 <h4>Are you sure you want to delete this recipe?</h4>
                                 <p>If you delete this recipe it will be deleted permenitly. Are you sure you want to
@@ -105,8 +105,8 @@
                     <div class="card-content">
                         <span class="card-title">{{ recipe.recipe_name }}</span>
                         <p>{{ recipe.description }}</p>
+                        <p>Rating: {{ recipe.rating }}</p>
                         <span>
-                            <p>Rating: {{ recipe.rating }}</p>
                             {% if recipe.rating | int >= 1 %}
                             <span class="fa fa-star checked"></span>
                             {% else %}
@@ -136,7 +136,7 @@
                         </span>
                         <p>created by {{ recipe.author }}</p>
                         <div>
-                            <a a href="{{ url_for( 'recipe_page', recipe_id=recipe._id) }}"
+                            <a href="{{ url_for( 'recipe_page', recipe_id=recipe._id) }}"
                                 class="waves-effect waves-light btn">View Recipe</a>
                         </div>
                     </div>

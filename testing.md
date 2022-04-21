@@ -1,5 +1,21 @@
-# Test Plan 
+# Table of contents
 
+1. [Validation](#validation) 
+   - [html validator](#html)
+   - [css validator](#css)
+   - [python Pep8 complience](#pep8) 
+   - [javaScript jshint complience](#javscript) 
+
+# 1. Validation <a id="validation"></a>
+
+I used the W3C Markup and CSS Validator Service to ensure there was no syntax errors throughout my website.
+
+# Html <a id="html"></a> 
+
+
+
+
+# Test Plan 
                                                        
 | Test number | Page |Test Description|Expected Outcome|ScreenShot| Pass/Fail| Comment |
 |:-----------:|:----:|:--------------:|:--------------:|:--------:|:--------:|:-------:|
