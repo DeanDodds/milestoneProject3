@@ -126,6 +126,19 @@ All pages have a responsive footer that contains links to social media and sign 
 
 ![screenshot of mobile footer ](/assets/screenshots/footermobile.png)
 
+### Sign up page 
+
+a form to allow users to sign up for an accout 
+![screenshot of the sign up page ](/assets/screenshots/signup.png)
+
+### Login Page 
+a form to allow users to log in to thier accout 
+![screenshot of the log in page ](/assets/screenshots/login.png)
+
+### Logout option
+log out button in the navbar 
+![screenshot of the log out button ](/assets/screenshots/navbar.png)
+
 ### Home page 
 Home page will outline the purpose of the website to the user 
 
@@ -148,7 +161,8 @@ If a user is logged in they will be able to see the profile page. This page will
 ![screenshot of profile Page ](/assets/screenshots/profile.png)
 
 ### Administration page
-A admin page that allows admin
+A admin page that allows admin to edit and delete user profiles and recipes
+![screenshot of admin Page ](/assets/screenshots/adminpage.png)
 
 ### Contact us page 
 Contact form allowing users to easily get in touch with any questions
