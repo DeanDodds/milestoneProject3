@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- hero image -->
-<section>
+<div>
     <div class="hero-image">
         <!-- search bar -->
         <div class="row search-bar">
@@ -26,12 +26,12 @@
         </div>
         <!-- ./searchbar -->
     </div>
-</section>
+</div>
 <!-- hero -->
 
 
 <!-- recipe cards -->
-<section>
+<div>
     <div class="row">
         {% if recipes|length > 0 %}
         {% for recipe in recipes %}
@@ -82,12 +82,11 @@
                         <span class="fa fa-star"></span>
                         {% endif %}
                         {{ recipe.star_ratings|length }}
-                        </span>
                         <div>
                             <p>created by: {{ recipe.author }}</p>
                         </div>
                         <div>
-                            <a a href="{{ url_for( 'recipe_page', recipe_id=recipe._id) }}"
+                            <a href="{{ url_for( 'recipe_page', recipe_id=recipe._id) }}"
                                 class="waves-effect waves-light btn">View Recipe</a>
                         </div>
                     </div>
@@ -99,7 +98,7 @@
     {% else %}
     <h2>No recipes found</h2>
     {% endif %}
-</section>
+</div>
 <!-- ./recipe cards -->
 
 {% endblock %}
