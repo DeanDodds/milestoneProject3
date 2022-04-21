@@ -168,13 +168,13 @@ input {
 .hero-image {
     display: flex;
     align-items: flex-end;
-    background-image: url("/static/images/hero.webp");
+    background-image: url("/static/images/herocompressed.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 600px;
 }
 
 /* Page introduction messages  */
