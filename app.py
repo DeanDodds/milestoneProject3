@@ -186,7 +186,7 @@ def addrecipe():
             recipe = {
                 "author": session["user"],
                 "catergory_name": request.form.get("catergory_name"),
-                "cusine_name": request.form.get("cusine_name"),
+                "cuisine_name": request.form.get("cuisine_name"),
                 "recipe_name": request.form.get("recipe_name"),
                 "servings": request.form.get("servings"),
                 "instructions": request.form.get("instructions").splitlines(),
@@ -200,12 +200,14 @@ def addrecipe():
             mongo.db.recipes.insert_one(recipe)
             flash("Recipe Successfully Added")
             return redirect(url_for("profile", username=session["user"]))
-        # Gets the cuisine names from database
-        cuisine = mongo.db.cuisine.find().sort("cuisine_name, 1")
         # Gets the catergorie names from database
         catergories = mongo.db.catergories.find().sort("catergory_name, 1")
+        # Gets the cuisine names from database
+        cuisines = list(mongo.db.cuisines.find().sort("cuisine_name, 1"))
+        print(catergories)
+        print(cuisines)
         return render_template(
-            "addrecipe.html", cuisine=cuisine, catergories=catergories)
+            "addrecipe.html", catergories=catergories, cuisines=cuisines)
     # Displays a message to user
     flash('Please log in to add a recipe')
     return redirect(url_for("login"))
@@ -219,7 +221,7 @@ def editrecipe(recipe_id):
     # Gets the catergouries from the database
     catergories = list(mongo.db.catergories.find().sort("catergory_name, 1"))
     # Gets the cuisine names from the database
-    cuisine = list(mongo.db.cuisine.find().sort("cuisine_name, 1"))
+    cuisines = list(mongo.db.cuisines.find().sort("cuisine_name, 1"))
     # Gets Favourites ffrom  the database
     favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
@@ -242,7 +244,7 @@ def editrecipe(recipe_id):
         submit = {
             "author": session["user"],
             "catergory_name": request.form.get("catergory_name"),
-            "cusine_name": request.form.get("cusine_name"),
+            "cuisine_name": request.form.get("cuisine_name"),
             "recipe_name": request.form.get("recipe_name"),
             "servings": request.form.get("servings"),
             "instructions": request.form.get("instructions").splitlines(),
@@ -264,7 +266,7 @@ def editrecipe(recipe_id):
                 recipes=recipes, favourites=favourites)
     if 'user' in session:
         return render_template("editrecipe.html",
-                               cuisine=cuisine, catergories=catergories,
+                               cuisines=cuisines, catergories=catergories,
                                recipe=recipe)
     # If users not logged im they get redirected to log in
     flash('Please log in to edit recipe')
