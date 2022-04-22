@@ -1,5 +1,5 @@
 # The Recipe App
-Recipe app is a website dedicated to sharing delicious food. Everyone is welcome from beginner cooks to profeesional chef. Our aim is to build a community of foodies were we can share our recipe ideas with each
+Recipe app is a website dedicated to sharing delicious food. Everyone is welcome from beginner cooks to profeesional chef. Our aim is to build a community of foodies where we can share our recipe ideas with each
 other. 
 
 <a href="https://dean-milestone-project-3.herokuapp.com/">Go to live website.....</a>
@@ -17,10 +17,10 @@ other.
    - [Langagues Used](#langagues)
    - [Frameworks, Libraries and Programs used](#frameworks)
 4. [Deployment](#deployment)
-   - [Making a local clone](#clone)
+   - [Making a Local Clone](#clone)
    - [Forking the GitHub Repository](#fork)
 5. [Credis](#credits)
-   - [images](#images)
+   - [Images](#images)
    - [Code](#code)
 6. [Acknowledgements](#acknowledgements)
 
@@ -30,23 +30,23 @@ other.
 
 ### First Time Visitor Goals
 - As a first time visitor, I want to easily understand the purpose of the website.
-- As a first time visitor, i want to eaily navigate through the website to find the information i want.
+- As a first time visitor, I want to eaily navigate through the website to find the information I want.
 - As a first time visitor, I want to be able to view the website on all my devices.
 -  As a first time visitor, I want to view recipes without logging in.
-- As a first time visitor, I want to beable to create and acount easily if i want to. 
+- As a first time visitor, I want to be able to create and acount easily if i want to. 
 
 ### Returning Visitor Goals
-- As a returning visitor, I want to beable to easily log in to my account.
-- As a returning visitor, I want to beable to add my own recipes to the website.
-- As a returning visitor, I want to beable to save websites to my account.
-- As a returning visitor, I want to beable to rate recipes.
-- As a returning visitor, I want to beable to sign up to the newsletter and find out the latest information 
-- As a returning visitor, i want to beable to find social media links to different platforms.
+- As a returning visitor, I want to be able to easily log in to my account.
+- As a returning visitor, I want to be able to add my own recipes to the website.
+- As a returning visitor, I want to be able to save websites to my account.
+- As a returning visitor, I want to be able to rate recipes.
+- As a returning visitor, I want to be able to sign up to the newsletter and find out the latest information 
+- As a returning visitor, I want to be able to find social media links to different platforms.
 
 
 ### Website Creator Goals
-- As the website creator, I want to beable to advertise cooking products.
-- As the website creator, I want to beable to edit and delete all recipes.
+- As the website creator, I want to be able to advertise cooking products.
+- As the website creator, I want to be able to edit and delete all recipes.
 - As a website creator, I want to create a website that works on all platforms.
 - As a website creator, I want to create a good user experience by having a clear navigation system.
 - As a website creator, I want my website load times to be low. I do not want users leaving the site before it has time to load.
@@ -57,15 +57,15 @@ other.
 
 ### Typography
 
-- Pacifico is the main font used for my logo with a sans serif fallback.
-- Bitter is the main font used for all headers with a sans serif fallback.
-- Open Sans is the font used for the main text area of the web appliction with a sans serif fallback. This compliments the Bitter font nicely.
+- Pacifico is the main font used for my logo with a Sans Serif fallback.
+- Bitter is the main font used for all headers with a Sans Serif fallback.
+- Open Sans is the font used for the main text area of the web appliction with a Sans Serif fallback. This compliments the Bitter font nicely.
 
 ### Colour theme
 
 ![Color palette 1](/assets/screenshots/colorpallete.jpeg)
 
-## Imagary
+## Imagery
 
 - 1 X favicon
 
@@ -75,7 +75,7 @@ other.
 
 ### Recipe page, profile and favourites
 - 1 x hero image 
-- 1 x default image incase user does not link a image to there recipe
+- 1 x default image incase user does not link an image to their recipe
 
 ### About page
 - 1 x hero image 
@@ -99,6 +99,10 @@ The wireframes for the website were created on Drawio, there is a desktop, table
 - Contact us laptop wireframe [View](/assets/wireframes/wireframes-contactus-page-laptop.drawio.png)
 - Contact us mobile wireframe [View](/assets/wireframes/wireframes-aboutus-pape-mobile.drawio.png)
 
+## Database  modeling.
+
+
+
 ---
 
 # 2. Features <a id="features"></a>
@@ -118,7 +122,7 @@ All pages have a collapsible navigation bar, this makes it fully responsive on a
 ![screenshot of mobile navbar ](/assets/screenshots/navbarmobile.png)
 
 ### Footer
-All pages have a responsive footer that contains links to social media and sign up for newletter form.
+All pages have a responsive footer that contains links to social media and a sign up for the newletter form.
 - on larger screens 
 
 ![screenshot of laptop footer ](/assets/screenshots/footer.png)
@@ -156,12 +160,12 @@ Will inform the user about the company and the team behind the website. Each tea
 ![screenshot of Recipe Page ](/assets/screenshots/profile.png)
 
 ### Profile page 
-If a user is logged in they will be able to see the profile page. This page will allow users to view the recipes they have created, delete recipes they have created or create new ones.
+If a user is logged in they will be able to see the profile page. This page will allow users to view the recipes they have created, delete recipes they have created, and create new recipes.
 
 ![screenshot of profile Page ](/assets/screenshots/profile.png)
 
 ### Administration page
-A admin page that allows admin to edit and delete user profiles and recipes
+An admin page that allows admin to edit and delete user profiles and recipes
 ![screenshot of admin Page ](/assets/screenshots/adminpage.png)
 
 ### Contact us page 
@@ -181,20 +185,20 @@ Contact form allowing users to easily get in touch with any questions
 
 ## Defensive Programing 
 
-In order to protect my users data i have used some defensive programing. My application protects the data Through:
-1. Python functions that check
- * check to see if the user is signed in, using session cookies 
+In order to protect my users data I have used some defensive programing. My application protects the data through:
+1. Python functions that check:
+ * to see if the user is signed in by checking user session cookies 
  * if a user is editing data. The function will check that the user who is signed in is the creater of the data or an admin user. <br> 
 
 These steps help prevent the use of brute force.   
 
 | ![brute force attempt](/assets/screenshots/bruteforce.png) |
 |:--:|
-| <b>attempt to copy the delete recipe link when user is not signed in</b>|
+| <b>screen shot showing an attempt to copy the delete recipe link when the user is not signed in</b>|
 
-2. Using Jinga checks to hide links 
-* Certain link are hidden if you are not logged in 
-* admin pages can only be seen by users with admin privaliges 
+2. Using Jinga checks to hide links because:
+* certain links are hidden if you are not logged in 
+* admin pages can only be seen by users with admin privileges 
 
 ![log out user nav](/assets/screenshots/logoutnav.png) |
 |:--:|
@@ -202,7 +206,7 @@ These steps help prevent the use of brute force.
  
 ![nav tabs](/assets/screenshots/admin.png) |
 |:--:|
-| <b>Only admin users can see the control panel</b>|
+| <b>Screen shot showing that only admin users can see the control panel</b>|
 
 
 # 3. Technologies Used <a id="technologies"></a>
@@ -224,7 +228,7 @@ These steps help prevent the use of brute force.
 - <a href="https://www.mongodb.com/">Mongodb: </a>
 Used to store my database 
 - <a href="https://werkzeug.palletsprojects.com/en/2.1.x/">Werkzeug: </a>
-  Flask dependency a utility libraries
+  Flask dependency, which is a utility library
 - <a href="https://fontawesome.com/">Font Awesome:</a>
   Used to import icons that used across every page of the website.
 - <a href="https://fonts.google.com/">Google Fonts:</a>
@@ -253,9 +257,9 @@ Used to store my database
 You can clone a Github repository to your local computer by following these steps:
 
 1. On GitHub.com, navigate the repository page
-2. above the list of files, click on the Code dropdown menu
-3. select the download zip file 
-4. once the files have downloaded you can extract them form the zip file and run them on your local environment 
+2. Above the list of files, click on the Code dropdown menu
+3. Select the download zip file 
+4. Once the files have downloaded you can extract them form the zip file and run them on your local environment 
 
 You can see more information on making local clones [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop)
 
@@ -264,20 +268,20 @@ You can see more information on making local clones [here](https://docs.github.c
 Forking a Github repositary allows you to make a copy that you can work on without effecting the original repository. You can fork a repository by:
 
 1. On GitHub.com, navigate the repository page of the repository you would like to fork
-2. on the top right hand side of the page locate click fork button 
-3. the copy of this resository should now be in your own repositories
+2. On the top right hand side of the page locate click fork button 
+3. A copy of this resository should now be in your own repositories
 
 ## Setting up a mongodb database 
 
 To create a mongodb database 
-1. first you need to go to the <a href="http://mongodb.com">mongodb.com</a> and create an account.
+1. First you need to go to the <a href="http://mongodb.com">mongodb.com</a> and create an account.
 2. Then you must create a cluster and give it a name - this is the cluster of service the data will run on. 
-3. Next you need to select a could provider
+3. Next you need to select a cloud provider
 4. Then select a region 
 5. Select the network access 
-6. Now you can create you database on the new cluster. To begain you selet create your own data from the menu and give the database a name.
+6. Now you can create you database on the new cluster. To begin you select create your own data from the menu and give the database a name.
 7. Create your collections
-8. lastly press the insert document button and add the fields and values into that     
+8. Lastly press the insert document button and add the fields and values into that     
 
 ## Environment variables and app set up
 
@@ -289,29 +293,27 @@ In order to connect you to the database and set up your python app you must set 
 
 ## Deployment to a local server 
 
-In order to text your website locally you can deploy it on a local server for testing purposes. Todo the run your application on the local server you must run you app.py file in your terminal by using 
+In order to text your website locally you can deploy it on a local server for testing purposes. To run your application on the local server you must run you app.py file in your terminal by using:
 ```
 python3 app.py
 ```
-this will deploy the app on a local port 8080. You can stop the app running by pressing control and c on mac or ctrl and c on windows. Close all ports by typing 
+This will deploy the app on a local port 8080. You can stop the app running by pressing control and c on mac or ctrl and c on windows. Close all ports by typing:
 ```
 pkill -9 python3 
 ```
-## Deploying a your live python HEROKU app
+## Deploying a your Live Python app through HEROKU
 
-Before you can set up a HEROKU app you must set up a 
-application.
-- requirements.txt file this tells HEROKU what dependencies are needed 
-- a Procfile file - this pecifies the commands that are executed by the app on startup
+Before you can set up a HEROKU app you must set up the following files:
+- requirements.txt file - this tells HEROKU what dependencies are needed 
+- a Procfile file - this specifies the commands that are executed by the app on startup
 in you github repository.
 
-1. To begain with HEROKU you must firt create an account. on the <a href="https://id.heroku.com/login">HEROKU website</a>
-2. Once logged in create new app. when seleting the app name this app keep in mind that it must be unique.
-and then select your region and create app.
-3. Then select the deploy tab and scoll to the deployment method section. you can connect you app by either the HEROKU CLI or through Github. I selected GitHuB so i can use the automatic deployment feature 
+1. To begin with HEROKU you must first create an account on the <a href="https://id.heroku.com/login">HEROKU website</a>
+2. Once logged in, create a new app. When seleting the app name, keep in mind that it must be unique. Then select your region and create app.
+3. Then select the deploy tab and scoll to the deployment method section. You can connect your app by either the HEROKU CLI or through Github. I selected GitHuB so I can use the automatic deployment feature 
 4. Then go to the settings tab and set up you Congfi Vars. These variables will be the same as the ones in you env.py file 
 5. You can then go back to the deploy tab and select automatic deployment 
-6. you site is now live    
+6. Your site is now live    
 ------
 
 # 6. Credits <a id="credits"></a>

@@ -15,13 +15,13 @@
 
 # 1. Validation <a id="validation"></a>
 
-I used the W3C Markup and CSS Validator Service to ensure there was no syntax errors throughout my website.
+I used the W3C Markup and CSS Validator Service to ensure there were no syntax errors throughout my website.
 
 # Html <a id="html"></a> 
 
 | ![index page validation](/assets/screenshots/homeval.png) |
 |:--:|
-| <b>index page validation - Passed  - No errors or warnings</b>|
+| <b>Index page validation - Passed  - No errors or warnings</b>|
 
  ![Recipes page validation](/assets/screenshots/recipeval.png) |
 |:--:|
@@ -67,15 +67,15 @@ I used the W3C Markup and CSS Validator Service to ensure there was no syntax er
 
 ![CSS validation](/assets/screenshots/cssval.png) |
 |:--:|
-| <b>CSS validation  - Passed  - All errors and warnings from the meterialised css files</b>|
+| <b>CSS validation  - Passed  - All errors and warnings are from the Meterialised CSS files</b>|
 
 ## Python Pep8 complience <a id="pep8"></a>
 
-I used the Pep8 validator to to ensure there was no syntax errors in my python code
+I used the Pep8 validator to to ensure there were no syntax errors in my python code
 
 ![env.py file validated](/assets/screenshots/envval.png) |
 |:--:|
-| <b>env.py file validated  - Passed  - 1 error however the line cannot be split to fix this error</b>|
+| <b>env.py file validated  - Passed  - 1 error, however the line cannot be split to fix this error</b>|
 
 ![app.py file validated](/assets/screenshots/appval.png) |
 |:--:|
@@ -87,7 +87,7 @@ I used the jShint validator to to ensure there was no syntax errors in my JavaSc
 
 ![script.js validated](/assets/screenshots/jshint.png) |
 |:--:|
-| <b>script.js validated  - Passed  - unsed variables are onclick functions function</b>|
+| <b>script.js validated  - Passed  - unused variables are on onclick functions</b>|
 
 # 2. Lighthouse Testing <a id="lighthouse"></a>
 
@@ -99,7 +99,7 @@ All my pages have went through google devtools lighthouse analysis which are sco
 
 ![home page lighthouse scores](/assets/screenshots/homeseo.png) |
 |:--:|
-| <b>home page lighthouse scores - All fine  - no issues</b>|
+| <b>Home page lighthouse scores - All fine  - no issues</b>|
 
 ![About us page lighthouse scores](/assets/screenshots/aboutlight.png) |
 |:--:|
@@ -119,7 +119,7 @@ All my pages have went through google devtools lighthouse analysis which are sco
 
 ![Favourites page lighthouse scores](/assets/screenshots/favouriteslight.png) |
 |:--:|
-| <b>Favourites pag lighthouse scores - All fine  - no issues</b>|
+| <b>Favourites page lighthouse scores - All fine  - no issues</b>|
 
 ![Sign up page lighthouse scores](/assets/screenshots/signuplight.png) |
 |:--:|
@@ -151,7 +151,7 @@ All my pages have went through google devtools lighthouse analysis which are sco
 |:--:|
 | <b>Outline of the home page and a clear navigation bar at the top of the page</b>|
 
-2.  As a first time visitor, i want to eaily navigate through the website to find the information i want.
+2.  As a first time visitor, I want to eaily navigate through the website to find the information I want.
    * The website has a navigation bar at the top of every page allowing
     the user to easily navigate through the pages 
 
