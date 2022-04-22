@@ -16,7 +16,7 @@
     </div>
 </nav>
 
-<!-- admin tables -->
+<!-- admin buttons -->
 <section id="control">
     <div class="row admin">
         <div class="col s12 m8 offset-m4" id="admin-btn">
@@ -61,11 +61,11 @@
                         </div>
                     </div>
                     <!-- ./delete recipe modal-->
+
                     <!-- edit user modal -->
                     <div id="edit_user_modal-{{ user.username }}" class="modal">
                         <div class="modal-content">
                             <h4>Edit {{ user.username }}?</h4>
-
                             <form method="POST" action="{{ url_for( 'edit_user', user_id=user._id) }}">
                                 <div class="row">
                                     <!-- username field -->
@@ -83,16 +83,15 @@
                                             <label for="admin-{{ user.username }}">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                <input type="checkbox" id="admin-{{ user.username }}" name=admin
+                                                <input type="checkbox" id="admin-{{ user.username }}" name="admin"
                                                     checked>
                                                 {% else %}
-                                                <input type="checkbox" id="admin-{{ user.username }}" name=admin>
+                                                <input type="checkbox" id="admin-{{ user.username }}" name="admin">
                                                 {% endif %}
                                                 <span class="lever"></span>
                                                 On
                                             </label>
                                         </div>
-                                        <!-- ./Admin switch -->
                                     </div>
                                 </div>
                                 <button type=submit class="btn">Submit</button>
@@ -131,8 +130,7 @@
                             </a>
                             <a href="#" data-target="edit_user_modal-{{ user.username }}-2"
                                 class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                aria-labelledby="edit admin user><i
-                                    class=" fa-solid fa-pen-to-square"></i></a></td>
+                                aria-labelledby="edit admin user"><i class=" fa-solid fa-pen-to-square"></i></a></td>
                     </tr>
                     {% endif %}
                     <!--delete user modal-->
@@ -168,13 +166,13 @@
                                     <div class="input-field col s10 offset-s1">
                                         <!-- Admin switch -->
                                         <div class="switch">
-                                            <label for="admin-{{ user.username }}1-">
+                                            <label for="admin-{{ user.username }}-1">
                                                 add admin privalages
                                                 {% if user.admin == "on" %}
-                                                <input type="checkbox" id="admin-{ user.username }}-1" name=admin
+                                                <input type="checkbox" id="admin-{{ user.username }}-1" name="admin"
                                                     checked>
                                                 {% else %}
-                                                <input type="checkbox" id="admin-{ user.username }}-1" name=admin>
+                                                <input type="checkbox" id="admin-{{ user.username }}-1" name="admin">
                                                 {% endif %}
                                                 <span class="lever"></span>
                                                 On
