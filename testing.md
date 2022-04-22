@@ -11,7 +11,8 @@
    - [Returning Visitor Goals](#2nd)
    - [Site Owner Goals](#owner)
 4. [Test Plan](#test-plan)
-5. [Further testin](#further)
+5. [Further testing](#further)
+6. [Bugs](#bugs)
 
 # 1. Validation <a id="validation"></a>
 
@@ -298,6 +299,12 @@ All my pages have went through google devtools lighthouse analysis which are sco
 |24|My recipes Page|Click the delete recipe button and click ok button |modal should pop uo and ask for confirmation. Once ok is pressed recipe is deleted from the database and my recipe page reloads without the recipe|![deleted](/assets/screenshots/deleted.png)|Pass|Works as expected|
 |24|My Recipes Page|Click the edit recipe button|Edit recipe page loads and populated with the recipe data|![edit recipe](/assets/screenshots/edit.png)|passed|works as expected|
 |25|Add recipe|Fill out add recipe form correctly and submit to website|form submits <br><br>flashes a Confirmation message|![recipe added](/assets/screenshots/recipeadded.png)|passed|Worked as expected|
+|26|Admin page|edit recipe as admin|recipe edited <br><br>Flash confirmation message|![edit ](/assets/screenshots/edit.png)|fail|edit recipe does not display ingredients and instruction correctly|
+|27|Admin page|Delete recipe as admin|recipe Deleted <br><br>Flash confirmation message|![delete promt](/assets/screenshots/deleteprompt.png)<br>![deleted recipe](/assets/screenshots/userdelted.png)|passed|worked as expected|
+|28|Admin page|edit User as admin|user edited <br><br>Flash confirmation message|![edit user](/assets/screenshots/edituser.png)|passed|worked as expected|
+|29|Admin page|Delete user as admin|user Deleted <br><br>Flash confirmation message|![delete prompt](/assets/screenshots/deleteprompt.png)![deleted user](/assets/screenshots/userdelted.png)|passed|!!|
+|30|Footer|Sign up to email list|Flash confirmation message|![flash message](/assets/screenshots/newemail.png)|passed|email address was added to mailing list|
+|31|Footer|sign up with an email already in the data base|flash you have already signed up|![already in database](/assets/screenshots/emailalready.png)|passed|worked as expected|
 
 # Further Testing <a id="further"></a> 
 ## Further Testing <a id="ftesting"></a>
@@ -329,6 +336,7 @@ I have used the Chrome developer tools to test responsiveness on different devic
 # Bugs 
 - cusine in catergories not displaying properly - fixed
 
-# known bugs
-- User admin check boxes not click able 
-- edit form ingrendents and instructions does not display correctly
+# known bugs 
+- edit form ingrendents and instructions does not display correctly white space around them
+- search bar always returns to recipe page regardless of what page the user was on
+- scroll able tab bar does not display whole my recipe tab on small device it show up as ipe however this is still click able

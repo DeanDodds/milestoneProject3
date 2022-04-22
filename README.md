@@ -16,6 +16,7 @@ other.
 3. [Technologies Used](#technologies)
    - [Langagues Used](#langagues)
    - [Frameworks, Libraries and Programs used](#frameworks)
+   - [Data Modling](#data)
 4. [Deployment](#deployment)
    - [Making a Local Clone](#clone)
    - [Forking the GitHub Repository](#fork)
@@ -99,9 +100,11 @@ The wireframes for the website were created on Drawio, there is a desktop, table
 - Contact us laptop wireframe [View](/assets/wireframes/wireframes-contactus-page-laptop.drawio.png)
 - Contact us mobile wireframe [View](/assets/wireframes/wireframes-aboutus-pape-mobile.drawio.png)
 
-## Database  modeling.
+## Database modeling. <a id="data"></a>
 
+I have modeled my database on a non-relational database system. I have used the Mongodb. I have used the following mapping 
 
+![screenshot of data structure ](/assets/screenshots/diagram.png)
 
 ---
 
@@ -319,12 +322,21 @@ in you github repository.
 # 6. Credits <a id="credits"></a>
 
 ## Images <a id="images"></a>
-- Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-- Photo by Adonyi Gábor: https://www.pexels.com/photo/assorted-vegetables-on-brown-wooden-table-1414651/
-- Photo by Pixabay: https://www.pexels.com/photo/man-smiling-behind-wall-220453/
+- Hero Image by Maarten van den Heuvel <a href="https://images.pexels.com/photos/2284166/pexels-photo-2284166.jpeg?cs=srgb&dl=pexels-maarten-van-den-heuvel-2284166.jpg&fm=jpg">Pexels</a>
+- fivicon Icon made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+- default Photo by Adonyi Gábor: https://www.pexels.com/photo/assorted-vegetables-on-brown-wooden-table-1414651/
+- Team profile photo by Pixabay: https://www.pexels.com/photo/man-smiling-behind-wall-220453/
+- Team profile photo Photo by Pixabay: https://www.pexels.com/photo/woman-wearing-black-spaghetti-strap-top-415829/
+
+## Content 
+- recipes - <a href="https://www.bbcgoodfood.com/">from BBC good food</a>
 
 ## Code <a id="code"></a>
+- star rating html -<a href="https://www.codingnepalweb.com/star-rating-html-css-javascript/">CodeNepal</a>
+- login, sign up and search bar from code institue mini project.
 
 ---
 
 # 7. Acknowledgements <a id="acknowledgements"></a>
+- Chris Quinn - My Mentor for continuous helpful feedback and advice.
+- The Code Institute Slack Community.

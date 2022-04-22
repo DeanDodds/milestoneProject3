@@ -581,7 +581,7 @@ def subscribe():
 
         if mailing_list:
             flash("You are already on our mailing list!")
-            return ('', 204)
+            return render_template("index.html")
 
         # Add new email to db
         else:
@@ -592,7 +592,7 @@ def subscribe():
             mongo.db.subscribers.insert_one(subscribed)
 
             flash("You have successfully subscribed!")
-            return ('', 204)
+            return render_template("index.html")
 
 
 if __name__ == "__main__":
