@@ -29,8 +29,7 @@
 </section>
 <!-- hero -->
 
-
-<!-- profile tabss -->
+<!-- profile tabsbar -->
 <nav class="nav-extended center">
     <div class="nav-content col s-12">
         <ul class="tabs tabs-transparent">
@@ -38,15 +37,18 @@
             </li>
             <li class="tab"><a href="{{ url_for('addrecipe') }}">Add Recipes</a></li>
             <li class="tab"><a class="active" href="{{ url_for('favourites') }}">My Favourites</a></li>
+            {% if admin == "on" %}
+            <li class="tab"><a href="{{ url_for('control') }}">Control Panel</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>
-<!-- ./profile tabs-->
+<!-- ./profile tabsbar -->
 
 <!-- recipe cards -->
-<section>
+<div class="recipes-container">
     <div class="row">
-        {% if recipes|length > 0 %}
+        {% if recipes|length > 0 and favourites|length > 1 %}
         {% for recipe in recipes %}
         {% if recipe._id in favourites %}
         <div class="col s12 m6 l4">
@@ -112,9 +114,9 @@
         {% endfor %}
     </div>
     {% else %}
-    <h2>No recipes found</h2>
+    <h2>No recipes found.</h2>
     {% endif %}
-</section>
+</div>
 <!-- recipe cards -->
 
 {% endblock %}

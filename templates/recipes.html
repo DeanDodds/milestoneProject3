@@ -29,9 +29,8 @@
 </div>
 <!-- hero -->
 
-
 <!-- recipe cards -->
-<div>
+<div class="recipes-container">
     <div class="row">
         {% if recipes|length > 0 %}
         {% for recipe in recipes %}
@@ -52,7 +51,7 @@
                     {% endif %}
                 </div>
                 <div class="card-content">
-                    <span class="card-title">{{ recipe.recipe_name }}</span>
+                    <p class="card-title">{{ recipe.recipe_name }}</p>
                     <p>{{ recipe.description }}</p>
                     <div class="card-bottom">
                         <p>Rating: {{ recipe.rating }}</p>

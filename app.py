@@ -204,10 +204,12 @@ def addrecipe():
         catergories = mongo.db.catergories.find().sort("catergory_name, 1")
         # Gets the cuisine names from database
         cuisines = list(mongo.db.cuisines.find().sort("cuisine_name, 1"))
-        print(catergories)
-        print(cuisines)
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
         return render_template(
-            "addrecipe.html", catergories=catergories, cuisines=cuisines)
+            "addrecipe.html", catergories=catergories, cuisines=cuisines, admin=check_admin)
     # Displays a message to user
     flash('Please log in to add a recipe')
     return redirect(url_for("login"))
@@ -267,7 +269,7 @@ def editrecipe(recipe_id):
     if 'user' in session:
         return render_template("editrecipe.html",
                                cuisines=cuisines, catergories=catergories,
-                               recipe=recipe)
+                               recipe=recipe, admin=check_admin)
     # If users not logged im they get redirected to log in
     flash('Please log in to edit recipe')
     return redirect(url_for("login"))
@@ -353,9 +355,13 @@ def favourites():
             {"username": session["user"]})["favourites"]
         # Gets the recipes from database
         recipes = list(mongo.db.recipes.find())
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
         return render_template(
             "favourites.html", user_id=user_id,
-            username=username,  favourites=favourites, recipes=recipes)
+            username=username,  favourites=favourites, recipes=recipes, admin=check_admin)
     # If users not logged in redirects them to login page
     flash('Please log in to view your favourites a recipe')
     return redirect(url_for("login"))
@@ -379,22 +385,24 @@ def add_favourites(recipe_id, page):
         flash("Recipe saved to favourites!")
         # gets recipes from database
         recipes = list(mongo.db.recipes.find())
-
+        # Gets user favourites from database
         favourites = mongo.db.users.find_one(
             {"username": session["user"]})["favourites"]
-        # if user signed in
+        # Check admin privalages 
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
         if page == "recipe_page":
             return render_template(
                 "recipes.html", user_id=user_id,
-                username=username, favourites=favourites, recipes=recipes)
+                username=username, favourites=favourites, recipes=recipes, admin=check_admin)
         elif page == "favourites_page":
             return render_template(
                 "favourites.html", user_id=user_id,
-                username=username, favourites=favourites, recipes=recipes)
+                username=username, favourites=favourites, recipes=recipes, admin=check_admin)
         else:
             return render_template(
                 "profile.html", user_id=user_id,
-                username=username, favourites=favourites, recipes=recipes)
+                username=username, favourites=favourites, recipes=recipes, admin=check_admin)
 
     # If users not logged in redirects them to login page
     flash('Please log in to edit your favourites a recipe')
@@ -420,19 +428,22 @@ def remove_from_favourites(recipe_id, page):
             {"username": session["user"]})["favourites"]
         # Gets recipes from the database
         recipes = list(mongo.db.recipes.find())
+        # Check admin privalages 
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
         flash("recipe removed from favourites")
         if page == "recipe_page":
             return render_template(
                 "recipes.html", user_id=user_id,
-                username=username, favourites=favourites, recipes=recipes)
+                username=username, favourites=favourites, recipes=recipes, admin=check_admin)
         elif page == "favourites_page":
             return render_template(
                 "favourites.html", user_id=user_id,
-                username=username, favourites=favourites, recipes=recipes)
+                username=username, favourites=favourites, recipes=recipes, admin=check_admin)
         else:
             return render_template(
                 "profile.html", user_id=user_id,
-                username=username, favourites=favourites, recipes=recipes)
+                username=username, favourites=favourites, recipes=recipes, admin=check_admin)
     flash('Please login to edit your favourites')
     return redirect(url_for("login"))
 
