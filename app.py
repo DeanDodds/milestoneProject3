@@ -137,7 +137,7 @@ def profile(username):
                 "profile.html", username=username,
                 recipes=recipes, favourites=favourites)
     # Message for the user
-    flash('Please log in to view profile')
+    flash('Please log in to edit your profile')
     return redirect(url_for("login"))
 
 
@@ -333,7 +333,7 @@ def delete_recipe(recipe_id):
         else:
             flash("You can only delete recipes you have created")
             return redirect(url_for("get_recipes"))
-    flash('Please log in to rate a recipe')
+    flash('Please log in to edit a recipe')
     return redirect(url_for("login"))
 
 

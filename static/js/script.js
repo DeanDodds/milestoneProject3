@@ -49,17 +49,6 @@ function viewAdminUsers() {
 
 }
 
-// function toggleSwitch() {
-//     let toggle = document.getElementById("admin");
-//     if (toggle.classList.contains("checked")) {
-//         toggle.classList.remove("checked")
-//     } else {
-//         toggle.classList.add("checked")
-//     }
-
-// }
-
-
 // navbar responsiveness - removes valign-wrapper so css can change flex direction
 function removeValignWrapperClass(screensize) {
     const searchBar = document.getElementById('search')

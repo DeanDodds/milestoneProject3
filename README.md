@@ -179,6 +179,32 @@ Contact form allowing users to easily get in touch with any questions
  
  ![screenshot of edit recipe Page ](/assets/screenshots/edit.png)
 
+## Defensive Programing 
+
+In order to protect my users data i have used some defensive programing. My application protects the data Through:
+1. Python functions that check
+ * check to see if the user is signed in, using session cookies 
+ * if a user is editing data. The function will check that the user who is signed in is the creater of the data or an admin user. <br> 
+
+These steps help prevent the use of brute force.   
+
+| ![brute force attempt](/assets/screenshots/bruteforce.png) |
+|:--:|
+| <b>attempt to copy the delete recipe link when user is not signed in</b>|
+
+2. Using Jinga checks to hide links 
+* Certain link are hidden if you are not logged in 
+* admin pages can only be seen by users with admin privaliges 
+
+![log out user nav](/assets/screenshots/logoutnav.png) |
+|:--:|
+| <b>Users who are not logged in cannot see the profile page</b>|
+ 
+![nav tabs](/assets/screenshots/admin.png) |
+|:--:|
+| <b>Only admin users can see the control panel</b>|
+
+
 # 3. Technologies Used <a id="technologies"></a>
 
 ## Langagues Used <a id="langagues"></a>
@@ -187,6 +213,7 @@ Contact form allowing users to easily get in touch with any questions
 - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>
 - <a href="https://www.python.org/">Python</a>
 - <a href="https://www.javascript.com/">JavaScript</a>
+
 
 ## Frameworks, Libraries and Programs used <a id="frameworks"></a>
 
