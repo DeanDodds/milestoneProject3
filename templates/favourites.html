@@ -55,20 +55,23 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-image" src="{{ recipe.img_url}}" alt="photo of {{ recipe.recipe_name }}">
-                    {% if session.user %}
-                    {% if recipe._id in favourites %}
-                    <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='recipe_page') }}" class="btn halfway-fab right liked
+                    <div class="recipe-edit-buttons">
+                        {% if session.user %}
+                        {% if recipe._id in favourites %}
+                        <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='recipe_page') }}"
+                            class="btn halfway-fab right liked
                                                                                         waves-effect waves-light"><i
-                            class="fa-solid fa-heart"></i></a>
-                    {% else %}
-                    <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id, page='recipe_page') }}" class="btn halfway-fab right tooltipped
-                                                                                        waves-effect waves-light"
-                        data-position="bottom" data-tooltip="Save this recipe"><i class="fa-solid fa-heart"></i></a>
-                    {% endif %}
-                    {% endif %}
+                                class="fa-solid fa-heart"></i></a>
+                        {% else %}
+                        <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id, page='recipe_page') }}"
+                            class="btn halfway-fab right tooltipped                               waves-effect waves-light"
+                            data-position="bottom" data-tooltip="Save this recipe"><i class="fa-solid fa-heart"></i></a>
+                        {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="card-content">
-                    <span class="card-title">{{ recipe.recipe_name }}</span>
+                    <h2>{{ recipe.recipe_name }}</h2>
                     <p>{{ recipe.description }}</p>
                     <div class="card-bottom">
                         <p>Rating: {{ recipe.rating }}</p>

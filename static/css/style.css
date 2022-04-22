@@ -123,21 +123,31 @@ body {
 
 /* recipe cards */
 .recipes-container {
-    margin: 100px 50px;
+    margin: 100px 20px;
+}
+
+.add-recipe-card {
+    height: 900px;
 }
 
 .card-header {
-    height: 600px;
+    height: 400px;
     position: relative;
+
 }
 
 .card-image {
     width: 100%;
-    max-height: 462px;
+    height: 100%;
+    ;
+}
+
+.card-title {
+    font-weight: 600;
 }
 
 .card-content {
-    height: 300px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -169,6 +179,10 @@ body {
 
     .add-recipe-card {
         height: 250px;
+    }
+
+    .recipes-container {
+        margin: 150px 0px;
     }
 }
 
@@ -296,13 +310,11 @@ body {
 }
 
 /* Profile page  */
-
 .nav-content {
     background-color: #D90416;
 }
 
 /* admin page */
-
 #admin-btn {
     padding: 2%;
 }
@@ -333,11 +345,9 @@ tbody tr:nth-child(even) {
     .display-none {
         display: none;
     }
-
 }
 
 /* each recipe page */
-
 .recipe-img {
     max-width: 600px;
     width: 100%;
@@ -474,7 +484,6 @@ form .btn button {
 }
 
 /* Footer */
-
 .social-links {
     padding-bottom: 15px;
     display: flex;
