@@ -6,7 +6,12 @@
    - [python Pep8 complience](#pep8) 
    - [javaScript jshint complience](#javscript) 
 2. [Lighthouse reports](#lighthouse)
-3. 
+3. [Testing user stories](#stories)
+   - [First Time Visitor Goals](#1st)
+   - [Returning Visitor Goals](#2nd)
+   - [Site Owner Goals](#owner)
+4. [Test Plan](#test-plan)
+5. [Further testin](#further)
 
 # 1. Validation <a id="validation"></a>
 
@@ -136,9 +141,9 @@ All my pages have went through google devtools lighthouse analysis which are sco
 |:--:|
 | <b>Admin page lighthouse scores - Accesibility could be improved   - Aria labels to be added and labels to be added to links through tooltips </b>|
 
-# 3.  Testing User Stories 
+# 3. Testing User Stories <a id="stories"></a>
 
-### First Time Visitor Goals
+### First Time Visitor Goals <a id="1st"></a>
 1. As a first time visitor, I want to easily understand the purpose of the website.
  * When entering the site users can clearly see the navigation bar and the purpose of the site is very clear
 
@@ -181,7 +186,9 @@ All my pages have went through google devtools lighthouse analysis which are sco
 |:--:|
 | <b>Users can sign up using the sign up page </b>|
  
-### Returning Visitor Goals
+### Returning Visitor Goals <a id="2nd"> </a>
+
+
 1. As a returning visitor, I want to beable to easily log in to my account.
  * Login page is clearly sign posted in the navigation bar 
 
@@ -227,7 +234,7 @@ All my pages have went through google devtools lighthouse analysis which are sco
 
 
 
-### Website Creator Goals
+### Website Creator Goals <a id="owner"></a>
 1. As the website creator, I want to beable to advertise cooking products.
  * This goal was not hit however is a feature to revist in the future. 
 2. As the website creator, I want to beable to edit and delete all recipes.
@@ -261,48 +268,67 @@ All my pages have went through google devtools lighthouse analysis which are sco
 6. As a website creator, I want my website to be as accesible as possible in order to be inclusive to all potenial users.
  * Most pages have a above 90 accesibility score. See [Lighthouse reports](#lighthouse)
 
-
-
-
-# Test Plan 
+# 4. Test Plan 
                                                        
 | Test number | Page |Test Description|Expected Outcome|ScreenShot| Pass/Fail| Comment |
 |:-----------:|:----:|:--------------:|:--------------:|:--------:|:--------:|:-------:|
-|1|Navigation links|Home button pressed|Opens home page|!!!|Pass|Works as expected|
-|2|Navigation links|Recipe button pressed|Opens Recipe page|!!!|Pass|Works as expected|
-|3|Navigation links|About button pressed|Opens About page|!!!|Pass|Works as expected|
-|4|Navigation links|Contact button pressed|Opens Contact page|!!!|Pass|Works as expected|
-|5|Navigation links|Profile button pressed|Opens Profile page|!!!|Pass|Works as expected|
-|6|Navigation links|Signup Page button pressed|Opens Sign up  page|!!!|Pass|Works as expected|
-|7|Navigation links|Sign in button pressed|Opens Sign in page|!!!|Pass|Works as expected|
-|8|Navigation links| My recipe button pressed|Opens My recipes page|!!!|Pass|Works as expected|
-|9|Navigation links|Favourites button pressed|Opens Favourites page|!!!|Pass|Works as expected|
-|10|Navigation links|Add recipe button pressed|Opens Add recipe page|!!!|Pass|Works as expected|
-|11|Navigation links|Log Out button pressed|Logs user out of account<br><br>Opens login page<br><br>Flashes "You have been logged out"|!!!|Pass|Works as expected|
-|12|Sign up Page|Login in using new username and password |New username and passoword added to database. <br><br>Flash "Sign up successfull!". <br><br>  User signed in and able to see profile and log out navigation buttons| !!!! |Pass | Worked as expected |
-|13|Sign up Page|Try to sign up using a existing username| Clear Form<br><br>Flash "Username already exists. Please choose another username"|!!!!|Pass|Worked as expected|
-|14|Sign up Page|Sign up with an in valid username and password|Form will not submit and display required message |!!!|Pass|  Works as expected
-|15|Login Page| Login with correct details |User logged in. <br><br>Flash "Welcome" display the username message<br><br>Loads profile page.|!!!|Pass| Works as expected 
-|16|login Page| Login with an incorrect username but correct password|"Incorrect Username and/or Password"|!!!|Pass|Worked as expected 
-|17|login Page| Login with a valid username but incorrect password|"Incorrect Username and/or Password"|!!!|Pass|Worked as expected |
-|18|Recipe Page| Press view recipe Button| Opens Recipe page for the recipe clicked on|!!!|Pass|Worked as expected|
-|19|Recipe Page|Press the favourites button on a recipe that is not currently a favourite|favourites button should be check with a background color<br><br>recipe should be added to the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
-|19|Recipe Page|Press the favourites button on a recipe that is currently a favourite|favourites button should be uncheck and  background color removed<br><br>recipe should be removed from the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
-|20|Recipe Page|search for a keyword that should return one result|The search returns one recipe card|!!!|Pass|Works as expected|
-|21|Recipe Page|search for a keyword that will return no results|Display "no reslts found"|!!!|Pass|Works as expected|
-|22|Recipe page|search for a keyword that should return multible results|Display multiple recipe cards|!!!|Pass| Works as expectd|
-|23|My recipes Page|search for a keyword that should return one result|The search returns one recipe card|!!!|Pass|Works as expected|
-|24|My recipes Page|search for a keyword that will return no results|Display "no reslts found"|!!!|Pass|Works as expected|
-|25|My recipes page|search for a keyword that should return multible results|Display multiple recipe cards|!!!|Pass| Works as expectd|
-|26|My recipes Page|Press the favourites button on a recipe that is not currently a favourite|favourites button should be check with a background color<br><br>recipe should be added to the users favourites page|!!!<br><br>!!!|Passes|worked as expected |
-|27|My recipes Page|Click the favourites button on a recipe that is currently a favourite|favourites button should be uncheck and  background color|!!!!!!|Passes| works as expected|
-|28|My recipes Page|Click the delete recipe button and click ok button |modal should pop uo and ask for confirmation. Once ok is pressed recipe is deleted from the database and my recipe page reloads without the recipe|!!!|Pass|Works as expected|
-|29|My Recipes Page|Click the edit recipe button|Edit recipe page loads and populated with the recipe data|!!!|!|!|
-|30|
+|1|Navigation links|Home button pressed|Opens home page|![home page](/assets/screenshots/Homepage.png)|Pass|Works as expected|
+|2|Navigation links|Recipe button pressed|Opens Recipe page|![recipe page](/assets/screenshots/logoutedrecipecard.png)|Pass|Works as expected|
+|3|Navigation links|About button pressed|Opens About page|![About page](/assets/screenshots/about.png)|Pass|Works as expected|
+|4|Navigation links|Contact button pressed|Opens Contact page|![contact page](/assets/screenshots/contact.png)|Pass|Works as expected|
+|5|Navigation links|Profile button pressed|Opens Profile page|![profile page](/assets/screenshots/profile.png)|Pass|Works as expected|
+|6|Navigation links|Signup Page button pressed|Opens Sign up  page|![sign up page](/assets/screenshots/signup.png)|Pass|Works as expected|
+|7|Navigation links|Log in button pressed|Opens Log in page|![sign in page](/assets/screenshots/login.png)|Pass|Works as expected|
+|8|Navigation tab link| My recipe button pressed|Opens My recipes page|![profile page](/assets/screenshots/profile.png)|Pass|Works as expected|
+|9|Navigation tab link|Favourites button pressed|Opens Favourites page|![favourites page](/assets/screenshots/favouritepage.png)|Pass|Works as expected|
+|10|Navigation tab link|Add recipe button pressed|Opens Add recipe page|![add recipe](/assets/screenshots/addrecipe.png)|Pass|Works as expected|
+|11|Navigation links|Log Out button pressed|Logs user out of account<br><br>Opens login page<br><br>Flashes "You have been logged out"|![logging out](/assets/screenshots/loggedout.png)|Pass|Works as expected|
+|12|Sign up Page|Login in using new username and password |New username and passoword added to database. <br><br>Flash "Sign up successfull!". <br><br>  User signed in and able to see profile and log out navigation buttons| ![sign in](/assets/screenshots/login.png) |Pass | Worked as expected |
+|13|Sign up Page|Try to sign up using a existing username| Clear Form<br><br>Flash "Username already exists. Please choose another username"|![user exsits](/assets/screenshots/exsitinguser.png)|Pass|Worked as expected|
+|14|Sign up Page|Sign up with an in valid username and password|Form will not submit and display required message |![new user](/assets/screenshots/newuser.png)|Pass|  Works as expected
+|15|Login Page| Login with correct details |User logged in. <br><br>Flash "Welcome" display the username message<br><br>Loads profile page.|![login](/assets/screenshots/login.png)|Pass| Works as expected 
+|16|login Page| Login with an incorrect username but correct password|"Incorrect Username and/or Password"|![incorrect password](/assets/screenshots/password.png)|Pass|Worked as expected 
+|17|login Page| Login with a valid username but incorrect password|Flash "Incorrect Username and/or Password"|![invalid login](/assets/screenshots/username.png)|Pass|Worked as expected |
+|18|Recipe Page| Press view recipe Button| Opens Recipe page for the recipe clicked on|![recipe page](/assets/screenshots/eachrecipe.png)|Pass|Worked as expected|
+|19|Recipe Page|Press the favourites button on a recipe that is not currently a favourite|favourites button should be check with a background color<br><br>recipe should be added to the users favourites page|![favourited](/assets/screenshots/favourited.png)<br><br>![favourite page](/assets/screenshots/favouritepage.png)|Passes|worked as expected |
+|20|Recipe Page|Press the favourites button on a recipe that is currently a favourite|favourites button should be uncheck and  background color removed<br><br>recipe should be removed from the users favourites page|![unfavourited](/assets/screenshots/unfavourtited.png)<br><br>![favourite page ](/assets/screenshots/unfavourtedpage.png)|Passes|worked as expected |
+|21|Recipe Page|search for a keyword that should return one result|The search returns one recipe card|![search](/assets/screenshots/search1.png)|Pass|Works as expected|
+|22|Recipe Page|search for a keyword that will return no results|Display "no reslts found"|!![search](/assets//screenshots/search2.png)|Pass|Works as expected|
+|23|Recipe page|search for a keyword that should return multible results|Display multiple recipe cards|!![search](/assets/screenshots/search3.png)|Pass| Works as expectd|
+|24|My recipes Page|Click the delete recipe button and click ok button |modal should pop uo and ask for confirmation. Once ok is pressed recipe is deleted from the database and my recipe page reloads without the recipe|![deleted](/assets/screenshots/deleted.png)|Pass|Works as expected|
+|24|My Recipes Page|Click the edit recipe button|Edit recipe page loads and populated with the recipe data|![edit recipe](/assets/screenshots/edit.png)|passed|works as expected|
+|25|Add recipe|Fill out add recipe form correctly and submit to website|form submits <br><br>flashes a Confirmation message|![recipe added](/assets/screenshots/recipeadded.png)|passed|Worked as expected|
+
+# Further Testing <a id="further"></a> 
+## Further Testing <a id="ftesting"></a>
+
+I have tested my project on a variety of browsers such as:
+  ### Google Chrome 
+
+  ![Screen shot of Google Chrome](/assets/screenshots/Homepage.png)
 
 
+  ### Firefox 
+  ![Screen shot of Firefox Browser ](/assets/screenshots/firefox.png)
+
+
+  ### Safari
+
+  ![Screen shot of Safari](/assets/screenshots/safari.png)
+  
+  
+I have also tested it on a range of devices such as:
+  * Iphone 6
+  * Iphone S
+  * Laptop 
+  * Desktop
+  * Huawei T10 tablet
+
+I have used the Chrome developer tools to test responsiveness on different device simulations and asked my friends and family to visit the website, sign up, create recipes and report any problems they encounter. 
+
+# Bugs 
+- cusine in catergories not displaying properly - fixed
 
 # known bugs
-
-- cusine in catergories not displaying properly
+- User admin check boxes not click able 
 - edit form ingrendents and instructions does not display correctly
