@@ -39,9 +39,13 @@ def get_recipes():
         # Gets the users the users id from the databas
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
+            # Checks admin status
+        check_admin = mongo.db.users.find_one(
+                {"username": session["user"]})["admin"]
         return render_template(
             "recipes.html", user_id=user_id,
-            recipes=recipes, favourites=favourites)
+            recipes=recipes, favourites=favourites,
+            admin=check_admin)
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -277,7 +281,7 @@ def editrecipe(recipe_id):
             flash("recipe sucessfully updated")
             return render_template(
                 "profile.html", username=username,
-                recipes=recipes, favourites=favourites)
+                recipes=recipes, favourites=favourites, admin=check_admin)
     if 'user' in session:
         return render_template("editrecipe.html",
                                cuisines=cuisines, catergories=catergories,
@@ -409,6 +413,7 @@ def add_favourites(recipe_id, page):
         # Check admin privalages
         check_admin = mongo.db.users.find_one(
             {"username": session["user"]})["admin"]
+        print(page)
         if page == "recipe_page":
             return render_template(
                 "recipes.html", user_id=user_id,
@@ -498,18 +503,25 @@ def search(page):
     # Gets the users the users id from the databas
     user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
+    # Check admin privalages
+    check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
+    print(page)
     if page == "recipe_page":
         return render_template(
                 "recipes.html", user_id=user_id,
-                username=username, favourites=favourites, recipes=recipes)
+                username=username, favourites=favourites, recipes=recipes,
+                admin=check_admin)
     elif page == "favourites_page":
         return render_template("favourites.html", user_id=user_id,
                                username=username, favourites=favourites,
-                               recipes=recipes)
+                               recipes=recipes,
+                               admin=check_admin)
     else:
         return render_template("profile.html", user_id=user_id,
                                username=username, favourites=favourites,
-                               recipes=recipes)
+                               recipes=recipes,
+                               admin=check_admin)
 
 
 @app.route("/delete_user/<user_id>")

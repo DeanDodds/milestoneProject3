@@ -248,7 +248,11 @@ Used to store my database
 - <a href="https://www.photopea.com/">Photopea</a> Used to edit photos. 
 - <a href="https://tinypng.com/">TinyPNG</a> Used to compress images. 
 
-<!-- ## Feature Features  -->
+## Feature Features 
+Feature features i would like to add are
+* Cooking product advertising 
+* Admin newsletter form 
+
 ---
 
 # 4. Deployment <a id="deployment"></a>
@@ -334,6 +338,7 @@ in you github repository.
 ## Code <a id="code"></a>
 - star rating html -<a href="https://www.codingnepalweb.com/star-rating-html-css-javascript/">CodeNepal</a>
 - login, sign up and search bar from code institue mini project.
+- box shadow taken from <a href="https://getcssscan.com/css-box-shadow-examples">Get Scan</a>
 
 ---
 
