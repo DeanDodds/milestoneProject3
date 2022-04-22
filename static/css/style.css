@@ -67,14 +67,6 @@ nav li a {
     color: #fafafa;
 }
 
-body {
-    max-width: 1600px;
-    margin: 0 auto;
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-}
-
-/* side nav*/
-
 .sidenav li a {
     font-size: 0.8em;
     font-weight: 600;
@@ -88,7 +80,6 @@ body {
 }
 
 /* colours */
-
 .dark-red {
     background-color: #A60303;
 }
@@ -123,15 +114,26 @@ input {
     color: #467302;
 }
 
+/* General */
+body {
+    max-width: 1800px;
+    margin: 0 auto;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
 /* recipe cards */
+.recipes-container {
+    margin: 100px 50px;
+}
+
 .card-header {
-    height: 400px;
+    height: 600px;
     position: relative;
 }
 
 .card-image {
-    height: 100%;
     width: 100%;
+    max-height: 462px;
 }
 
 .card-content {
@@ -242,10 +244,6 @@ input {
     }
 }
 
-/* Index page */
-
-
-
 /* About Page */
 .team-card {
     display: flex;
@@ -284,7 +282,7 @@ input {
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
 
     .team-info-container,
     .team-image-container {
@@ -340,6 +338,15 @@ tbody tr:nth-child(even) {
 
 /* each recipe page */
 
+.recipe-img {
+    max-width: 600px;
+    width: 100%;
+}
+
+.methods-section {
+    background-color: #F2B705;
+}
+
 /* recipe page rating form */
 .container {
     position: relative;
@@ -354,30 +361,15 @@ tbody tr:nth-child(even) {
     flex-direction: column;
 }
 
-.container .post {
-    display: none;
-}
-
 .container .text {
     font-size: 25px;
     color: #666;
     font-weight: 500;
 }
 
-.container .edit {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    font-size: 16px;
-    color: #666;
-    font-weight: 500;
-    cursor: pointer;
-}
-
 .container .edit:hover {
     text-decoration: underline;
 }
-
 
 .star-widget label {
     font-size: 40px;
@@ -389,38 +381,35 @@ tbody tr:nth-child(even) {
 
 input:not(:checked)~label:hover,
 input:not(:checked)~label:hover~label {
-    color: #fd4;
+    color: #F2B705;
 }
 
 input:checked~label {
-    color: #fd4;
+    color: #F2B705;
 }
 
 input#rate-5:checked~label {
-    color: #fe7;
+    color: #F2B705;
     text-shadow: 0 0 20px #952;
 }
 
-#rate-1:checked~form header:before {
-    content: "I just hate it ";
+@media only screen and (max-width: 450px) {
+    .container {
+        position: relative;
+        width: 100%;
+        padding: 0px 0px;
+    }
+
+    label .fas .fa-star::before {
+        font-size: 1em;
+    }
+
+    .star-widget label {
+        padding: 1px;
+    }
 }
 
-#rate-2:checked~form header:before {
-    content: "I don't like it ";
-}
-
-#rate-3:checked~form header:before {
-    content: "It is awesome ";
-}
-
-#rate-4:checked~form header:before {
-    content: "I just like it ";
-}
-
-#rate-5:checked~form header:before {
-    content: "I just love it ";
-}
-
+/* forms */
 #form {
     display: inline;
 }
