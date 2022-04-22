@@ -66,9 +66,9 @@
                     <img class="card-header" src="{{ recipe.img_url }}" alt="photo of {{ recipe.recipe_name }}">
                     <div class="recipe-edit-buttons">
                         {% if recipe._id in favourites %}
-
                         <a href="{{ url_for( 'remove_from_favourites', recipe_id=recipe._id, page='profile_page') }}"
-                            class="btn halfway-fab right liked waves-effect waves-light"><i
+                            class="btn halfway-fab right liked waves-effect waves-light tooltipped dark-red"
+                            data-position="bottom" data-tooltip="UnSave this recipe"><i
                                 class="fa-solid fa-heart"></i></a>
                         {% else %}
                         <a href="{{ url_for( 'add_favourites', recipe_id=recipe._id, page='profile_page') }}"
@@ -76,10 +76,11 @@
                             data-tooltip="Save this recipe"><i class="fa-solid fa-heart"></i></a>
                         {% endif %}
                         <a href="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}"
-                            class="btn halfway-fab right waves-effect waves-light red"><i
-                                class="fa-solid fa-pen-to-square"></i></a>
+                            class="btn halfway-fab right waves-effect waves-light red tooltipped" data-position="bottom"
+                            data-tooltip="Edit edit recipe"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="delete-{{ recipe._id }}-modal"
-                            class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                            class="btn modal-trigger halfway-fab right waves-effect waves-light red tooltipped"
+                            data-position="bottom" data-tooltip="Delete this recipe"
                             data-target="delete-{{ recipe._id }}-modal">
                             <i class="fa-solid fa-trash"></i>
                         </a>

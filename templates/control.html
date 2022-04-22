@@ -51,13 +51,18 @@
                     {% for user in users %}
                     <tr>
                         <td>{{ user.username}}</td>
-                        <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                        <!-- edit user btn-->
+                        <td> <a href="#"
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red tooltipped"
+                                data-position="bottom" data-tooltip="Delete user"
                                 data-target="delete-user-modal-{{ user.username}}" aria-labelledby="delete user">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
+                            <!-- delete user btn-->
                             <a href="#" data-target="edit_user_modal-{{ user.username }}"
-                                class="btn modal-trigger halfway-fab right waves-effect waves-light red"><i
-                                    class="fa-solid fa-pen-to-square" aria-labelledby="edit user"></i></a></td>
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red tooltipped"
+                                data-position="bottom" data-tooltip="Edit User"><i class="fa-solid fa-pen-to-square"
+                                    aria-labelledby="edit user"></i></a></td>
                     </tr>
                     <!--delete user modal-->
                     <div id="delete-user-modal-{{ user.username }}" class="modal">
@@ -135,14 +140,19 @@
                     {% if user.admin == "on" %}
                     <tr>
                         <td>{{ user.username}}</td>
-                        <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                        <!-- delete user btn-->
+                        <td> <a href="#"
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red tooltipped"
+                                data-position="bottom" data-tooltip="Delete User"
                                 data-target="delete-user-modal-{{ user.username }}-2"
                                 aria-labelledby="delete admin user">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
+                            <!-- edit user btn -->
                             <a href="#" data-target="edit_user_modal-{{ user.username }}-2"
-                                class="btn modal-trigger halfway-fab right waves-effect waves-light red"
-                                aria-labelledby="edit admin user"><i class=" fa-solid fa-pen-to-square"></i></a></td>
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red tooltipped"
+                                data-position="bottom" data-tooltip="Edit User" aria-labelledby="edit admin user"><i
+                                    class=" fa-solid fa-pen-to-square"></i></a></td>
                     </tr>
                     {% endif %}
                     <!--delete user modal-->
@@ -231,13 +241,18 @@
                         <td>{{ recipe.cusine_name }}</td>
                         <td class="display-none">{{ recipe.catergory_name }}</td>
                         <td class="display-none">{{ recipe.rating }} </td>
-                        <td> <a href="#" class="btn modal-trigger halfway-fab right waves-effect waves-light red"
+                        <!-- delete recipe btn -->
+                        <td> <a href="#"
+                                class="btn modal-trigger halfway-fab right waves-effect waves-light red tooltipped"
+                                data-position="bottom" data-tooltip="Delete User"
                                 data-target="delete-recipe-modal-{{ recipe._id }}" aria-labelledby="delete user">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
+                            <!-- Edit user btn-->
                             <a href="{{ url_for( 'editrecipe', recipe_id=recipe._id) }}"
-                                class="btn halfway-fab right waves-effect waves-light red"
-                                aria-labelledby="edit recipe"><i class="fa-solid fa-pen-to-square"></i>
+                                class="btn halfway-fab right waves-effect waves-light red tooltipped"
+                                data-position="bottom" data-tooltip="Edit User" aria-labelledby="edit recipe"><i
+                                    class="fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
                     </tr>

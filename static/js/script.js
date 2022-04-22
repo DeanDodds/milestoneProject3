@@ -1,3 +1,5 @@
+// meterialize Initializations
+
 // Navbar toggle
 $(document).ready(function () {
     $('.sidenav').sidenav({
@@ -26,8 +28,14 @@ $(document).ready(function () {
     $('.modal').modal();
 });
 
-// admin buttons 
+// tooltips
+$(document).ready(function () {
+    $('.tooltipped').tooltip();
+});
+// ./meterialize Initializations
 
+
+// admin buttons 
 function viewRecipes() {
     document.getElementById('recipes').classList.remove('off')
     document.getElementById('users').classList.add('off')
