@@ -39,7 +39,7 @@ def get_recipes():
         # Gets the users the users id from the databas
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
-            # Checks admin status
+        # Checks admin status
         check_admin = mongo.db.users.find_one(
                 {"username": session["user"]})["admin"]
         return render_template(
@@ -522,6 +522,39 @@ def search(page):
                                username=username, favourites=favourites,
                                recipes=recipes,
                                admin=check_admin)
+
+
+@app.route("/reset/<page>")
+def reset(page):
+    """ resets page from search """
+    if "user" in session:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        # checks the admin status
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
+        # gets recipes from database
+        recipes = list(mongo.db.recipes.find())
+        # gets user favourites from the database
+        favourites = mongo.db.users.find_one(
+            {"username": session["user"]})["favourites"]
+        if page == "recipe_page":
+            return render_template(
+                "recipes.html",
+                username=username, favourites=favourites, recipes=recipes,
+                admin=check_admin)
+        elif page == "favourites_page":
+            return render_template("favourites.html",
+                                   username=username, favourites=favourites,
+                                   recipes=recipes,
+                                   admin=check_admin)
+        else:
+            return render_template("profile.html",
+                                   username=username, favourites=favourites,
+                                   recipes=recipes,
+                                   admin=check_admin)
+
+    return render_template("recipes.html")
 
 
 @app.route("/delete_user/<user_id>")
