@@ -168,10 +168,6 @@ body {
     color: #D90416;
 }
 
-.add-recipe-card {
-    height: 700px;
-}
-
 @media only screen and (max-width: 650px) {
     .card-content {
         height: auto;
