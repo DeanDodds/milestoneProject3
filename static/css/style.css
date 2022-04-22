@@ -231,6 +231,10 @@ input {
     background-color: #fafafa;
 }
 
+.form-guidence {
+    margin-bottom: 15px;
+}
+
 @media only screen and (max-width: 600px) {
     .catergories-form {
         display: flex;
