@@ -95,7 +95,7 @@ def signup():
         # Checks if the user name is already in the databse
         if existing_user:
             flash("Username already exists. Please choose another username")
-            return redirect(url_for("signup.html"))
+            return redirect(url_for("signup"))
         # Store user information in to a variable
         register = {
             "username": request.form.get("username").lower(),
