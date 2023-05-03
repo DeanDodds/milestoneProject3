@@ -162,10 +162,13 @@ def control():
         recipes = list(mongo.db.recipes.find())
         # Get alls users from the database
         users = list(mongo.db.users.find())
+        # Gets all messages from database
+        messages = list(mongo.db.messages.find())
         # if admin user open control pannel
         if check_admin == "on":
             return render_template("control.html",
                                    recipes=recipes,
+                                   messages=messages,
                                    users=users, admin=check_admin)
         else:
             favourites = mongo.db.users.find_one(
@@ -296,11 +299,8 @@ def add_recipe_rating(recipe_id):
     """ Add recipe star rating to the star ratings field
     and then works out he average. Then updates the rating feild"""
     # checks if the user is logged in
-    print("rating")
     if "user" in session:
-        print("in session")
         if request.method == "POST":
-            print('post')
             # Gets the new rating from form
             new_rating = request.form.get('star_ratings')
             # Inserts the new star rating into the star ratings array
@@ -560,6 +560,7 @@ def reset(page):
 @app.route("/delete_user/<user_id>")
 def delete_user(user_id):
     """ Deletes user accounts from the database  """
+    print(user_id)
     # Checks if the user is in session
     if "user" in session:
         # Finds the user in the database
@@ -574,9 +575,11 @@ def delete_user(user_id):
             # Deletes the document from the database
             mongo.db.users.delete_one({"_id": ObjectId(user_id)})
             users = list(mongo.db.users.find())
+            messages = list(mongo.db.messages.find())
             # Conformation message to the user
             flash("user Successfully Deleted")
             return render_template("control.html",
+                                   messages=messages, 
                                    recipes=recipes, users=users)
     flash('Please log in to edit your account')
     return redirect(url_for("login"))
@@ -609,11 +612,46 @@ def edit_user(user_id):
                 recipes = list(mongo.db.recipes.find())
                 # Gets users from the database
                 users = list(mongo.db.users.find())
+                # Gets messages from database
+                messages = list(mongo.db.messages.find())
                 flash("User Successfully Updated")
                 return render_template("control.html",
-                                       recipes=recipes, users=users)
+                                       messages=messages, 
+                                       recipes=recipes, 
+                                       users=users)
     flash('Please log in to edit your account')
     return redirect(url_for("login"))
+
+
+@app.route("/delete_message/<message_id>")
+def delete_message(message_id):
+    """ Deletes user accounts from the database  """
+    print(message_id)
+    # Checks if the user is in session
+    if "user" in session:
+        # Finds the user in the database
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
+        # Checks if the user as admin privaliges
+        check_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["admin"]
+            
+        if  check_admin == "on":
+            # Deletes the document from the database
+            mongo.db.messages.delete_one({"_id": ObjectId(message_id)})
+
+            messages = list(mongo.db.messages.find())
+            users = list(mongo.db.users.find())
+            recipes = list(mongo.db.recipes.find())
+            # Conformation message to the user
+            flash("message Successfully Deleted")
+            return render_template("control.html",
+                                   messages=messages,
+                                   recipes=recipes, 
+                                   users=users)
+    flash('Please log in to edit your account')
+    return redirect(url_for("login"))
+
 
 
 @app.route("/subscribe/", methods=["GET", "POST"])
@@ -638,6 +676,21 @@ def subscribe():
 
             flash("You have successfully subscribed!")
             return render_template("index.html")
+
+
+@app.route("/message/", methods=["GET", "POST"])
+def message():
+    """ Adds message to database  """
+    if request.method == "POST":
+        message = {
+                "full_name": request.form.get("first_name") + ' ' + request.form.get("last_name"),
+                "email": request.form.get("email"),
+                "message": request.form.get("message"),
+            }
+        # Inserts data into the message database
+        mongo.db.messages.insert_one(message)
+        flash("Thanks for your message. We will get back to you as soon as we can.")
+        return render_template("index.html")
 
 
 if __name__ == "__main__":

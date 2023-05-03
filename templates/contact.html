@@ -8,7 +8,7 @@
             <div class="form-card-content">
                 <h1 class="center-align">Get in Touch</h1>
                 <p class="center">We would love to here from you</p>
-                <form method="POST" action="#">
+                <form method="POST" action="{{ url_for('message') }}">
                     <!-- First name  field -->
                     <div class=" row">
                         <div class="input-field col s10 offset-s1">
@@ -27,8 +27,8 @@
                     <!-- vistor email -->
                     <div class="row">
                         <div class="input-field col s10 offset-s1">
-                            <input type="email" id="vistor_email" name="vistor_email" class="validate">
-                            <label for="vistor_email">Email Address</label>
+                            <input type="email" id="email" name="email" class="validate">
+                            <label for="email">Email Address</label>
                         </div>
                     </div>
                     <!-- message textarea -->
