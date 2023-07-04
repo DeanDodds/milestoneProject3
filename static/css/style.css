@@ -247,6 +247,12 @@ body {
     margin-bottom: 15px;
 }
 
+#subscribe-btn {
+    margin-top: 0;
+    border: 0;
+    z-index: 1;
+}
+
 @media only screen and (max-width: 600px) {
     .catergories-form {
         display: flex;
